@@ -9,8 +9,18 @@ import miniKanban from "@/assets/mini-kanban.jpg";
 
 const projects = [
   {
-    id: "order-management-system",
+    id: "dea-bakery-mobile-app",
     number: "01",
+    title: "Dea Bakery Mobile App",
+    description:
+      "Designed a loyalty and engagement platform for a local bakery. Navigated real business constraints to pivot from full e-commerce to a focused loyalty-first experience that aligned with operational capacity.",
+    tags: ["Product Thinking", "Mobile App", "Loyalty System"],
+    type: "Deep Case Study",
+    section: "uiux",
+  },
+  {
+    id: "order-management-system",
+    number: "02",
     title: "Order Management System Redesign",
     description:
       "Redesigned an internal order management system to improve workflow visibility across operations teams. Reduced manual coordination and streamlined daily order tracking.",
@@ -20,7 +30,7 @@ const projects = [
   },
   {
     id: "reporting-dashboard",
-    number: "02",
+    number: "03",
     title: "Sales Reporting Dashboard",
     description:
       "Improved an internal reporting dashboard used by management teams. Reorganized data hierarchy and introduced visual indicators for faster metric interpretation.",
@@ -30,7 +40,7 @@ const projects = [
   },
   {
     id: "expense-tracker-concept",
-    number: "03",
+    number: "04",
     title: "Expense Tracker — Concept",
     description:
       "A concept project exploring a mobile expense tracking interface with a focus on financial clarity, component consistency, and visual craft.",
@@ -40,7 +50,7 @@ const projects = [
   },
   {
     id: "onboarding-portal-redesign",
-    number: "04",
+    number: "05",
     title: "Employee Onboarding Portal Redesign",
     description:
       "A complete step-by-step UI design process — identifying problems, restructuring information architecture, and delivering a guided onboarding experience.",
