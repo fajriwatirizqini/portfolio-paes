@@ -13,7 +13,7 @@ const ProjectDeaBakery = () => {
           projectNumber="Project 01"
           title="Dea Bakery Mobile App"
           subtitle="Designing a loyalty and engagement platform for a local bakery — navigating real business constraints to deliver something genuinely usable."
-          tags={["Mobile App", "UI/UX Design", "Product Thinking", "Loyalty System"]}
+          tags={["Product Strategy", "Scope Decision", "Business Constraint", "Loyalty System"]}
         />
 
         <MetaRow

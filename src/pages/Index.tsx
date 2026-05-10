@@ -14,8 +14,8 @@ const projects = [
     title: "Dea Bakery Mobile App",
     description:
       "Designed a loyalty and engagement platform for a local bakery. Navigated real business constraints to pivot from full e-commerce to a focused loyalty-first experience that aligned with operational capacity.",
-    tags: ["Product Thinking", "Mobile App", "Loyalty System"],
-    type: "Deep Case Study",
+    tags: ["Product Thinking", "Scope Decision", "Loyalty System"],
+    type: "Product Strategy",
     section: "uiux",
   },
   {
@@ -24,8 +24,8 @@ const projects = [
     title: "Personal App Staff — Dea Bakery",
     description:
       "An internal mobile app for Dea Bakery employees — self-service access to digital payslips, attendance, benefit submissions, and HR info. Reduced manual HR workload through thoughtful internal tooling.",
-    tags: ["Internal Tool", "Mobile App", "HR & People Ops"],
-    type: "Deep Case Study",
+    tags: ["Access Design", "Mobile App", "HR & People Ops"],
+    type: "Operational Design",
     section: "uiux",
   },
   {

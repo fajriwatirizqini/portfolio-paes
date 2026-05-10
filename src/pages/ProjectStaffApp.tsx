@@ -12,7 +12,7 @@ const ProjectStaffApp = () => {
           projectNumber="Project 02"
           title="Personal App Staff — Dea Bakery"
           subtitle="An internal mobile app for Dea Bakery staff — giving employees self-service access to payslips, benefits, attendance, and HR information."
-          tags={["Internal Tool", "Mobile App", "HR & People Ops", "UI/UX Design"]}
+          tags={["Access Design", "Mobile App", "HR & People Ops", "Operational Design"]}
         />
 
         <MetaRow
