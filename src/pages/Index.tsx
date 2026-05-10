@@ -29,38 +29,8 @@ const projects = [
     section: "uiux",
   },
   {
-    id: "order-management-system",
-    number: "03",
-    title: "Order Management System Redesign",
-    description:
-      "Redesigned an internal order management system to improve workflow visibility across operations teams. Reduced manual coordination and streamlined daily order tracking.",
-    tags: ["Product Thinking", "Workflow Design", "Internal Tools"],
-    type: "Deep Case Study",
-    section: "uiux",
-  },
-  {
-    id: "reporting-dashboard",
-    number: "04",
-    title: "Sales Reporting Dashboard",
-    description:
-      "Improved an internal reporting dashboard used by management teams. Reorganized data hierarchy and introduced visual indicators for faster metric interpretation.",
-    tags: ["Design Execution", "Data Visualization", "UI Clarity"],
-    type: "Design Execution",
-    section: "uiux",
-  },
-  {
-    id: "expense-tracker-concept",
-    number: "05",
-    title: "Expense Tracker — Concept",
-    description:
-      "A concept project exploring a mobile expense tracking interface with a focus on financial clarity, component consistency, and visual craft.",
-    tags: ["UI Craft", "Visual Design", "Concept"],
-    type: "Concept Project",
-    section: "uiux",
-  },
-  {
     id: "onboarding-portal-redesign",
-    number: "06",
+    number: "03",
     title: "Employee Onboarding Portal Redesign",
     description:
       "A complete step-by-step UI design process — identifying problems, restructuring information architecture, and delivering a guided onboarding experience.",
