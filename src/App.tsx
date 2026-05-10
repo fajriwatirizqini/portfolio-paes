@@ -11,6 +11,7 @@ import ProjectThree from "./pages/ProjectThree";
 import ProjectFour from "./pages/ProjectFour";
 import ProjectFive from "./pages/ProjectFive";
 import ProjectDeaBakery from "./pages/ProjectDeaBakery";
+import ProjectStaffApp from "./pages/ProjectStaffApp";
 import NotFound from "./pages/NotFound";
 
 const ScrollToTop = () => {
@@ -33,6 +34,7 @@ const App = () => (
         <Route path="/" element={<Intro />} />
         <Route path="/portfolio" element={<Index />} />
         <Route path="/project/dea-bakery-mobile-app" element={<ProjectDeaBakery />} />
+        <Route path="/project/staff-app-dea-bakery" element={<ProjectStaffApp />} />
         <Route path="/project/order-management-system" element={<ProjectOne />} />
         <Route path="/project/reporting-dashboard" element={<ProjectTwo />} />
         <Route path="/project/expense-tracker-concept" element={<ProjectThree />} />

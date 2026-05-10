@@ -19,8 +19,18 @@ const projects = [
     section: "uiux",
   },
   {
-    id: "order-management-system",
+    id: "staff-app-dea-bakery",
     number: "02",
+    title: "Personal App Staff — Dea Bakery",
+    description:
+      "An internal mobile app for Dea Bakery employees — self-service access to digital payslips, attendance, benefit submissions, and HR info. Reduced manual HR workload through thoughtful internal tooling.",
+    tags: ["Internal Tool", "Mobile App", "HR & People Ops"],
+    type: "Deep Case Study",
+    section: "uiux",
+  },
+  {
+    id: "order-management-system",
+    number: "03",
     title: "Order Management System Redesign",
     description:
       "Redesigned an internal order management system to improve workflow visibility across operations teams. Reduced manual coordination and streamlined daily order tracking.",
@@ -30,7 +40,7 @@ const projects = [
   },
   {
     id: "reporting-dashboard",
-    number: "03",
+    number: "04",
     title: "Sales Reporting Dashboard",
     description:
       "Improved an internal reporting dashboard used by management teams. Reorganized data hierarchy and introduced visual indicators for faster metric interpretation.",
@@ -40,7 +50,7 @@ const projects = [
   },
   {
     id: "expense-tracker-concept",
-    number: "04",
+    number: "05",
     title: "Expense Tracker — Concept",
     description:
       "A concept project exploring a mobile expense tracking interface with a focus on financial clarity, component consistency, and visual craft.",
@@ -50,7 +60,7 @@ const projects = [
   },
   {
     id: "onboarding-portal-redesign",
-    number: "05",
+    number: "06",
     title: "Employee Onboarding Portal Redesign",
     description:
       "A complete step-by-step UI design process — identifying problems, restructuring information architecture, and delivering a guided onboarding experience.",
