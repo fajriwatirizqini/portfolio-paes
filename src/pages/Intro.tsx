@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Linkedin, Instagram } from "lucide-react";
+import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 
 const skills = [
   "UX & UI Design",
   "Wireframing",
+  "Interactive & Responsive Design",
+  "UX Writing",
   "Prototyping",
   "Usability Testing",
-  "UX Writing",
-  "Interactive Design",
   "Problem Solving",
   "Strategic Planning",
 ];
@@ -19,23 +19,23 @@ const tools = ["Figma", "Adobe Photoshop", "Canva", "Maze", "Miro"];
 const experiences = [
   {
     company: "CV. Dea Bakery",
-    role: "UI/UX Designer – Assistant PM",
+    role: "UI/UX Designer – Assistant Project Manager",
     period: "2024 – Present",
   },
   {
     company: "PT. Kalbe Radha Mustika (Kalbe Group)",
     role: "UI/UX Designer Intern",
-    period: "Sept – Dec 2022",
+    period: "Sept 2022 – Dec 2022",
   },
   {
     company: "PT. Tanigo Indonesia",
     role: "UI/UX Designer Intern",
-    period: "April – July 2022",
+    period: "April 2022 – July 2022",
   },
   {
     company: "Rumah Penalaran",
     role: "UI/UX Designer Intern",
-    period: "Mar – June 2022",
+    period: "Mar 2022 – June 2022",
   },
 ];
 
@@ -48,167 +48,138 @@ const education = [
   {
     degree: "Studi Independen Binar Academy",
     school: "Kampus Merdeka (MBKM)",
-    period: "Feb – July 2022",
+    period: "Feb 2022 – July 2022",
   },
   {
     degree: "UI/UX Design Scholarship",
     school: "Simpul Talenta",
-    period: "Sept – Oct 2021",
+    period: "Sept 2021 – Oct 2021",
   },
 ];
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.45, delay: i * 0.08 },
+    transition: { duration: 0.5, delay: i * 0.1 },
   }),
 };
 
 const Intro = () => {
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-3xl mx-auto px-6 md:px-8">
-
-        {/* Hero */}
+      <div className="max-w-4xl mx-auto px-6 md:px-8">
+        {/* Hero Section */}
         <motion.header
-          className="pt-14 pb-10 md:pt-20 md:pb-14"
-          initial={{ opacity: 0, y: 20 }}
+          className="pt-16 pb-12 md:pt-24 md:pb-16"
+          initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.7 }}
         >
-          <div className="flex items-center gap-6 md:gap-8">
-            {/* Photo — compact circle */}
-            <div className="w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden border-2 border-border shrink-0">
+          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
+            {/* Photo */}
+            <div className="w-44 md:w-56 rounded-2xl overflow-hidden border-2 border-border shrink-0">
               <img
                 src={profilePhoto}
                 alt="Fajriwati Qoyyum Rizqini"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-auto object-contain"
               />
             </div>
 
-            {/* Name + role + tagline */}
-            <div className="flex-1 min-w-0">
-              <p className="section-label mb-1">UI/UX Designer</p>
-              <h1 className="text-2xl md:text-3xl font-display font-bold text-foreground leading-snug">
-                Fajriwati Qoyyum Rizqini
+            {/* Intro Text */}
+            <div className="flex-1">
+              <p className="section-label mb-3">Hello! 🌺 I'm</p>
+              <h1 className="text-4xl md:text-5xl font-display font-bold text-foreground leading-tight mb-4">
+                Fajriwati Qoyyum<br />Rizqini
               </h1>
-              <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed max-w-sm">
-                Designing systems that feel intuitive — driven by empathy and structured thinking.
+              <p className="text-muted-foreground text-base xs:text-lg leading-relaxed max-w-xl">
+                A <strong className="text-foreground">UI/UX Designer</strong> with 1+ year of experience and a
+                proven track record of completing over 7 digital design projects.
+                My design process is driven by empathy and structured problem-solving,
+                allowing me to craft intuitive, user-centered experiences.
               </p>
             </div>
-          </div>
-
-          {/* Contact row — inline, compact */}
-          <div className="flex flex-wrap items-center gap-x-5 gap-y-2 mt-6 text-sm text-muted-foreground">
-            <a
-              href="mailto:fajriwatirizqini@gmail.com"
-              className="flex items-center gap-1.5 hover:text-accent transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-accent" />
-              fajriwatirizqini@gmail.com
-            </a>
-            <a
-              href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-accent transition-colors"
-            >
-              <Linkedin className="w-3.5 h-3.5 text-accent" />
-              LinkedIn
-            </a>
-            <a
-              href="https://instagram.com/frizqinii_/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 hover:text-accent transition-colors"
-            >
-              <Instagram className="w-3.5 h-3.5 text-accent" />
-              @frizqinii_
-            </a>
           </div>
         </motion.header>
 
         {/* About */}
         <motion.section
-          className="py-8 border-t border-border"
+          className="py-10 border-t border-border"
           custom={1}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <p className="section-label mb-3">About</p>
-          <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl">
-            My design style is{" "}
-            <strong className="text-foreground">communicative, playful, and elegantly balanced</strong>.
-            I love creating experiences that solve problems and spark connection.
-            I have hands-on experience in user research, wireframing, prototyping, and usability testing.
+          <p className="section-label mb-4">About</p>
+          <p className="text-muted-foreground text-base leading-relaxed max-w-2xl">
+            My design style is <strong className="text-foreground">communicative, playful, and elegantly balanced</strong>.
+            I love creating experiences that not only solve problems but also spark connection and curiosity.
+            For me, great design happens where empathy, creativity, and clarity meet. I have hands-on experience
+            in user research, wireframing, prototyping, and usability testing.
           </p>
         </motion.section>
 
-        {/* Experience + Education — two column on md */}
+        {/* Work Experience */}
         <motion.section
-          className="py-8 border-t border-border"
+          className="py-10 border-t border-border"
           custom={2}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Experience */}
-            <div>
-              <p className="section-label mb-4">Experience</p>
-              <div className="space-y-4">
-                {experiences.map((exp) => (
-                  <div key={exp.company}>
-                    <p className="text-sm font-display font-semibold text-accent leading-snug">
-                      {exp.company}
-                    </p>
-                    <p className="text-sm text-foreground mt-0.5">{exp.role}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{exp.period}</p>
-                  </div>
-                ))}
+          <p className="section-label mb-6">Work Experience</p>
+          <div className="space-y-5">
+            {experiences.map((exp) => (
+              <div key={exp.company}>
+                <p className="text-base font-display font-semibold text-accent">{exp.company}</p>
+                <p className="text-base text-foreground">{exp.role}</p>
+                <p className="text-sm text-muted-foreground mt-0.5">{exp.period}</p>
               </div>
-            </div>
-
-            {/* Education */}
-            <div>
-              <p className="section-label mb-4">Education</p>
-              <div className="space-y-4">
-                {education.map((edu) => (
-                  <div key={edu.degree}>
-                    <p className="text-sm font-display font-semibold text-foreground leading-snug">
-                      {edu.degree}
-                    </p>
-                    <p className="text-sm text-muted-foreground mt-0.5">{edu.school}</p>
-                    <p className="text-xs text-muted-foreground mt-0.5">{edu.period}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </motion.section>
 
-        {/* Skills & Tools — compact inline tags */}
+        {/* Education */}
         <motion.section
-          className="py-8 border-t border-border"
+          className="py-10 border-t border-border"
           custom={3}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <p className="section-label mb-6">Education</p>
+          <div className="space-y-5">
+            {education.map((edu) => (
+              <div key={edu.degree}>
+                <p className="text-base font-display font-semibold text-foreground">{edu.degree}</p>
+                <p className="text-base text-muted-foreground">{edu.school}</p>
+                <p className="text-sm text-muted-foreground mt-0.5">{edu.period}</p>
+              </div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Skills & Tools */}
+        <motion.section
+          className="py-10 border-t border-border"
+          custom={4}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
-              <p className="section-label mb-3">Skills</p>
-              <div className="flex flex-wrap gap-1.5">
+              <p className="section-label mb-4">Skills</p>
+              <div className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
+                    className="text-sm px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground font-medium"
                   >
                     {skill}
                   </span>
@@ -216,12 +187,12 @@ const Intro = () => {
               </div>
             </div>
             <div>
-              <p className="section-label mb-3">Tools</p>
-              <div className="flex flex-wrap gap-1.5">
+              <p className="section-label mb-4">Tools</p>
+              <div className="flex flex-wrap gap-2">
                 {tools.map((tool) => (
                   <span
                     key={tool}
-                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
+                    className="text-sm px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground font-medium"
                   >
                     {tool}
                   </span>
@@ -231,10 +202,46 @@ const Intro = () => {
           </div>
         </motion.section>
 
-        {/* CTA */}
+        {/* Contact */}
         <motion.section
-          className="py-8 border-t border-border"
-          custom={4}
+          className="py-10 border-t border-border"
+          custom={5}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <p className="section-label mb-4">Contact</p>
+          <div className="space-y-3 text-base text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-accent" />
+              <span>+62 851-5652-7137</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Mail className="w-4 h-4 text-accent" />
+              <a href="mailto:fajriwatirizqini@gmail.com" className="hover:text-accent transition-colors">
+                fajriwatirizqini@gmail.com
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Linkedin className="w-4 h-4 text-accent" />
+              <a href="https://linkedin.com/in/fajriwatiqoyyumrizqini/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                linkedin.com/in/fajriwatiqoyyumrizqini
+              </a>
+            </div>
+            <div className="flex items-center gap-2">
+              <Instagram className="w-4 h-4 text-accent" />
+              <a href="https://instagram.com/frizqinii_/" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">
+                @frizqinii_
+              </a>
+            </div>
+          </div>
+        </motion.section>
+
+        {/* CTA to Portfolio */}
+        <motion.section
+          className="py-12 border-t border-border"
+          custom={6}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
@@ -242,21 +249,21 @@ const Intro = () => {
         >
           <Link
             to="/portfolio"
-            className="group flex items-center justify-between p-5 rounded-xl border border-border bg-card hover:border-accent/40 transition-colors"
+            className="group flex items-center justify-between p-6 rounded-xl border border-border bg-card hover:border-accent/40 transition-colors"
           >
             <div>
-              <p className="text-base font-display font-semibold text-foreground group-hover:text-accent transition-colors">
+              <p className="text-lg font-display font-semibold text-foreground group-hover:text-accent transition-colors">
                 View My Work
               </p>
-              <p className="text-sm text-muted-foreground mt-0.5">
+              <p className="text-base text-muted-foreground mt-1">
                 Browse case studies and project previews →
               </p>
             </div>
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
+            <ArrowRight className="w-6 h-6 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
           </Link>
         </motion.section>
 
-        <footer className="py-6 border-t border-border">
+        <footer className="py-8 border-t border-border">
           <p className="text-xs text-muted-foreground text-center">
             © 2026 Fajriwati Qoyyum Rizqini. Available for new opportunities.
           </p>
