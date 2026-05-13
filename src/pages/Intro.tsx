@@ -246,7 +246,38 @@ const Intro = () => {
                       </span>
                     </a>
                   </div>
+
+                {/* Freelance */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <p className="section-label">Freelance</p>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      Open for work
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 max-w-xl">
+                    I'm available for freelance UI/UX design projects. Whether you need a new product from scratch,
+                    a redesign, or just a design partner — let's talk.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
+                    {[
+                      { title: "Mobile App Design", desc: "End-to-end UI/UX for iOS & Android" },
+                      { title: "Web App / Dashboard", desc: "Data-heavy interfaces & internal tools" },
+                      { title: "Design System", desc: "Component libraries & style guides" },
+                      { title: "UX Audit & Consulting", desc: "Review, feedback & improvement plan" },
+                    ].map((service) => (
+                      <div
+                        key={service.title}
+                        className="bg-card border border-border rounded-lg p-3"
+                      >
+                        <p className="text-sm font-display font-semibold text-foreground">{service.title}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{service.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
+
               </motion.div>
             )}
 
