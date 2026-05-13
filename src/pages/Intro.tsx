@@ -246,6 +246,7 @@ const Intro = () => {
                       </span>
                     </a>
                   </div>
+                </div>
 
                 {/* Freelance */}
                 <div>
