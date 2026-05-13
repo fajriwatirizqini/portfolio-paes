@@ -121,78 +121,82 @@ const Intro = () => {
           </p>
         </motion.section>
 
-        {/* Work Experience */}
+        {/* Experience + Education — 2-column */}
         <motion.section
-          className="py-10 border-t border-border"
+          className="py-8 border-t border-border"
           custom={2}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <p className="section-label mb-6">Work Experience</p>
-          <div className="space-y-5">
-            {experiences.map((exp) => (
-              <div key={exp.company}>
-                <p className="text-base font-display font-semibold text-accent">{exp.company}</p>
-                <p className="text-base text-foreground">{exp.role}</p>
-                <p className="text-sm text-muted-foreground mt-0.5">{exp.period}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Experience */}
+            <div>
+              <p className="section-label mb-4">Experience</p>
+              <div className="space-y-3.5">
+                {experiences.map((exp) => (
+                  <div key={exp.company} className="flex items-start gap-2.5">
+                    <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
+                    <div>
+                      <p className="text-sm font-display font-semibold text-foreground leading-snug">{exp.company}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{exp.role}</p>
+                      <p className="text-xs text-accent/70 mt-0.5">{exp.period}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            {/* Education */}
+            <div>
+              <p className="section-label mb-4">Education</p>
+              <div className="space-y-3.5">
+                {education.map((edu) => (
+                  <div key={edu.degree} className="flex items-start gap-2.5">
+                    <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
+                    <div>
+                      <p className="text-sm font-display font-semibold text-foreground leading-snug">{edu.degree}</p>
+                      <p className="text-xs text-muted-foreground mt-0.5">{edu.school}</p>
+                      <p className="text-xs text-accent/70 mt-0.5">{edu.period}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </motion.section>
 
-        {/* Education */}
+        {/* Skills & Tools — compact */}
         <motion.section
-          className="py-10 border-t border-border"
+          className="py-8 border-t border-border"
           custom={3}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <p className="section-label mb-6">Education</p>
-          <div className="space-y-5">
-            {education.map((edu) => (
-              <div key={edu.degree}>
-                <p className="text-base font-display font-semibold text-foreground">{edu.degree}</p>
-                <p className="text-base text-muted-foreground">{edu.school}</p>
-                <p className="text-sm text-muted-foreground mt-0.5">{edu.period}</p>
-              </div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Skills & Tools */}
-        <motion.section
-          className="py-10 border-t border-border"
-          custom={4}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="section-label mb-4">Skills</p>
-              <div className="flex flex-wrap gap-2">
+          <div className="space-y-3">
+            <div className="flex items-start gap-3">
+              <p className="section-label shrink-0 w-14 pt-0.5">Skills</p>
+              <div className="flex flex-wrap gap-1.5">
                 {skills.map((skill) => (
                   <span
                     key={skill}
-                    className="text-sm px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground font-medium"
+                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
             </div>
-            <div>
-              <p className="section-label mb-4">Tools</p>
-              <div className="flex flex-wrap gap-2">
+            <div className="flex items-start gap-3">
+              <p className="section-label shrink-0 w-14 pt-0.5">Tools</p>
+              <div className="flex flex-wrap gap-1.5">
                 {tools.map((tool) => (
                   <span
                     key={tool}
-                    className="text-sm px-3 py-1.5 rounded-full bg-secondary text-secondary-foreground font-medium"
+                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
                   >
                     {tool}
                   </span>
