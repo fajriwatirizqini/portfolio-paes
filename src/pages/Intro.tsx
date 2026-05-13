@@ -121,7 +121,7 @@ const Intro = () => {
           </p>
         </motion.section>
 
-        {/* Experience + Education — 2-column */}
+        {/* Experience | Skills+Tools | Education — 3-column */}
         <motion.section
           className="py-8 border-t border-border"
           custom={2}
@@ -130,79 +130,73 @@ const Intro = () => {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Experience */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            {/* Experience — left */}
             <div>
               <p className="section-label mb-4">Experience</p>
-              <div className="space-y-3.5">
+              <div className="space-y-4">
                 {experiences.map((exp) => (
-                  <div key={exp.company} className="flex items-start gap-2.5">
-                    <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
-                    <div>
-                      <p className="text-sm font-display font-semibold text-foreground leading-snug">{exp.company}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{exp.role}</p>
-                      <p className="text-xs text-accent/70 mt-0.5">{exp.period}</p>
-                    </div>
+                  <div key={exp.company} className="bg-card rounded-lg p-3 border border-border">
+                    <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground mb-2">
+                      {exp.period}
+                    </span>
+                    <p className="text-sm font-display font-semibold text-foreground leading-snug">{exp.company}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{exp.role}</p>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Education */}
+            {/* Skills + Tools — center */}
+            <div>
+              <p className="section-label mb-4">Skills & Tools</p>
+              <div className="space-y-4">
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">Skills</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">Tools</p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {tools.map((tool) => (
+                      <span
+                        key={tool}
+                        className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Education — right */}
             <div>
               <p className="section-label mb-4">Education</p>
-              <div className="space-y-3.5">
+              <div className="space-y-4">
                 {education.map((edu) => (
-                  <div key={edu.degree} className="flex items-start gap-2.5">
-                    <span className="w-1 h-1 rounded-full bg-accent mt-2 shrink-0" />
-                    <div>
-                      <p className="text-sm font-display font-semibold text-foreground leading-snug">{edu.degree}</p>
-                      <p className="text-xs text-muted-foreground mt-0.5">{edu.school}</p>
-                      <p className="text-xs text-accent/70 mt-0.5">{edu.period}</p>
-                    </div>
+                  <div key={edu.degree} className="bg-card rounded-lg p-3 border border-border">
+                    <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground mb-2">
+                      {edu.period}
+                    </span>
+                    <p className="text-sm font-display font-semibold text-foreground leading-snug">{edu.degree}</p>
+                    <p className="text-xs text-muted-foreground mt-0.5">{edu.school}</p>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
-        </motion.section>
 
-        {/* Skills & Tools — compact */}
-        <motion.section
-          className="py-8 border-t border-border"
-          custom={3}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <div className="space-y-3">
-            <div className="flex items-start gap-3">
-              <p className="section-label shrink-0 w-14 pt-0.5">Skills</p>
-              <div className="flex flex-wrap gap-1.5">
-                {skills.map((skill) => (
-                  <span
-                    key={skill}
-                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
-                  >
-                    {skill}
-                  </span>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <p className="section-label shrink-0 w-14 pt-0.5">Tools</p>
-              <div className="flex flex-wrap gap-1.5">
-                {tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </div>
           </div>
         </motion.section>
 
