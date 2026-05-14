@@ -158,6 +158,42 @@ const Intro = () => {
                 that{" "}
                 <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">communicate clearly and feel naturally engaging</span>.
               </p>
+
+              {/* Get In Touch — below hero description */}
+              <div className="flex flex-wrap items-center gap-3 mt-5">
+                <a
+                  href="mailto:fajriwatirizqini@gmail.com"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  <Mail className="w-4 h-4 text-accent shrink-0" />
+                  <span className="group-hover:underline underline-offset-2 truncate">fajriwatirizqini@gmail.com</span>
+                </a>
+                <span className="text-border">·</span>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Phone className="w-4 h-4 text-accent shrink-0" />
+                  <span>+62 851-5652-7137</span>
+                </div>
+                <span className="text-border">·</span>
+                <a
+                  href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  <Linkedin className="w-4 h-4 text-accent shrink-0" />
+                  <span className="group-hover:underline underline-offset-2">LinkedIn</span>
+                </a>
+                <span className="text-border">·</span>
+                <a
+                  href="https://instagram.com/frizqinii_/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
+                >
+                  <Instagram className="w-4 h-4 text-accent shrink-0" />
+                  <span className="group-hover:underline underline-offset-2">@frizqinii_</span>
+                </a>
+              </div>
             </div>
           </div>
         </motion.header>
@@ -227,47 +263,6 @@ const Intro = () => {
                   </div>
                 </div>
 
-                {/* Get In Touch */}
-                <div>
-                  <p className="section-label mb-4">Get In Touch</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg">
-                    <a
-                      href="mailto:fajriwatirizqini@gmail.com"
-                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
-                    >
-                      <Mail className="w-4 h-4 text-accent shrink-0" />
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate">
-                        fajriwatirizqini@gmail.com
-                      </span>
-                    </a>
-                    <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card">
-                      <Phone className="w-4 h-4 text-accent shrink-0" />
-                      <span className="text-sm text-muted-foreground">+62 851-5652-7137</span>
-                    </div>
-                    <a
-                      href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
-                    >
-                      <Linkedin className="w-4 h-4 text-accent shrink-0" />
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate">
-                        LinkedIn
-                      </span>
-                    </a>
-                    <a
-                      href="https://instagram.com/frizqinii_/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
-                    >
-                      <Instagram className="w-4 h-4 text-accent shrink-0" />
-                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-                        @frizqinii_
-                      </span>
-                    </a>
-                  </div>
-                </div>
 
                 {/* Freelance */}
                 <div>
