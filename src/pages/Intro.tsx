@@ -18,10 +18,10 @@ const skills = [
 ];
 
 const toolIcons = [
-  { name: "Figma",            slug: "figma",            iconColor: "F24E1E", bg: "#1E1E1E" },
-  { name: "Adobe Photoshop",  slug: "adobephotoshop",   iconColor: "31A8FF", bg: "#001E36" },
-  { name: "Canva",            slug: "canva",            iconColor: "00C4CC", bg: "#FFFFFF" },
-  { name: "Maze",             slug: null,               iconColor: "FFFFFF", bg: "#6C47FF", abbr: "Mz" },
+  { name: "Jira",             slug: "jira",            iconColor: "FFFFFF", bg: "#0052CC" },
+  { name: "Adobe Photoshop",  slug: "adobephotoshop",  iconColor: "31A8FF", bg: "#001E36" },
+  { name: "Canva",            slug: "canva",            iconColor: "FFFFFF", bg: "#00C4CC" },
+  { name: "Figma",            slug: "figma",            iconColor: "FFFFFF", bg: "#F24E1E" },
   { name: "Miro",             slug: "miro",             iconColor: "050038", bg: "#FFD02F" },
 ];
 
