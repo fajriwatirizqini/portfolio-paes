@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import { SiJira, SiAdobephotoshop, SiCanva, SiFigma, SiMiro } from "react-icons/si";
 
 type Tab = "about" | "resume" | "work";
 
@@ -18,11 +19,11 @@ const skills = [
 ];
 
 const toolIcons = [
-  { name: "Jira",             slug: "jira",            iconColor: "FFFFFF", bg: "#0052CC" },
-  { name: "Adobe Photoshop",  slug: "adobephotoshop",  iconColor: "31A8FF", bg: "#001E36" },
-  { name: "Canva",            slug: "canva",            iconColor: "FFFFFF", bg: "#00C4CC" },
-  { name: "Figma",            slug: "figma",            iconColor: "FFFFFF", bg: "#F24E1E" },
-  { name: "Miro",             slug: "miro",             iconColor: "050038", bg: "#FFD02F" },
+  { name: "Jira",            Icon: SiJira,            iconColor: "#FFFFFF", bg: "#0052CC" },
+  { name: "Adobe Photoshop", Icon: SiAdobephotoshop,  iconColor: "#31A8FF", bg: "#001E36" },
+  { name: "Canva",           Icon: SiCanva,           iconColor: "#FFFFFF", bg: "#00C4CC" },
+  { name: "Figma",           Icon: SiFigma,           iconColor: "#FFFFFF", bg: "#F24E1E" },
+  { name: "Miro",            Icon: SiMiro,            iconColor: "#050038", bg: "#FFD02F" },
 ];
 
 const experiences = [
@@ -368,27 +369,14 @@ const Intro = () => {
                         Tools
                       </h2>
                       <div className="flex flex-wrap gap-2.5">
-                        {toolIcons.map((tool) => (
+                        {toolIcons.map(({ name, Icon, iconColor, bg }) => (
                           <div
-                            key={tool.name}
-                            title={tool.name}
-                            style={{ backgroundColor: tool.bg }}
+                            key={name}
+                            title={name}
+                            style={{ backgroundColor: bg }}
                             className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
                           >
-                            {tool.slug ? (
-                              <img
-                                src={`https://cdn.simpleicons.org/${tool.slug}/${tool.iconColor}`}
-                                alt={tool.name}
-                                className="w-5 h-5"
-                              />
-                            ) : (
-                              <span
-                                className="text-xs font-bold"
-                                style={{ color: `#${tool.iconColor}` }}
-                              >
-                                {tool.abbr}
-                              </span>
-                            )}
+                            <Icon size={20} color={iconColor} />
                           </div>
                         ))}
                       </div>
