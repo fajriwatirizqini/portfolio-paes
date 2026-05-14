@@ -160,39 +160,39 @@ const Intro = () => {
               </p>
 
               {/* Get In Touch — below hero description */}
-              <div className="flex flex-wrap items-center gap-3 mt-5">
-                <a
-                  href="mailto:fajriwatirizqini@gmail.com"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  <Mail className="w-4 h-4 text-accent shrink-0" />
-                  <span className="group-hover:underline underline-offset-2 truncate">fajriwatirizqini@gmail.com</span>
-                </a>
-                <span className="text-border">·</span>
-                <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Phone className="w-4 h-4 text-accent shrink-0" />
-                  <span>+62 851-5652-7137</span>
+              <div className="mt-6 pt-5 border-t border-border/50">
+                <p className="text-xs text-muted-foreground/60 uppercase tracking-[0.12em] mb-3 font-medium">Get in touch</p>
+                <div className="flex flex-wrap gap-2">
+                  <a
+                    href="mailto:fajriwatirizqini@gmail.com"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
+                  >
+                    <Mail className="w-3.5 h-3.5 shrink-0" />
+                    fajriwatirizqini@gmail.com
+                  </a>
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground">
+                    <Phone className="w-3.5 h-3.5 shrink-0" />
+                    +62 851-5652-7137
+                  </div>
+                  <a
+                    href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
+                  >
+                    <Linkedin className="w-3.5 h-3.5 shrink-0" />
+                    LinkedIn
+                  </a>
+                  <a
+                    href="https://instagram.com/frizqinii_/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
+                  >
+                    <Instagram className="w-3.5 h-3.5 shrink-0" />
+                    @frizqinii_
+                  </a>
                 </div>
-                <span className="text-border">·</span>
-                <a
-                  href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  <Linkedin className="w-4 h-4 text-accent shrink-0" />
-                  <span className="group-hover:underline underline-offset-2">LinkedIn</span>
-                </a>
-                <span className="text-border">·</span>
-                <a
-                  href="https://instagram.com/frizqinii_/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors group"
-                >
-                  <Instagram className="w-4 h-4 text-accent shrink-0" />
-                  <span className="group-hover:underline underline-offset-2">@frizqinii_</span>
-                </a>
               </div>
             </div>
           </div>
