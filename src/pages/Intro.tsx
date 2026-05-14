@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { SiJira, SiAdobephotoshop, SiCanva, SiFigma, SiMiro } from "react-icons/si";
+import { SiJira, SiAffinityphoto, SiCanva, SiFigma, SiMiro } from "react-icons/si";
 
 type Tab = "about" | "resume" | "work";
 
@@ -19,11 +19,11 @@ const skills = [
 ];
 
 const toolIcons = [
-  { name: "Jira",            Icon: SiJira,            iconColor: "#FFFFFF", bg: "#0052CC" },
-  { name: "Adobe Photoshop", Icon: SiAdobephotoshop,  iconColor: "#31A8FF", bg: "#001E36" },
-  { name: "Canva",           Icon: SiCanva,           iconColor: "#FFFFFF", bg: "#00C4CC" },
-  { name: "Figma",           Icon: SiFigma,           iconColor: "#FFFFFF", bg: "#F24E1E" },
-  { name: "Miro",            Icon: SiMiro,            iconColor: "#050038", bg: "#FFD02F" },
+  { name: "Jira",            Icon: SiJira,          iconColor: "#FFFFFF", bg: "#0052CC" },
+  { name: "Photoshop",       Icon: SiAffinityphoto, iconColor: "#FFFFFF", bg: "#7E4DD2" },
+  { name: "Canva",           Icon: SiCanva,         iconColor: "#FFFFFF", bg: "#00C4CC" },
+  { name: "Figma",           Icon: SiFigma,         iconColor: "#FFFFFF", bg: "#F24E1E" },
+  { name: "Miro",            Icon: SiMiro,          iconColor: "#050038", bg: "#FFD02F" },
 ];
 
 const experiences = [
