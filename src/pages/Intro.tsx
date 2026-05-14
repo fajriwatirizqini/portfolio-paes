@@ -143,13 +143,13 @@ const Intro = () => {
                 Fajriwati Qoyyum<br />Rizqini
               </h1>
               <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-                A <strong className="text-foreground">UI/UX Designer</strong> with 1+ year of experience.
+                A <span className="text-foreground font-medium">UI/UX Designer</span> with 1+ year of experience.
                 My design process is driven by{" "}
-                <strong className="text-foreground">empathy and structured problem-solving</strong>,
+                <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy and structured problem-solving</span>,
                 allowing me to craft{" "}
-                <strong className="text-foreground">intuitive, user-centered experiences</strong>{" "}
+                <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">intuitive, user-centered experiences</span>{" "}
                 that{" "}
-                <strong className="text-foreground">communicate clearly and feel naturally engaging</strong>.
+                <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">communicate clearly and feel naturally engaging</span>.
               </p>
             </div>
           </div>
@@ -200,22 +200,22 @@ const Intro = () => {
                   <div className="space-y-4 max-w-2xl">
                     <p className="text-muted-foreground text-base leading-relaxed">
                       My design process is driven by{" "}
-                      <strong className="text-foreground">empathy and structured problem-solving</strong>,
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy and structured problem-solving</span>,
                       allowing me to craft{" "}
-                      <strong className="text-foreground">intuitive, user-centered experiences</strong>{" "}
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">intuitive, user-centered experiences</span>{" "}
                       that{" "}
-                      <strong className="text-foreground">communicate clearly and feel naturally engaging</strong>.
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">communicate clearly and feel naturally engaging</span>.
                       I have hands-on experience in user research, wireframing, prototyping, and usability testing —
                       continuously learning how{" "}
-                      <strong className="text-foreground">collaboration and planning shape better design outcomes</strong>.
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">collaboration and planning shape better design outcomes</span>.
                     </p>
                     <p className="text-muted-foreground text-base leading-relaxed">
                       My design style is{" "}
-                      <strong className="text-foreground">communicative, playful, and elegantly balanced</strong>.
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">communicative, playful, and elegantly balanced</span>.
                       I love creating experiences that not only solve problems but also{" "}
-                      <strong className="text-foreground">spark connection and curiosity</strong>.
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">spark connection and curiosity</span>.
                       For me, great design happens where{" "}
-                      <strong className="text-foreground">empathy, creativity, and clarity meet</strong>.
+                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy, creativity, and clarity meet</span>.
                     </p>
                   </div>
                 </div>
