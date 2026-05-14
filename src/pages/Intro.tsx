@@ -17,7 +17,13 @@ const skills = [
   "Strategic Planning",
 ];
 
-const tools = ["Figma", "Adobe Photoshop", "Canva", "Maze", "Miro"];
+const toolIcons = [
+  { name: "Figma",            slug: "figma",            iconColor: "F24E1E", bg: "#1E1E1E" },
+  { name: "Adobe Photoshop",  slug: "adobephotoshop",   iconColor: "31A8FF", bg: "#001E36" },
+  { name: "Canva",            slug: "canva",            iconColor: "00C4CC", bg: "#FFFFFF" },
+  { name: "Maze",             slug: null,               iconColor: "FFFFFF", bg: "#6C47FF", abbr: "Mz" },
+  { name: "Miro",             slug: "miro",             iconColor: "050038", bg: "#FFD02F" },
+];
 
 const experiences = [
   {
@@ -361,11 +367,29 @@ const Intro = () => {
                       <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
                         Tools
                       </h2>
-                      <div className="space-y-2">
-                        {tools.map((tool) => (
-                          <p key={tool} className="text-sm text-foreground/80">
-                            {tool}
-                          </p>
+                      <div className="flex flex-wrap gap-2.5">
+                        {toolIcons.map((tool) => (
+                          <div
+                            key={tool.name}
+                            title={tool.name}
+                            style={{ backgroundColor: tool.bg }}
+                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
+                          >
+                            {tool.slug ? (
+                              <img
+                                src={`https://cdn.simpleicons.org/${tool.slug}/${tool.iconColor}`}
+                                alt={tool.name}
+                                className="w-5 h-5"
+                              />
+                            ) : (
+                              <span
+                                className="text-xs font-bold"
+                                style={{ color: `#${tool.iconColor}` }}
+                              >
+                                {tool.abbr}
+                              </span>
+                            )}
+                          </div>
                         ))}
                       </div>
                     </div>
