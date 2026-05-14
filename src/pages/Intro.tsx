@@ -305,78 +305,69 @@ const Intro = () => {
                 animate="visible"
                 exit="exit"
               >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
 
                   {/* Experience */}
                   <div>
-                    <p className="section-label mb-4">Experience</p>
-                    <div className="space-y-4">
+                    <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
+                      Experience
+                    </h2>
+                    <div className="space-y-6">
                       {experiences.map((exp) => (
-                        <div key={exp.company} className="bg-card rounded-lg p-3 border border-border">
-                          <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground mb-2">
-                            {exp.period}
-                          </span>
-                          <p className="text-sm font-display font-semibold text-foreground leading-snug">
-                            {exp.company}
+                        <div key={exp.company}>
+                          <p className="text-sm font-semibold text-foreground leading-snug">
+                            {exp.role}
                           </p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{exp.role}</p>
+                          <p className="text-sm text-foreground/70 mt-0.5">{exp.company}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{exp.period}</p>
                         </div>
                       ))}
-                    </div>
-                  </div>
-
-                  {/* Skills + Tools */}
-                  <div>
-                    <p className="section-label mb-4">Skills & Tools</p>
-                    <div className="space-y-4">
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">
-                          Skills
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {skills.map((skill) => (
-                            <span
-                              key={skill}
-                              className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
-                            >
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground mb-2 uppercase tracking-wide">
-                          Tools
-                        </p>
-                        <div className="flex flex-wrap gap-1.5">
-                          {tools.map((tool) => (
-                            <span
-                              key={tool}
-                              className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
-                            >
-                              {tool}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
                     </div>
                   </div>
 
                   {/* Education */}
                   <div>
-                    <p className="section-label mb-4">Education</p>
-                    <div className="space-y-4">
+                    <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
+                      Education
+                    </h2>
+                    <div className="space-y-6">
                       {education.map((edu) => (
-                        <div key={edu.degree} className="bg-card rounded-lg p-3 border border-border">
-                          <span className="inline-block text-xs font-medium px-2 py-0.5 rounded-md bg-secondary text-secondary-foreground mb-2">
-                            {edu.period}
-                          </span>
-                          <p className="text-sm font-display font-semibold text-foreground leading-snug">
+                        <div key={edu.degree}>
+                          <p className="text-sm font-semibold text-foreground leading-snug">
                             {edu.degree}
                           </p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{edu.school}</p>
+                          <p className="text-sm text-foreground/70 mt-0.5">{edu.school}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{edu.period}</p>
                         </div>
                       ))}
+                    </div>
+                  </div>
+
+                  {/* Skills & Tools */}
+                  <div className="space-y-8">
+                    <div>
+                      <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
+                        Skills
+                      </h2>
+                      <div className="space-y-2">
+                        {skills.map((skill) => (
+                          <p key={skill} className="text-sm text-foreground/80">
+                            {skill}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                    <div>
+                      <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
+                        Tools
+                      </h2>
+                      <div className="space-y-2">
+                        {tools.map((tool) => (
+                          <p key={tool} className="text-sm text-foreground/80">
+                            {tool}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
 
