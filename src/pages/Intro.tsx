@@ -143,10 +143,13 @@ const Intro = () => {
                 Fajriwati Qoyyum<br />Rizqini
               </h1>
               <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-                A <strong className="text-foreground">UI/UX Designer</strong> with 1+ year of experience and a
-                proven track record of completing over 7 digital design projects.
-                My design process is driven by empathy and structured problem-solving,
-                allowing me to craft intuitive, user-centered experiences.
+                A <strong className="text-foreground">UI/UX Designer</strong> with 1+ year of experience.
+                My design process is driven by{" "}
+                <strong className="text-foreground">empathy and structured problem-solving</strong>,
+                allowing me to craft{" "}
+                <strong className="text-foreground">intuitive, user-centered experiences</strong>{" "}
+                that{" "}
+                <strong className="text-foreground">communicate clearly and feel naturally engaging</strong>.
               </p>
             </div>
           </div>
@@ -189,105 +192,107 @@ const Intro = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
+                className="space-y-8"
               >
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10">
-
-                  {/* LEFT — Introduction + Freelance */}
-                  <div className="space-y-8">
-
-                    {/* Introduction */}
-                    <div>
-                      <p className="section-label mb-3">Introduction</p>
-                      <p className="text-muted-foreground text-base leading-relaxed">
-                        My design style is{" "}
-                        <strong className="text-foreground">
-                          communicative, playful, and elegantly balanced
-                        </strong>
-                        . I love creating experiences that solve problems and spark connection.
-                        Great design happens where empathy, creativity, and clarity meet — I bring
-                        hands-on experience in research, wireframing, prototyping, and usability testing.
-                      </p>
-                    </div>
-
-                    {/* Freelance */}
-                    <div>
-                      <div className="flex items-center gap-2.5 mb-3">
-                        <p className="section-label">Freelance Services</p>
-                        <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20">
-                          <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                          Open for work
-                        </span>
-                      </div>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        Available for UI/UX freelance projects — from scratch or redesign.
-                      </p>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                        {[
-                          { title: "Mobile App Design", desc: "End-to-end UI/UX for iOS & Android" },
-                          { title: "Web App / Dashboard", desc: "Data-heavy interfaces & internal tools" },
-                          { title: "Design System", desc: "Component libraries & style guides" },
-                          { title: "UX Audit & Consulting", desc: "Review, feedback & improvement plan" },
-                        ].map((service) => (
-                          <div
-                            key={service.title}
-                            className="flex items-start gap-2.5 bg-card border border-border rounded-lg p-3 hover:border-accent/30 transition-colors"
-                          >
-                            <span className="w-1 h-1 rounded-full bg-accent mt-1.5 shrink-0" />
-                            <div>
-                              <p className="text-sm font-display font-semibold text-foreground leading-snug">
-                                {service.title}
-                              </p>
-                              <p className="text-xs text-muted-foreground mt-0.5">{service.desc}</p>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                {/* Introduction */}
+                <div>
+                  <p className="section-label mb-4">Introduction</p>
+                  <div className="space-y-4 max-w-2xl">
+                    <p className="text-muted-foreground text-base leading-relaxed">
+                      My design process is driven by{" "}
+                      <strong className="text-foreground">empathy and structured problem-solving</strong>,
+                      allowing me to craft{" "}
+                      <strong className="text-foreground">intuitive, user-centered experiences</strong>{" "}
+                      that{" "}
+                      <strong className="text-foreground">communicate clearly and feel naturally engaging</strong>.
+                      I have hands-on experience in user research, wireframing, prototyping, and usability testing —
+                      continuously learning how{" "}
+                      <strong className="text-foreground">collaboration and planning shape better design outcomes</strong>.
+                    </p>
+                    <p className="text-muted-foreground text-base leading-relaxed">
+                      My design style is{" "}
+                      <strong className="text-foreground">communicative, playful, and elegantly balanced</strong>.
+                      I love creating experiences that not only solve problems but also{" "}
+                      <strong className="text-foreground">spark connection and curiosity</strong>.
+                      For me, great design happens where{" "}
+                      <strong className="text-foreground">empathy, creativity, and clarity meet</strong>.
+                    </p>
                   </div>
-
-                  {/* RIGHT — Get In Touch */}
-                  <div className="md:w-56 shrink-0">
-                    <p className="section-label mb-3">Get In Touch</p>
-                    <div className="space-y-2">
-                      <a
-                        href="mailto:fajriwatirizqini@gmail.com"
-                        className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
-                      >
-                        <Mail className="w-4 h-4 text-accent shrink-0" />
-                        <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors truncate">
-                          fajriwatirizqini@gmail.com
-                        </span>
-                      </a>
-                      <div className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border bg-card">
-                        <Phone className="w-4 h-4 text-accent shrink-0" />
-                        <span className="text-xs text-muted-foreground">+62 851-5652-7137</span>
-                      </div>
-                      <a
-                        href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
-                      >
-                        <Linkedin className="w-4 h-4 text-accent shrink-0" />
-                        <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                          LinkedIn
-                        </span>
-                      </a>
-                      <a
-                        href="https://instagram.com/frizqinii_/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 p-2.5 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
-                      >
-                        <Instagram className="w-4 h-4 text-accent shrink-0" />
-                        <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
-                          @frizqinii_
-                        </span>
-                      </a>
-                    </div>
-                  </div>
-
                 </div>
+
+                {/* Get In Touch */}
+                <div>
+                  <p className="section-label mb-4">Get In Touch</p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-lg">
+                    <a
+                      href="mailto:fajriwatirizqini@gmail.com"
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
+                    >
+                      <Mail className="w-4 h-4 text-accent shrink-0" />
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate">
+                        fajriwatirizqini@gmail.com
+                      </span>
+                    </a>
+                    <div className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card">
+                      <Phone className="w-4 h-4 text-accent shrink-0" />
+                      <span className="text-sm text-muted-foreground">+62 851-5652-7137</span>
+                    </div>
+                    <a
+                      href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
+                    >
+                      <Linkedin className="w-4 h-4 text-accent shrink-0" />
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors truncate">
+                        LinkedIn
+                      </span>
+                    </a>
+                    <a
+                      href="https://instagram.com/frizqinii_/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-3 rounded-lg border border-border bg-card hover:border-accent/40 transition-colors group"
+                    >
+                      <Instagram className="w-4 h-4 text-accent shrink-0" />
+                      <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
+                        @frizqinii_
+                      </span>
+                    </a>
+                  </div>
+                </div>
+
+                {/* Freelance */}
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <p className="section-label">Freelance</p>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                      Open for work
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-4 max-w-xl">
+                    I'm available for freelance UI/UX design projects. Whether you need a new product from scratch,
+                    a redesign, or just a design partner — let's talk.
+                  </p>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
+                    {[
+                      { title: "Mobile App Design", desc: "End-to-end UI/UX for iOS & Android" },
+                      { title: "Web App / Dashboard", desc: "Data-heavy interfaces & internal tools" },
+                      { title: "Design System", desc: "Component libraries & style guides" },
+                      { title: "UX Audit & Consulting", desc: "Review, feedback & improvement plan" },
+                    ].map((service) => (
+                      <div
+                        key={service.title}
+                        className="bg-card border border-border rounded-lg p-3"
+                      >
+                        <p className="text-sm font-display font-semibold text-foreground">{service.title}</p>
+                        <p className="text-xs text-muted-foreground mt-0.5">{service.desc}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
               </motion.div>
             )}
 
