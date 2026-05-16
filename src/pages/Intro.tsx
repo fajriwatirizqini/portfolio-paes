@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
 import { Link } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { SiJira, SiAffinityphoto, SiCanva, SiFigma, SiMiro } from "react-icons/si";
+import { SiJira, SiCanva, SiFigma, SiHtml5, SiCss, SiCoda } from "react-icons/si";
 
 type Tab = "about" | "resume" | "work";
 
@@ -19,11 +19,18 @@ const skills = [
 ];
 
 const toolIcons = [
-  { name: "Jira",            Icon: SiJira,          iconColor: "#FFFFFF", bg: "#0052CC" },
-  { name: "Photoshop",       Icon: SiAffinityphoto, iconColor: "#FFFFFF", bg: "#7E4DD2" },
-  { name: "Canva",           Icon: SiCanva,         iconColor: "#FFFFFF", bg: "#00C4CC" },
-  { name: "Figma",           Icon: SiFigma,         iconColor: "#FFFFFF", bg: "#F24E1E" },
-  { name: "Miro",            Icon: SiMiro,          iconColor: "#050038", bg: "#FFD02F" },
+  { name: "Figma",       Icon: SiFigma,   iconColor: "#FFFFFF", bg: "#F24E1E" },
+  { name: "Jira",        Icon: SiJira,    iconColor: "#FFFFFF", bg: "#0052CC" },
+  { name: "Canva",       Icon: SiCanva,   iconColor: "#FFFFFF", bg: "#00C4CC" },
+  { name: "HTML",        Icon: SiHtml5,   iconColor: "#FFFFFF", bg: "#E44D26" },
+  { name: "CSS",         Icon: SiCss,     iconColor: "#FFFFFF", bg: "#264DE4" },
+  { name: "Coda",        Icon: SiCoda,    iconColor: "#FFFFFF", bg: "#F46A54" },
+];
+
+// Custom text-only tool badges (no react-icons available)
+const customToolBadges = [
+  { name: "Whimsical", label: "W", bg: "#7C3AED", iconColor: "#FFFFFF" },
+  { name: "Lark",      label: "L", bg: "#00B96B", iconColor: "#FFFFFF" },
 ];
 
 const experiences = [
@@ -328,23 +335,6 @@ const Intro = () => {
                     ))}
                   </div>
 
-                  {/* How I Work */}
-                  <div className="max-w-xl mb-5">
-                    <p className="text-xs font-display font-bold text-foreground uppercase tracking-[0.13em] mb-3">How I work</p>
-                    <div className="flex flex-col sm:flex-row gap-2">
-                      {[
-                        { step: "01", label: "Discovery", hint: "We align on goals & scope" },
-                        { step: "02", label: "Design", hint: "Wireframes → high-fi → prototype" },
-                        { step: "03", label: "Handoff", hint: "Dev-ready Figma + documentation" },
-                      ].map((s) => (
-                        <div key={s.step} className="flex-1 bg-secondary/50 border border-border rounded-lg p-3">
-                          <p className="text-xs font-display font-bold text-accent mb-0.5">{s.step}</p>
-                          <p className="text-sm font-medium text-foreground leading-tight">{s.label}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{s.hint}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
 
                   {/* Social Proof */}
                   <div className="max-w-xl bg-card border border-border rounded-lg p-4">
@@ -434,6 +424,16 @@ const Intro = () => {
                             className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
                           >
                             <Icon size={20} color={iconColor} />
+                          </div>
+                        ))}
+                        {customToolBadges.map(({ name, label, bg, iconColor }) => (
+                          <div
+                            key={name}
+                            title={name}
+                            style={{ backgroundColor: bg, color: iconColor }}
+                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm text-xs font-bold font-display"
+                          >
+                            {label}
                           </div>
                         ))}
                       </div>
