@@ -18,11 +18,11 @@ const ProjectHeader = ({ projectNumber, title, subtitle, tags }: ProjectHeaderPr
       transition={{ duration: 0.6 }}
     >
       <Link
-        to="/portfolio"
+        to="/"
         className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
       >
         <ArrowLeft className="w-4 h-4" />
-        Back to projects
+        Back to home
       </Link>
       <p className="section-label mb-3">{projectNumber}</p>
       <h1 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-3 leading-tight">

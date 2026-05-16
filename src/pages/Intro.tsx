@@ -160,7 +160,7 @@ const Intro = () => {
               </p>
 
               {/* Get In Touch — below hero description */}
-              <div className="mt-6 pt-5 border-t border-border/50">
+              <div className="mt-6 pt-5">
                 <p className="text-xs text-muted-foreground/60 uppercase tracking-[0.12em] mb-3 font-medium">Get in touch</p>
                 <div className="flex flex-wrap gap-2">
                   <a
@@ -264,34 +264,96 @@ const Intro = () => {
                 </div>
 
 
+                {/* Divider between Introduction and Freelance */}
+                <div className="border-t border-border" />
+
                 {/* Freelance */}
                 <div>
-                  <div className="flex items-center gap-3 mb-4">
-                    <p className="section-label">Freelance</p>
+                  <div className="flex items-center gap-3 mb-3">
+                    <p className="section-label">Freelance Services</p>
                     <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                       Open for work
                     </span>
                   </div>
-                  <p className="text-sm text-muted-foreground mb-4 max-w-xl">
-                    I'm available for freelance UI/UX design projects. Whether you need a new product from scratch,
-                    a redesign, or just a design partner — let's talk.
+
+                  <p className="text-sm text-muted-foreground mb-5 max-w-xl leading-relaxed">
+                    I take on freelance UI/UX projects end-to-end — from discovery and wireframing
+                    to high-fidelity prototypes and handoff-ready Figma files. I've worked with
+                    early-stage startups and growing businesses across mobile apps, internal tools,
+                    and web dashboards.
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl">
+
+                  {/* Service Cards */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mb-5">
                     {[
-                      { title: "Mobile App Design", desc: "End-to-end UI/UX for iOS & Android" },
-                      { title: "Web App / Dashboard", desc: "Data-heavy interfaces & internal tools" },
-                      { title: "Design System", desc: "Component libraries & style guides" },
-                      { title: "UX Audit & Consulting", desc: "Review, feedback & improvement plan" },
+                      {
+                        title: "Mobile App Design",
+                        desc: "End-to-end UI/UX for iOS & Android",
+                        includes: ["User flow & wireframe", "High-fidelity screens", "Prototype & handoff"],
+                      },
+                      {
+                        title: "Web App / Dashboard",
+                        desc: "Data-heavy interfaces & internal tools",
+                        includes: ["Information architecture", "Component design", "Responsive layouts"],
+                      },
+                      {
+                        title: "Design System",
+                        desc: "Component libraries & style guides",
+                        includes: ["Token setup", "Reusable components", "Figma library"],
+                      },
+                      {
+                        title: "UX Audit & Consulting",
+                        desc: "Review, feedback & improvement plan",
+                        includes: ["Heuristic evaluation", "Pain point report", "Prioritized recommendations"],
+                      },
                     ].map((service) => (
                       <div
                         key={service.title}
-                        className="bg-card border border-border rounded-lg p-3"
+                        className="bg-card border border-border rounded-lg p-3.5 flex flex-col gap-2"
                       >
-                        <p className="text-sm font-display font-semibold text-foreground">{service.title}</p>
-                        <p className="text-xs text-muted-foreground mt-0.5">{service.desc}</p>
+                        <div>
+                          <p className="text-sm font-display font-semibold text-foreground">{service.title}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{service.desc}</p>
+                        </div>
+                        <ul className="space-y-1">
+                          {service.includes.map((item) => (
+                            <li key={item} className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                              <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     ))}
+                  </div>
+
+                  {/* How I Work */}
+                  <div className="max-w-xl mb-5">
+                    <p className="text-xs font-display font-bold text-foreground uppercase tracking-[0.13em] mb-3">How I work</p>
+                    <div className="flex flex-col sm:flex-row gap-2">
+                      {[
+                        { step: "01", label: "Discovery", hint: "We align on goals & scope" },
+                        { step: "02", label: "Design", hint: "Wireframes → high-fi → prototype" },
+                        { step: "03", label: "Handoff", hint: "Dev-ready Figma + documentation" },
+                      ].map((s) => (
+                        <div key={s.step} className="flex-1 bg-secondary/50 border border-border rounded-lg p-3">
+                          <p className="text-xs font-display font-bold text-accent mb-0.5">{s.step}</p>
+                          <p className="text-sm font-medium text-foreground leading-tight">{s.label}</p>
+                          <p className="text-xs text-muted-foreground mt-0.5">{s.hint}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Social Proof */}
+                  <div className="max-w-xl bg-card border border-border rounded-lg p-4">
+                    <p className="text-sm text-foreground/80 italic leading-relaxed">
+                      "Fajri delivered a complete mobile app design in under 3 weeks. She asked the right
+                      questions from day one, challenged assumptions where needed, and produced screens
+                      our dev team could build from immediately."
+                    </p>
+                    <p className="text-xs text-muted-foreground mt-2 font-medium">— Dea Bakery, Founder</p>
                   </div>
                 </div>
 
