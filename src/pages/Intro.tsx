@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { SiJira, SiCanva, SiFigma, SiHtml5, SiCss, SiCoda } from "react-icons/si";
 
@@ -124,7 +124,9 @@ const tabVariants = {
 };
 
 const Intro = () => {
-  const [activeTab, setActiveTab] = useState<Tab>("about");
+  const [searchParams] = useSearchParams();
+  const initialTab = (searchParams.get("tab") as Tab) ?? "about";
+  const [activeTab, setActiveTab] = useState<Tab>(initialTab);
 
   const tabs: { id: Tab; label: string }[] = [
     { id: "about", label: "About me" },
