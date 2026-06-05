@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
-import { SiJira, SiCanva, SiFigma, SiHtml5, SiCss, SiCoda } from "react-icons/si";
 
 type Tab = "about" | "resume" | "work";
 
@@ -16,22 +15,14 @@ const skills = [
   "Usability Testing",
   "Problem Solving",
   "Strategic Planning",
+  "User Research",
+  "Information Architecture",
+  "Design Handoff",
+  "Cross-functional Collaboration",
+  "Project Coordination",
 ];
 
-const toolIcons = [
-  { name: "Figma",       Icon: SiFigma,   iconColor: "#FFFFFF", bg: "#F24E1E" },
-  { name: "Jira",        Icon: SiJira,    iconColor: "#FFFFFF", bg: "#0052CC" },
-  { name: "Canva",       Icon: SiCanva,   iconColor: "#FFFFFF", bg: "#00C4CC" },
-  { name: "HTML",        Icon: SiHtml5,   iconColor: "#FFFFFF", bg: "#E44D26" },
-  { name: "CSS",         Icon: SiCss,     iconColor: "#FFFFFF", bg: "#264DE4" },
-  { name: "Coda",        Icon: SiCoda,    iconColor: "#FFFFFF", bg: "#F46A54" },
-];
 
-// Custom text-only tool badges (no react-icons available)
-const customToolBadges = [
-  { name: "Whimsical", label: "W", bg: "#7C3AED", iconColor: "#FFFFFF" },
-  { name: "Lark",      label: "L", bg: "#00B96B", iconColor: "#FFFFFF" },
-];
 
 const experiences = [
   {
@@ -214,11 +205,10 @@ const Intro = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-2.5 text-sm font-medium font-display tracking-wide rounded-t-md transition-colors relative ${
-                  activeTab === tab.id
-                    ? "text-foreground"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
+                className={`px-4 py-2.5 text-sm font-medium font-display tracking-wide rounded-t-md transition-colors relative ${activeTab === tab.id
+                  ? "text-foreground"
+                  : "text-muted-foreground hover:text-foreground"
+                  }`}
               >
                 {tab.label}
                 {activeTab === tab.id && (
@@ -244,41 +234,39 @@ const Intro = () => {
                 initial="hidden"
                 animate="visible"
                 exit="exit"
-                className="space-y-8"
+                className="space-y-10"
               >
-                {/* Introduction */}
-                <div>
-                  <p className="section-label mb-4">Introduction</p>
-                  <div className="space-y-4 max-w-2xl">
-                    <p className="text-muted-foreground text-base leading-relaxed">
-                      My design process is driven by{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy and structured problem-solving</span>,
-                      allowing me to craft{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">intuitive, user-centered experiences</span>{" "}
-                      that{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">communicate clearly and feel naturally engaging</span>.
-                      I have hands-on experience in user research, wireframing, prototyping, and usability testing —
-                      continuously learning how{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">collaboration and planning shape better design outcomes</span>.
-                    </p>
-                    <p className="text-muted-foreground text-base leading-relaxed">
-                      My design style is{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">communicative, playful, and elegantly balanced</span>.
-                      I love creating experiences that not only solve problems but also{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">spark connection and curiosity</span>.
-                      For me, great design happens where{" "}
-                      <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy, creativity, and clarity meet</span>.
-                    </p>
-                  </div>
+
+                {/* — Bio — */}
+                <div className="max-w-lg space-y-3">
+                  <p className="text-2xl font-display font-semibold text-foreground leading-snug">
+                    I design for clarity, not complexity.
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    With a background in Informatics Engineering and hands-on experience across mobile apps,
+                    internal tools, and web dashboards — I translate user needs into structured, intentional design.
+                    I've gone through the full process: research, wireframes, prototypes, testing, and handoff.
+                    Every project sharpens how I think, not just how I design.
+                  </p>
                 </div>
 
+                {/* — Design values pills — */}
+                <div className="flex flex-wrap gap-2">
+                  {["Empathy-first", "Structured thinking", "Communicative style", "Curious by nature"].map((v) => (
+                    <span
+                      key={v}
+                      className="text-xs font-medium px-3 py-1.5 rounded-full border border-border text-muted-foreground bg-card"
+                    >
+                      {v}
+                    </span>
+                  ))}
+                </div>
 
-                {/* Divider between Introduction and Freelance */}
                 <div className="border-t border-border" />
 
-                {/* Freelance */}
+                {/* — Freelance — */}
                 <div>
-                  <div className="flex items-center gap-3 mb-3">
+                  <div className="flex items-center gap-3 mb-6">
                     <p className="section-label">Freelance Services</p>
                     <span className="inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full bg-accent/10 text-accent border border-accent/20">
                       <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
@@ -286,66 +274,21 @@ const Intro = () => {
                     </span>
                   </div>
 
-                  <p className="text-sm text-muted-foreground mb-5 max-w-xl leading-relaxed">
-                    I take on freelance UI/UX projects end-to-end — from discovery and wireframing
-                    to high-fidelity prototypes and handoff-ready Figma files. I've worked with
-                    early-stage startups and growing businesses across mobile apps, internal tools,
-                    and web dashboards.
-                  </p>
-
-                  {/* Service Cards */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-xl mb-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border rounded-xl overflow-hidden border border-border">
                     {[
-                      {
-                        title: "Mobile App Design",
-                        desc: "End-to-end UI/UX for iOS & Android",
-                        includes: ["User flow & wireframe", "High-fidelity screens", "Prototype & handoff"],
-                      },
-                      {
-                        title: "Web App / Dashboard",
-                        desc: "Data-heavy interfaces & internal tools",
-                        includes: ["Information architecture", "Component design", "Responsive layouts"],
-                      },
-                      {
-                        title: "Design System",
-                        desc: "Component libraries & style guides",
-                        includes: ["Token setup", "Reusable components", "Figma library"],
-                      },
-                      {
-                        title: "UX Audit & Consulting",
-                        desc: "Review, feedback & improvement plan",
-                        includes: ["Heuristic evaluation", "Pain point report", "Prioritized recommendations"],
-                      },
+                      { title: "Mobile App Design", desc: "End-to-end UI/UX for iOS & Android" },
+                      { title: "Web App / Dashboard", desc: "Data-heavy interfaces & internal tools" },
+                      { title: "Design System", desc: "Component libraries & style guides" },
+                      { title: "UX Audit & Consulting", desc: "Review, feedback & improvement plan" },
                     ].map((service) => (
                       <div
                         key={service.title}
-                        className="bg-card border border-border rounded-lg p-3.5 flex flex-col gap-2"
+                        className="bg-card px-5 py-4 flex flex-col gap-1"
                       >
-                        <div>
-                          <p className="text-sm font-display font-semibold text-foreground">{service.title}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{service.desc}</p>
-                        </div>
-                        <ul className="space-y-1">
-                          {service.includes.map((item) => (
-                            <li key={item} className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                              <span className="w-1 h-1 rounded-full bg-accent/60 shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
+                        <p className="text-sm font-display font-semibold text-foreground">{service.title}</p>
+                        <p className="text-xs text-muted-foreground">{service.desc}</p>
                       </div>
                     ))}
-                  </div>
-
-
-                  {/* Social Proof */}
-                  <div className="max-w-xl bg-card border border-border rounded-lg p-4">
-                    <p className="text-sm text-foreground/80 italic leading-relaxed">
-                      "Fajri delivered a complete mobile app design in under 3 weeks. She asked the right
-                      questions from day one, challenged assumptions where needed, and produced screens
-                      our dev team could build from immediately."
-                    </p>
-                    <p className="text-xs text-muted-foreground mt-2 font-medium">— Dea Bakery, Founder</p>
                   </div>
                 </div>
 
@@ -361,84 +304,97 @@ const Intro = () => {
                 animate="visible"
                 exit="exit"
               >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12">
+                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10 md:gap-14">
 
-                  {/* Experience */}
-                  <div>
-                    <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
-                      Experience
-                    </h2>
-                    <div className="space-y-6">
-                      {experiences.map((exp) => (
-                        <div key={exp.company}>
-                          <p className="text-sm font-semibold text-foreground leading-snug">
-                            {exp.role}
-                          </p>
-                          <p className="text-sm text-foreground/70 mt-0.5">{exp.company}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{exp.period}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+                  {/* Left column: Experience + Education timelines */}
+                  <div className="space-y-10">
 
-                  {/* Education */}
-                  <div>
-                    <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
-                      Education
-                    </h2>
-                    <div className="space-y-6">
-                      {education.map((edu) => (
-                        <div key={edu.degree}>
-                          <p className="text-sm font-semibold text-foreground leading-snug">
-                            {edu.degree}
-                          </p>
-                          <p className="text-sm text-foreground/70 mt-0.5">{edu.school}</p>
-                          <p className="text-xs text-muted-foreground mt-0.5">{edu.period}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Skills & Tools */}
-                  <div className="space-y-8">
+                    {/* ── Experience Timeline ── */}
                     <div>
                       <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
-                        Skills
+                        Experience
                       </h2>
-                      <div className="space-y-2">
-                        {skills.map((skill) => (
-                          <p key={skill} className="text-sm text-foreground/80">
-                            {skill}
-                          </p>
-                        ))}
+                      <div className="relative">
+                        {/* Vertical line */}
+                        <span className="absolute left-[7px] top-2 bottom-2 w-px bg-border" aria-hidden="true" />
+
+                        <div className="space-y-7">
+                          {experiences.map((exp, i) => (
+                            <motion.div
+                              key={exp.company}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.35, delay: i * 0.07 }}
+                              className="relative pl-6"
+                            >
+                              {/* Dot */}
+                              <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 border-accent bg-background" aria-hidden="true" />
+
+                              {/* Period badge */}
+                              <span className="inline-block text-[10px] font-medium text-accent bg-accent/10 border border-accent/20 rounded-full px-2 py-0.5 mb-1.5 tracking-wide">
+                                {exp.period}
+                              </span>
+                              <p className="text-sm font-semibold text-foreground leading-snug">
+                                {exp.role}
+                              </p>
+                              <p className="text-sm text-foreground/60 mt-0.5">{exp.company}</p>
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
                     </div>
+
+                    {/* Divider */}
+                    <div className="border-t border-border" />
+
+                    {/* ── Education Timeline ── */}
                     <div>
                       <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
-                        Tools
+                        Education
                       </h2>
-                      <div className="flex flex-wrap gap-2.5">
-                        {toolIcons.map(({ name, Icon, iconColor, bg }) => (
-                          <div
-                            key={name}
-                            title={name}
-                            style={{ backgroundColor: bg }}
-                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm"
-                          >
-                            <Icon size={20} color={iconColor} />
-                          </div>
-                        ))}
-                        {customToolBadges.map(({ name, label, bg, iconColor }) => (
-                          <div
-                            key={name}
-                            title={name}
-                            style={{ backgroundColor: bg, color: iconColor }}
-                            className="w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm text-xs font-bold font-display"
-                          >
-                            {label}
-                          </div>
-                        ))}
+                      <div className="relative">
+                        {/* Vertical line */}
+                        <span className="absolute left-[7px] top-2 bottom-2 w-px bg-border" aria-hidden="true" />
+
+                        <div className="space-y-7">
+                          {education.map((edu, i) => (
+                            <motion.div
+                              key={edu.degree}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.35, delay: i * 0.07 + 0.28 }}
+                              className="relative pl-6"
+                            >
+                              {/* Dot */}
+                              <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 border-muted-foreground/40 bg-background" aria-hidden="true" />
+
+                              {/* Period badge */}
+                              <span className="inline-block text-[10px] font-medium text-muted-foreground bg-secondary border border-border rounded-full px-2 py-0.5 mb-1.5 tracking-wide">
+                                {edu.period}
+                              </span>
+                              <p className="text-sm font-semibold text-foreground leading-snug">
+                                {edu.degree}
+                              </p>
+                              <p className="text-sm text-foreground/60 mt-0.5">{edu.school}</p>
+                            </motion.div>
+                          ))}
+                        </div>
                       </div>
+                    </div>
+
+                  </div>
+
+                  {/* Right column: Skills */}
+                  <div className="md:min-w-[180px]">
+                    <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
+                      Skills
+                    </h2>
+                    <div className="space-y-2">
+                      {skills.map((skill) => (
+                        <p key={skill} className="text-sm text-foreground/80">
+                          {skill}
+                        </p>
+                      ))}
                     </div>
                   </div>
 
