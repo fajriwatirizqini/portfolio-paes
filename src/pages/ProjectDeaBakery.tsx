@@ -18,10 +18,10 @@ const ProjectDeaBakery = () => {
 
         <MetaRow
           items={[
+            { label: "Timeline", value: "Ongoing" },
             { label: "Team", value: "1 Designer, 1 PM, 2 Devs, 2 Stakeholders" },
             { label: "Role", value: "UI/UX Designer" },
-            { label: "Tools", value: "Figma, Jira" },
-            { label: "Status", value: "In Go-Market Finalization" },
+            { label: "Product", value: "Dea Bakery Mobile App" },
           ]}
         />
 

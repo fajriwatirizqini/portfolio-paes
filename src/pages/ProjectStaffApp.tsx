@@ -17,10 +17,10 @@ const ProjectStaffApp = () => {
 
         <MetaRow
           items={[
+            { label: "Timeline", value: "Ongoing" },
             { label: "Team", value: "1 Designer, 1 PM, 2 Devs, 2 Stakeholders" },
             { label: "Role", value: "UI/UX Designer" },
-            { label: "Tools", value: "Figma, Jira" },
-            { label: "Type", value: "Internal Tool" },
+            { label: "Product", value: "Staff HR App" },
           ]}
         />
 
