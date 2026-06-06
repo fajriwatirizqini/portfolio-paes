@@ -240,34 +240,29 @@ const Intro = () => {
                 className="space-y-10"
               >
 
-                {/* — Bio + Values 2-col — */}
-                <div className="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-12 items-start">
+                {/* — Bio — */}
+                <div className="space-y-3">
+                  <p className="text-2xl font-display font-semibold text-foreground leading-snug">
+                    I design for clarity, not complexity.
+                  </p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    With a background in Informatics Engineering and hands-on experience across mobile apps,
+                    internal tools, and web dashboards — I translate user needs into structured, intentional design.
+                    I've gone through the full process: research, wireframes, prototypes, testing, and handoff.
+                    Every project sharpens how I think, not just how I design.
+                  </p>
+                </div>
 
-                  {/* Left: title + description */}
-                  <div className="space-y-3">
-                    <p className="text-2xl font-display font-semibold text-foreground leading-snug">
-                      I design for clarity, not complexity.
-                    </p>
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      With a background in Informatics Engineering and hands-on experience across mobile apps,
-                      internal tools, and web dashboards — I translate user needs into structured, intentional design.
-                      I've gone through the full process: research, wireframes, prototypes, testing, and handoff.
-                      Every project sharpens how I think, not just how I design.
-                    </p>
-                  </div>
-
-                  {/* Right: value pills stacked */}
-                  <div className="flex flex-col gap-2 shrink-0">
-                    {["Empathy-first", "Structured thinking", "Communicative style", "Curious by nature"].map((v) => (
-                      <span
-                        key={v}
-                        className="text-xs font-medium px-3 py-1.5 rounded-full border border-border text-muted-foreground bg-card whitespace-nowrap"
-                      >
-                        {v}
-                      </span>
-                    ))}
-                  </div>
-
+                {/* — Design values pills — */}
+                <div className="flex flex-wrap gap-2">
+                  {["Empathy-first", "Structured thinking", "Communicative style", "Curious by nature"].map((v) => (
+                    <span
+                      key={v}
+                      className="text-xs font-medium px-3 py-1.5 rounded-full border border-border text-muted-foreground bg-card"
+                    >
+                      {v}
+                    </span>
+                  ))}
                 </div>
 
                 <div className="border-t border-border" />
