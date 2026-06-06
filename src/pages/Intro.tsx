@@ -168,12 +168,15 @@ const Intro = () => {
                     className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
                   >
                     <Mail className="w-3.5 h-3.5 shrink-0" />
-                    fajriwatirizqini@gmail.com
+                    Email
                   </a>
-                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground">
+                  <a
+                    href="tel:+6285156527137"
+                    className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
+                  >
                     <Phone className="w-3.5 h-3.5 shrink-0" />
-                    +62 851-5652-7137
-                  </div>
+                    Phone
+                  </a>
                   <a
                     href="https://linkedin.com/in/fajriwatiqoyyumrizqini/"
                     target="_blank"
@@ -190,7 +193,7 @@ const Intro = () => {
                     className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-border bg-card text-sm text-muted-foreground hover:text-accent hover:border-accent/40 transition-colors"
                   >
                     <Instagram className="w-3.5 h-3.5 shrink-0" />
-                    @frizqinii_
+                    Instagram
                   </a>
                 </div>
               </div>
