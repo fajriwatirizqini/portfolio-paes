@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Mail, Phone, Linkedin, Instagram } from "lucide-react";
+import { ArrowRight, Mail, Phone, Linkedin, Instagram, Layers, BarChart2 } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.jpg";
+import deaBakeryMockup from "@/assets/project-dea-bakery-mockup.png";
+import staffAppMockup from "@/assets/project-staff-app-mockup.png";
+import onboardingMockup from "@/assets/project1-before-after.jpg";
 
 type Tab = "about" | "resume" | "work";
 
@@ -75,6 +78,7 @@ const projects = [
       "Designed a loyalty and engagement platform for a local bakery. Navigated real business constraints to pivot from full e-commerce to a focused loyalty-first experience.",
     tags: ["Product Thinking", "Scope Decision", "Loyalty System"],
     section: "uiux",
+    image: deaBakeryMockup,
   },
   {
     id: "staff-app-dea-bakery",
@@ -85,6 +89,7 @@ const projects = [
       "An internal mobile app for Dea Bakery employees — self-service access to digital payslips, attendance, benefit submissions, and HR info.",
     tags: ["Access Design", "Mobile App", "HR & People Ops"],
     section: "uiux",
+    image: staffAppMockup,
   },
   {
     id: "onboarding-portal-redesign",
@@ -95,6 +100,7 @@ const projects = [
       "A complete step-by-step UI design process — identifying problems, restructuring information architecture, and delivering a guided onboarding experience.",
     tags: ["UI Design Process", "Step-by-Step", "Problem Solving"],
     section: "uiux",
+    image: onboardingMockup,
   },
   {
     id: "production-workflow-optimization",
@@ -102,11 +108,39 @@ const projects = [
     title: "Feature Rollout Coordination",
     type: "Process & Coordination",
     description:
-      "Production workflow optimization for a bakery — scheduling, task tracking, and cross-team coordination as Assistant PM.",
-    tags: ["Assistant PM", "Workflow", "Jira"],
+      "Coordinated end-to-end feature rollout across dev and design teams — tracking progress via Jira, managing sprint ceremonies, and aligning stakeholders weekly.",
+    tags: ["Sprint Planning", "Jira", "Stakeholder Sync"],
     section: "pm",
+    period: "Jan 2025 – Mar 2025",
+    outcome: "2 features shipped on schedule, 0 critical blockers missed",
+  },
+  {
+    id: "bakery-production-scheduling",
+    number: "02",
+    title: "Production Scheduling & Workflow Ops",
+    type: "Operational Management",
+    description:
+      "Rebuilt the daily production schedule system for Dea Bakery — transitioning from manual WhatsApp coordination to a structured Lark-based workflow with task ownership and shift visibility.",
+    tags: ["Lark", "Ops Design", "SOP Documentation"],
+    section: "pm",
+    period: "Apr 2024 – Jun 2024",
+    outcome: "Reduced task confusion by ~60% across 3 production shifts",
+  },
+  {
+    id: "cross-team-delivery-tracker",
+    number: "03",
+    title: "Cross-Team Delivery Tracker",
+    type: "Reporting & Tracking",
+    description:
+      "Owned weekly delivery reporting for a cross-functional team — consolidating progress from design, dev, and ops into a single dashboard reviewed by leadership.",
+    tags: ["Reporting", "Google Sheets", "Cross-functional"],
+    section: "pm",
+    period: "Jul 2024 – Dec 2024",
+    outcome: "Leadership visibility improved; fewer escalations in monthly reviews",
   },
 ];
+
+
 
 const tabVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -114,7 +148,189 @@ const tabVariants = {
   exit: { opacity: 0, y: -6, transition: { duration: 0.15 } },
 };
 
+// ─── WorkTab: dual-layout (UI/UX = image cards, PM = timeline) ───────────────
+
+type Project = typeof projects[number];
+
+const WorkTab = ({ projects }: { projects: Project[] }) => {
+  const [workTab, setWorkTab] = useState<"uiux" | "pm">("uiux");
+
+  const uiuxProjects = projects.filter((p) => p.section === "uiux");
+  const pmProjects = projects.filter((p) => p.section === "pm");
+
+  return (
+    <motion.div
+      key="work"
+      variants={tabVariants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="space-y-6"
+    >
+      {/* Sub-tab toggle */}
+      <div className="flex items-center gap-1 p-1 rounded-full border border-border bg-card/60 w-fit">
+        <button
+          type="button"
+          onClick={() => setWorkTab("uiux")}
+          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
+            workTab === "uiux"
+              ? "bg-foreground text-background"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <Layers className="w-3 h-3" />
+          UI/UX Designer
+        </button>
+        <button
+          type="button"
+          onClick={() => setWorkTab("pm")}
+          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
+            workTab === "pm"
+              ? "bg-foreground text-background"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+        >
+          <BarChart2 className="w-3 h-3" />
+          Asst. Project Manager
+        </button>
+      </div>
+
+      {/* Context label */}
+      {workTab === "uiux" ? (
+        <p className="text-xs text-muted-foreground/70">
+          Visual design work — from mobile apps to internal tooling.
+        </p>
+      ) : (
+        <p className="text-xs text-muted-foreground/70">
+          Process & coordination work — sprint management, ops design, and team alignment.
+        </p>
+      )}
+
+      <div className="border-t border-border" />
+
+      <AnimatePresence mode="wait">
+        {/* ── UI/UX: Image cards ── */}
+        {workTab === "uiux" && (
+          <motion.div
+            key="uiux-list"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.25 }}
+            className="space-y-0"
+          >
+            {uiuxProjects.map((project, i) => (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: i * 0.07 }}
+              >
+                <Link
+                  to={`/project/${project.id}`}
+                  className="group flex items-start gap-4 py-5 border-b border-border hover:bg-card/50 -mx-6 px-6 transition-colors"
+                >
+                  {/* Thumbnail */}
+                  {"image" in project && project.image && (
+                    <div className="w-20 h-14 shrink-0 rounded-md overflow-hidden border border-border bg-secondary">
+                      <img
+                        src={project.image as string}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <span className="text-xs font-display font-medium text-accent">
+                        {project.number}
+                      </span>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 font-medium">
+                        UI/UX Designer
+                      </span>
+                      <span className="text-xs text-muted-foreground/60">{project.type}</span>
+                    </div>
+                    <h2 className="text-sm font-display font-semibold text-foreground mb-1 group-hover:text-accent transition-colors leading-snug">
+                      {project.title}
+                    </h2>
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1 mt-2">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all mt-1 shrink-0" />
+                </Link>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
+
+        {/* ── PM: Minimal timeline (no descriptions) ── */}
+
+        {workTab === "pm" && (
+          <motion.div
+            key="pm-list"
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.25 }}
+            className="relative"
+          >
+            {/* Vertical timeline line */}
+            <span className="absolute left-[7px] top-2 bottom-2 w-px bg-border" aria-hidden="true" />
+
+            <div className="space-y-5">
+              {pmProjects.map((project, i) => (
+                <motion.div
+                  key={project.id}
+                  initial={{ opacity: 0, x: -10 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.35, delay: i * 0.08 }}
+                  className="relative pl-6"
+                >
+                  {/* Timeline dot */}
+                  <span className="absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 border-foreground/30 bg-background" aria-hidden="true" />
+
+                  {/* Period */}
+                  {"period" in project && project.period && (
+                    <span className="inline-block text-[10px] font-medium text-muted-foreground bg-secondary border border-border rounded-full px-2 py-0.5 mb-1 tracking-wide">
+                      {project.period as string}
+                    </span>
+                  )}
+
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border font-medium shrink-0">
+                      Asst. PM
+                    </span>
+                    <p className="text-sm font-display font-semibold text-foreground leading-snug">
+                      {project.title}
+                    </p>
+                  </div>
+                  <p className="text-xs text-muted-foreground/60 mt-0.5 pl-0">
+                    {project.type}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        )}
+
+      </AnimatePresence>
+    </motion.div>
+  );
+};
+
 const Intro = () => {
+
   const [searchParams] = useSearchParams();
   const initialTab = (searchParams.get("tab") as Tab) ?? "about";
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
@@ -407,57 +623,9 @@ const Intro = () => {
 
             {/* ── WORK ── */}
             {activeTab === "work" && (
-              <motion.div
-                key="work"
-                variants={tabVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="space-y-0"
-              >
-                {projects.map((project, i) => (
-                  <motion.div
-                    key={project.id}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.35, delay: i * 0.06 }}
-                  >
-                    <Link
-                      to={`/project/${project.id}`}
-                      className="group block py-6 border-b border-border hover:bg-card/50 -mx-6 px-6 transition-colors"
-                    >
-                      <div className="flex items-start justify-between gap-4">
-                        <div className="flex-1">
-                          <div className="flex items-center gap-3 mb-1.5">
-                            <span className="text-xs font-display font-medium text-accent">
-                              {project.number}
-                            </span>
-                            <span className="text-xs text-muted-foreground">{project.type}</span>
-                          </div>
-                          <h2 className="text-base font-display font-semibold text-foreground mb-1.5 group-hover:text-accent transition-colors">
-                            {project.title}
-                          </h2>
-                          <p className="text-sm text-muted-foreground leading-relaxed max-w-lg">
-                            {project.description}
-                          </p>
-                          <div className="flex flex-wrap gap-1.5 mt-3">
-                            {project.tags.map((tag) => (
-                              <span
-                                key={tag}
-                                className="text-xs px-2.5 py-1 rounded-full bg-secondary text-secondary-foreground font-medium"
-                              >
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                        <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all mt-1 shrink-0" />
-                      </div>
-                    </Link>
-                  </motion.div>
-                ))}
-              </motion.div>
+              <WorkTab projects={projects} />
             )}
+
 
           </AnimatePresence>
         </div>
