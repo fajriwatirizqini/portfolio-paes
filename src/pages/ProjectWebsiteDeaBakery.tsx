@@ -1009,10 +1009,26 @@ const ImpactGrid = () => (
         {[
           { metric: "On-time", label: "Website rilis sesuai deadline — kejar tayang terpenuhi" },
           { metric: "Self-serve", label: "Marketing dapat update promo & konten tanpa Developer" },
-          { metric: "↓ Load time", label: "Page load lebih ringan dengan optimasi gambar WebP" },
+          { metric: "↑ Campaign", label: "Konten campaign dapat dipublikasikan tepat waktu" },
         ].map((item) => (
           <div key={item.label} className="bg-card rounded-xl p-4 border border-border text-center">
             <p className="text-xl font-display font-bold text-foreground mb-1">{item.metric}</p>
+            <p className="text-xs text-muted-foreground leading-relaxed">{item.label}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div>
+      <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-3">Dampak Teknis</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+        {[
+          { metric: "↓ Load time", label: "Page load lebih ringan dengan optimasi gambar WebP & minimalisasi plugin" },
+          { metric: "Modular", label: "Struktur modular memudahkan maintenance tanpa sentuh kode" },
+          { metric: "↑ Responsif", label: "Layout responsif lebih stabil di semua breakpoint device" },
+        ].map((item) => (
+          <div key={item.label} className="bg-card rounded-xl p-4 border border-border text-center">
+            <p className="text-xl font-display font-bold text-accent/70 mb-1">{item.metric}</p>
             <p className="text-xs text-muted-foreground leading-relaxed">{item.label}</p>
           </div>
         ))}
