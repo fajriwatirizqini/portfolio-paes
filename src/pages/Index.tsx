@@ -29,12 +29,12 @@ const projects = [
     section: "uiux",
   },
   {
-    id: "onboarding-portal-redesign",
+    id: "website-dea-bakery-redesign",
     number: "03",
-    title: "Employee Onboarding Portal Redesign",
+    title: "Menata Ulang Website Resmi Dea Bakery",
     description:
-      "A complete step-by-step UI design process — identifying problems, restructuring information architecture, and delivering a guided onboarding experience.",
-    tags: ["UI Design Process", "Step-by-Step", "Problem Solving"],
+      "Redesign website resmi Dea Bakery dari struktur yang tidak konsisten dan sulit dinavigasi menjadi sistem visual yang kohesif — mudah di-maintain oleh tim Marketing dan langsung menyampaikan brand value ke pelanggan.",
+    tags: ["UI Design", "Web Redesign", "Information Architecture"],
     type: "Full Design Process",
     section: "uiux",
   },
