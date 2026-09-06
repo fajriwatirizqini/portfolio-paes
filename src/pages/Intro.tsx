@@ -5,25 +5,64 @@ import { Link, useSearchParams } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.webp";
 import deaBakeryMockup from "@/assets/project-dea-bakery-mockup.webp";
 import staffAppMockup from "@/assets/project-staff-app-mockup.webp";
-import websiteDeaBakeryMockup from "@/assets/project-website-dea-bakery-mockup.webp";
+import websiteDeaBakeryMockup from "@/assets/project-card-thumb.webp";
 
 
 type Tab = "about" | "resume" | "work";
 
 const skills = [
-  "UX & UI Design",
-  "Wireframing",
-  "Interactive & Responsive Design",
-  "UX Writing",
-  "Prototyping",
-  "Usability Testing",
-  "Problem Solving",
-  "Strategic Planning",
-  "User Research",
-  "Information Architecture",
-  "Design Handoff",
-  "Cross-functional Collaboration",
-  "Project Coordination",
+  {
+    name: "UX & UI Design",
+    description: "Diterapkan di semua studi kasus, dari mobile app hingga redesign website.",
+  },
+  {
+    name: "Information Architecture",
+    description: "Merapikan sitemap & navigasi pada redesign Website Dea Bakery.",
+  },
+  {
+    name: "UX Writing",
+    description: "Menulis ulang heading & microcopy pada redesign Website Dea Bakery.",
+  },
+  {
+    name: "Design Systems",
+    description: "Menyusun style guide di Bahan Baku, Online Attendance, dan Website Dea Bakery.",
+  },
+  {
+    name: "Wireframing & Prototyping",
+    description: "Wireframe hingga prototype Figma untuk Dea Bakery App & Website Redesign.",
+  },
+  {
+    name: "Interaction & Responsive Design",
+    description: "Layout mobile-first & responsif pada redesign Website Dea Bakery.",
+  },
+  {
+    name: "Access & Permission Design",
+    description: "Merancang akses berjenjang pada Personal App Staff Dea Bakery.",
+  },
+  {
+    name: "Design Handoff",
+    description: "Menyiapkan dokumentasi handoff developer di Website Dea Bakery.",
+  },
+  {
+    name: "Cross-functional Coordination",
+    description: "Mengoordinasikan developer & marketing di seluruh proyek Asst. PM.",
+  },
+  {
+    name: "Release & Sprint Planning",
+    description: "Menyusun rencana partial release pada proyek HRIS Release Planning.",
+  },
+  {
+    name: "Scope Management",
+    description: "Mengelola scope 3 sistem paralel pada Online Attendance Rollout.",
+  },
+  {
+    name: "Stakeholder Communication",
+    description: "Menjembatani bisnis & tim teknis di Dea Bakery App dan proyek PM.",
+  },
+  {
+    name: "Problem Solving",
+    description: "Mengubah masalah nyata jadi keputusan desain terukur di tiap studi kasus.",
+  },
 ];
 
 
@@ -31,8 +70,8 @@ const skills = [
 const experiences = [
   {
     company: "CV. Dea Bakery",
-    role: "UI/UX Designer – Assistant Project Manager",
-    period: "2024 – Present",
+    role: "Product Designer – Assistant Project Manager",
+    period: "July 2024 – Present",
   },
   {
     company: "PT. Kalbe Radha Mustika (Kalbe Group)",
@@ -271,7 +310,7 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
                         {project.number}
                       </span>
                       <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 font-medium">
-                        UI/UX Designer
+                        Product Designer
                       </span>
                       <span className="text-xs text-muted-foreground/60">{project.type}</span>
                     </div>
@@ -436,7 +475,7 @@ const Intro = () => {
                 Fajriwati Qoyyum<br />Rizqini
               </h1>
               <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-                A <span className="text-foreground font-medium">UI/UX Designer</span> with 1+ year of experience.
+                A <span className="text-foreground font-medium">Product Designer</span> with 3+ years of experience.
                 My design process is driven by{" "}
                 <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy and structured problem-solving</span>,
                 allowing me to craft{" "}
@@ -674,15 +713,20 @@ const Intro = () => {
                   </div>
 
                   {/* Right column: Skills */}
-                  <div className="md:min-w-[180px]">
+                  <div className="md:w-72">
                     <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
                       Skills
                     </h2>
-                    <div className="space-y-2">
+                    <div className="space-y-3.5">
                       {skills.map((skill) => (
-                        <p key={skill} className="text-sm text-foreground/80">
-                          {skill}
-                        </p>
+                        <div key={skill.name}>
+                          <p className="text-sm font-medium text-foreground/90">
+                            {skill.name}
+                          </p>
+                          <p className="text-xs text-foreground/50 leading-relaxed mt-0.5">
+                            {skill.description}
+                          </p>
+                        </div>
                       ))}
                     </div>
                   </div>
