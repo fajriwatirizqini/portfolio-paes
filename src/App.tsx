@@ -13,8 +13,8 @@ const ProjectFive = lazy(() => import("./pages/ProjectFive"));
 const ProjectDeaBakery = lazy(() => import("./pages/ProjectDeaBakery"));
 const ProjectStaffApp = lazy(() => import("./pages/ProjectStaffApp"));
 const ProjectWebsiteDeaBakery = lazy(() => import("./pages/ProjectWebsiteDeaBakery"));
-const ProjectPMProductionScheduling = lazy(() => import("./pages/ProjectPMProductionScheduling"));
-const ProjectPMDeliveryTracker = lazy(() => import("./pages/ProjectPMDeliveryTracker"));
+const ProjectPMHRISReleasePlanning = lazy(() => import("./pages/ProjectPMHRISReleasePlanning"));
+const ProjectPMOnlineAttendance = lazy(() => import("./pages/ProjectPMOnlineAttendance"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const ScrollToTop = () => {
@@ -43,8 +43,8 @@ const App = () => (
           <Route path="/project/bahan-baku-inventory-system" element={<ProjectBahanBaku />} />
           <Route path="/project/online-attendance-system" element={<ProjectOnlineAttendance />} />
           <Route path="/project/production-workflow-optimization" element={<ProjectFive />} />
-          <Route path="/project/bakery-production-scheduling" element={<ProjectPMProductionScheduling />} />
-          <Route path="/project/cross-team-delivery-tracker" element={<ProjectPMDeliveryTracker />} />
+          <Route path="/project/hris-release-planning" element={<ProjectPMHRISReleasePlanning />} />
+          <Route path="/project/online-attendance-rollout-coordination" element={<ProjectPMOnlineAttendance />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
