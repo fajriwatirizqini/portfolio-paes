@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram, Layers, BarChart2 } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
-import profilePhoto from "@/assets/profile-photo.jpg";
-import deaBakeryMockup from "@/assets/project-dea-bakery-mockup.png";
-import staffAppMockup from "@/assets/project-staff-app-mockup.png";
-import onboardingMockup from "@/assets/project1-before-after.jpg";
+import profilePhoto from "@/assets/profile-photo.webp";
+import deaBakeryMockup from "@/assets/project-dea-bakery-mockup.webp";
+import staffAppMockup from "@/assets/project-staff-app-mockup.webp";
+import websiteDeaBakeryMockup from "@/assets/project-website-dea-bakery-mockup.webp";
+
 
 type Tab = "about" | "resume" | "work";
 
@@ -72,10 +73,10 @@ const projects = [
   {
     id: "dea-bakery-mobile-app",
     number: "01",
-    title: "Dea Bakery Mobile App",
+    title: "Membangun Pengalaman Order Digital untuk Brand Bakery Lokal",
     type: "Product Strategy",
     description:
-      "Designed a loyalty and engagement platform for a local bakery. Navigated real business constraints to pivot from full e-commerce to a focused loyalty-first experience.",
+      "Merancang platform loyalty dan engagement untuk bakery lokal. Menavigasi batasan bisnis nyata untuk beralih dari e-commerce penuh menjadi pengalaman loyalty-first yang fokus.",
     tags: ["Product Thinking", "Scope Decision", "Loyalty System"],
     section: "uiux",
     image: deaBakeryMockup,
@@ -83,24 +84,44 @@ const projects = [
   {
     id: "staff-app-dea-bakery",
     number: "02",
-    title: "Personal App Staff — Dea Bakery",
+    title: "Menghadirkan Personal App HR untuk Karyawan Dea Bakery",
     type: "Operational Design",
     description:
-      "An internal mobile app for Dea Bakery employees — self-service access to digital payslips, attendance, benefit submissions, and HR info.",
+      "Aplikasi mobile internal untuk karyawan Dea Bakery — akses self-service ke slip gaji digital, presensi, pengajuan benefit, dan info HR.",
     tags: ["Access Design", "Mobile App", "HR & People Ops"],
     section: "uiux",
     image: staffAppMockup,
   },
   {
-    id: "onboarding-portal-redesign",
+    id: "website-dea-bakery-redesign",
     number: "03",
-    title: "Employee Onboarding Portal Redesign",
-    type: "Full Design Process",
+    title: "Menata Ulang Website Resmi Brand Bakery Lokal",
+    type: "Web Redesign",
     description:
-      "A complete step-by-step UI design process — identifying problems, restructuring information architecture, and delivering a guided onboarding experience.",
-    tags: ["UI Design Process", "Step-by-Step", "Problem Solving"],
+      "Redesign website yang berfokus menyelesaikan masalah nyata — navigasi tidak jelas, konten berantakan, dan sistem visual yang rusak — dalam batasan Elementor dan timeline bisnis yang cepat.",
+    tags: ["UI Design", "Information Architecture", "UX Writing"],
     section: "uiux",
-    image: onboardingMockup,
+    image: websiteDeaBakeryMockup,
+  },
+  {
+    id: "bahan-baku-inventory-system",
+    number: "04",
+    title: "Membenahi Sistem Pencatatan Bahan Baku untuk Chocoa POS",
+    type: "Data Model UX",
+    description:
+      "Merancang modul Bahan Baku untuk back-office POS Dea Bakery dari nol — merombak spec dua kali sebelum implementasi untuk menghapus satu langkah konversi manual dan menutup celah audit formal di balik ~33% kasus operasional bulanan.",
+    tags: ["Product Design", "Asst. PM", "Internal Tool", "Ongoing"],
+    section: "uiux",
+  },
+  {
+    id: "online-attendance-system",
+    number: "05",
+    title: "Menyatukan Presensi GPS Lintas Tiga Sistem untuk Chocoa HR Suite",
+    type: "System Design",
+    description:
+      "Merancang ulang presensi 1.000+ karyawan di 56+ outlet dari mesin fingerprint tetap menjadi tiga sistem terhubung — aplikasi mobile, dashboard HR, dan perencana jadwal shift — yang berbagi satu domain data agar bisa dipercaya sebagai dasar penggajian.",
+    tags: ["Product Design", "System Design", "Mobile App", "Ongoing"],
+    section: "uiux",
   },
   {
     id: "production-workflow-optimization",
@@ -153,7 +174,13 @@ const tabVariants = {
 type Project = typeof projects[number];
 
 const WorkTab = ({ projects }: { projects: Project[] }) => {
-  const [workTab, setWorkTab] = useState<"uiux" | "pm">("uiux");
+  const [searchParams] = useSearchParams();
+  const roleParam = searchParams.get("role") === "pm" ? "pm" : "uiux";
+  const [workTab, setWorkTab] = useState<"uiux" | "pm">(roleParam);
+
+  useEffect(() => {
+    setWorkTab(searchParams.get("role") === "pm" ? "pm" : "uiux");
+  }, [searchParams]);
 
   const uiuxProjects = projects.filter((p) => p.section === "uiux");
   const pmProjects = projects.filter((p) => p.section === "pm");
@@ -172,23 +199,21 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
         <button
           type="button"
           onClick={() => setWorkTab("uiux")}
-          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
-            workTab === "uiux"
+          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${workTab === "uiux"
               ? "bg-foreground text-background"
               : "text-muted-foreground hover:text-foreground"
-          }`}
+            }`}
         >
           <Layers className="w-3 h-3" />
-          UI/UX Designer
+          Product Designer
         </button>
         <button
           type="button"
           onClick={() => setWorkTab("pm")}
-          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${
-            workTab === "pm"
+          className={`flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-medium tracking-wide transition-all ${workTab === "pm"
               ? "bg-foreground text-background"
               : "text-muted-foreground hover:text-foreground"
-          }`}
+            }`}
         >
           <BarChart2 className="w-3 h-3" />
           Asst. Project Manager
@@ -288,7 +313,7 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
             {/* Vertical timeline line */}
             <span className="absolute left-[7px] top-2 bottom-2 w-px bg-border" aria-hidden="true" />
 
-            <div className="space-y-5">
+            <div className="space-y-6">
               {pmProjects.map((project, i) => (
                 <motion.div
                   key={project.id}
@@ -302,12 +327,13 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
 
                   {/* Period */}
                   {"period" in project && project.period && (
-                    <span className="inline-block text-[10px] font-medium text-muted-foreground bg-secondary border border-border rounded-full px-2 py-0.5 mb-1 tracking-wide">
+                    <span className="inline-block text-[10px] font-medium text-muted-foreground bg-secondary border border-border rounded-full px-2 py-0.5 mb-2 tracking-wide">
                       {project.period as string}
                     </span>
                   )}
 
-                  <div className="flex items-center gap-2">
+                  {/* Title row */}
+                  <div className="flex items-center gap-2 mb-2">
                     <span className="text-[10px] px-2 py-0.5 rounded-full bg-muted text-muted-foreground border border-border font-medium shrink-0">
                       Asst. PM
                     </span>
@@ -315,9 +341,47 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
                       {project.title}
                     </p>
                   </div>
-                  <p className="text-xs text-muted-foreground/60 mt-0.5 pl-0">
-                    {project.type}
-                  </p>
+
+                  {/* Clickable card body */}
+                  <Link
+                    to={`/project/${project.id}`}
+                    className="group block bg-card border border-border rounded-xl p-4 space-y-3 hover:border-accent/40 hover:bg-card/80 transition-colors"
+                  >
+                    {/* Type */}
+                    <p className="text-[10px] font-display font-semibold tracking-widest uppercase text-muted-foreground/60">
+                      {project.type}
+                    </p>
+
+                    {/* Description */}
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {project.description}
+                    </p>
+
+                    {/* Tags */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] px-2 py-0.5 rounded-full bg-secondary text-secondary-foreground border border-border font-medium"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Outcome + Arrow */}
+                    <div className="flex items-center justify-between pt-1 border-t border-border">
+                      {"outcome" in project && project.outcome && (
+                        <div className="flex items-start gap-2">
+                          <span className="text-accent font-bold text-xs mt-0.5 shrink-0">↗</span>
+                          <p className="text-xs text-accent font-medium leading-snug">
+                            {project.outcome as string}
+                          </p>
+                        </div>
+                      )}
+                      <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0 ml-auto" />
+                    </div>
+                  </Link>
                 </motion.div>
               ))}
             </div>
@@ -332,8 +396,14 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
 const Intro = () => {
 
   const [searchParams] = useSearchParams();
-  const initialTab = (searchParams.get("tab") as Tab) ?? "about";
-  const [activeTab, setActiveTab] = useState<Tab>(initialTab);
+  const [activeTab, setActiveTab] = useState<Tab>(
+    (searchParams.get("tab") as Tab) ?? "about"
+  );
+
+  useEffect(() => {
+    const tab = (searchParams.get("tab") as Tab) ?? "about";
+    setActiveTab(tab);
+  }, [searchParams]);
 
   const tabs: { id: Tab; label: string }[] = [
     { id: "about", label: "About me" },

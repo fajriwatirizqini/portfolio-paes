@@ -2,10 +2,10 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import miniInventory from "@/assets/mini-inventory.jpg";
-import miniScheduling from "@/assets/mini-scheduling.jpg";
-import miniSupport from "@/assets/mini-support.jpg";
-import miniKanban from "@/assets/mini-kanban.jpg";
+import miniInventory from "@/assets/mini-inventory.webp";
+import miniScheduling from "@/assets/mini-scheduling.webp";
+import miniSupport from "@/assets/mini-support.webp";
+import miniKanban from "@/assets/mini-kanban.webp";
 
 const projects = [
   {
