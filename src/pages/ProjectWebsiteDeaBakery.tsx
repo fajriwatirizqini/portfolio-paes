@@ -1,7 +1,12 @@
-import { useState, useRef, useCallback } from "react";
 import ProjectHeader from "@/components/ProjectHeader";
 import MetaRow from "@/components/MetaRow";
 import SectionBlock from "@/components/SectionBlock";
+import homeScreenshot from "@/assets/Home.png";
+import aboutUsScreenshot from "@/assets/About Us.png";
+import ourStoryScreenshot from "@/assets/Our Story.png";
+import ourMenuScreenshot from "@/assets/Our Menu - Roti Manis.png";
+import ourStoreScreenshot from "@/assets/Our Store.png";
+import csrProgramScreenshot from "@/assets/CSR Program.png";
 
 // ─── Goals Grid ──────────────────────────────────────────────────────────────
 
@@ -108,47 +113,21 @@ const ResponsibilityTable = () => (
   </div>
 );
 
-// ─── Problem Statement ────────────────────────────────────────────────────────
+// ─── Problem → Advantage ────────────────────────────────────────────────────
 
-const ProblemCards = () => (
-  <div className="space-y-3 mt-2">
+const ProblemAdvantageList = () => (
+  <div className="space-y-2.5 mt-2">
     {[
-      {
-        icon: "🎨",
-        title: "Inkonsistensi Brand",
-        body: "Warna tidak selaras dengan identitas brand. Typography dan spacing berantakan. Elemen visual tidak seragam antar halaman — menciptakan kesan tidak profesional dan menurunkan kepercayaan user.",
-        severity: "Tinggi",
-      },
-      {
-        icon: "🧭",
-        title: "Navigasi & Findability yang Buruk",
-        body: "Label menu tidak jelas. Terlalu banyak pilihan membuat user bingung. Informasi kritis seperti promo, harga, dan lokasi terkubur di halaman dalam — butuh lebih dari 3 klik untuk ditemukan.",
-        severity: "Tinggi",
-      },
-      {
-        icon: "📑",
-        title: "Struktur Konten yang Berantakan",
-        body: "Konten tidak mengikuti hierarki visual. Banyak informasi repetitif tanpa konteks yang jelas. User harus 'membaca semuanya' untuk menemukan yang relevan.",
-        severity: "Sedang",
-      },
-      {
-        icon: "🔧",
-        title: "Sulit Di-maintain",
-        body: "Struktur lama tidak modular — setiap update konten kecil memerlukan Developer. Tim Marketing tidak bisa mandiri, memperlambat campaign & promo.",
-        severity: "Sedang",
-      },
+      { icon: "🎨", problem: "Brand tidak konsisten antar halaman", advantage: "Sistem visual terpadu — brand terasa lebih kredibel & terpercaya" },
+      { icon: "🧭", problem: "Informasi sulit ditemukan (3+ klik)", advantage: "Navigasi baru memangkas pencarian jadi maks. 2 klik" },
+      { icon: "📑", problem: "Konten tersebar tanpa hierarki", advantage: "Struktur jelas — user langsung menemukan yang relevan" },
+      { icon: "🔧", problem: "Update kecil selalu butuh Developer", advantage: "Struktur modular — Marketing mandiri kelola konten" },
     ].map((item) => (
-      <div key={item.title} className="flex gap-4 bg-card rounded-xl p-4 border border-border">
-        <span className="text-xl mt-0.5 shrink-0">{item.icon}</span>
-        <div className="flex-1">
-          <div className="flex items-center gap-2 mb-1">
-            <p className="font-display font-semibold text-sm text-foreground">{item.title}</p>
-            <span className={`text-[9px] font-bold px-2 py-0.5 rounded-full ${item.severity === "Tinggi" ? "bg-red-500/10 text-red-400" : "bg-amber-500/10 text-amber-400"}`}>
-              {item.severity}
-            </span>
-          </div>
-          <p className="text-sm text-muted-foreground leading-relaxed">{item.body}</p>
-        </div>
+      <div key={item.problem} className="flex items-center gap-3 bg-card rounded-xl p-3.5 border border-border">
+        <span className="text-base shrink-0">{item.icon}</span>
+        <p className="text-sm text-muted-foreground flex-1">{item.problem}</p>
+        <span className="text-accent text-xs shrink-0">→</span>
+        <p className="text-sm text-foreground font-medium flex-1">{item.advantage}</p>
       </div>
     ))}
   </div>
@@ -217,6 +196,13 @@ const ProcessFlow = () => (
 
 // ─── UI Exploration Cards ─────────────────────────────────────────────────────
 
+// Top-cropped preview of a full-page screenshot — shows navbar + hero band
+const ScreenCrop = ({ src, heightClass = "h-40" }: { src: string; heightClass?: string }) => (
+  <div className={`mt-3 rounded-xl border border-border overflow-hidden ${heightClass}`}>
+    <img src={src} alt="" className="w-full h-full object-cover object-top" />
+  </div>
+);
+
 const UIExplorationCards = () => (
   <div className="space-y-5">
     {[
@@ -225,127 +211,40 @@ const UIExplorationCards = () => (
         thinking:
           "Warna existing tidak mencerminkan brand bakery — terlalu generik dan tidak membangkitkan appetite. Pertanyaannya: warna apa yang bisa secara visual menyampaikan 'artisanal, warm, trustworthy' tanpa terasa klise?",
         exploration:
-          "Diuji 3 arah: (A) Hijau fresh/organic — terlalu health-food, tidak sesuai bakery. (B) Merah/kuning — terlalu fast food. (C) Warm brown palette (caramel, mocha, cream) — menangkap nuansa artisanal dan premium bakery tanpa over-claiming.",
+          "Diuji beberapa arah warna primary sebelum menetapkan satu yang paling konsisten dengan brand mark Dea Bakery yang sudah ada — bukan warna baru yang lepas dari identitas lama.",
         decision:
-          "Dipilih warm caramel (#C4873E) sebagai primary, cream (#FDF6EC) sebagai background, dark espresso (#3B2010) sebagai text. Konsisten di semua halaman melalui CSS variables.",
-        visual: (
-          <div className="flex gap-2 mt-3">
-            {[
-              { hex: "#FDF6EC", label: "Cream" },
-              { hex: "#F5DFC5", label: "Blush" },
-              { hex: "#C4873E", label: "Caramel" },
-              { hex: "#7B4F2E", label: "Mocha" },
-              { hex: "#3B2010", label: "Espresso" },
-            ].map((c) => (
-              <div key={c.hex} className="flex flex-col items-center gap-1">
-                <div className="w-8 h-8 rounded-lg border border-border" style={{ backgroundColor: c.hex }} />
-                <span className="text-[9px] text-muted-foreground">{c.label}</span>
-              </div>
-            ))}
-          </div>
-        ),
+          "Dipilih merah maroon sebagai primary (navbar, CTA, badge diskon) dipasangkan dengan latar krem hangat — mempertahankan kesan hangat khas bakery sambil tetap terasa lebih solid dan branded dibanding versi lama.",
+        visual: <ScreenCrop src={homeScreenshot} heightClass="h-44" />,
       },
       {
         area: "Struktur Navigasi",
         thinking:
-          "Navigasi lama punya 8+ item tanpa hierarki. Saya perlu memahami: item mana yang paling sering diakses user? Apa yang bisa dikonsolidasikan tanpa kehilangan konten penting?",
+          "Navigasi lama punya banyak item tanpa hierarki. Saya perlu memahami: item mana yang paling sering diakses user? Apa yang bisa dikonsolidasikan tanpa kehilangan konten penting?",
         exploration:
-          "Dibuat 3 iterasi struktur navigasi: (A) Flat 5-item — terlalu simpel, kehilangan konten blog. (B) 2-level mega menu — terlalu kompleks untuk Elementor. (C) 5-item clean + dropdown ringan untuk sub-kategori produk — balance antara simplicity dan coverage.",
+          "Struktur disederhanakan ke item-item inti yang mencerminkan kebutuhan utama pengunjung — mengenal brand, melihat menu, menemukan lokasi, dan membaca update — dengan dropdown ringan untuk sub-kategori yang masih dibutuhkan.",
         decision:
-          "Final: Beranda · Produk (dropdown: Roti, Kue, Pastri) · Promo · Blog · Tentang Kami. Sticky navbar agar selalu accessible. Informasi lokasi & WhatsApp dipindah ke header strip.",
-        visual: (
-          <div className="mt-3 rounded-xl border border-border overflow-hidden">
-            <div className="px-4 py-2.5 flex items-center justify-between" style={{ backgroundColor: "#3B2010" }}>
-              <span className="font-display font-bold text-sm" style={{ color: "#F5DFC5" }}>Dea Bakery</span>
-              <div className="hidden md:flex items-center gap-5">
-                {["Beranda", "Produk ▾", "Promo", "Blog", "Tentang Kami"].map((item, i) => (
-                  <span key={item} className="text-xs font-medium" style={{ color: i === 0 ? "#F5DFC5" : "rgba(255,255,255,0.55)" }}>
-                    {item}
-                  </span>
-                ))}
-              </div>
-              <button className="text-xs px-3 py-1.5 rounded-full font-semibold" style={{ backgroundColor: "#C4873E", color: "white" }}>
-                Pesan Sekarang
-              </button>
-            </div>
-            <div className="px-4 pb-1 hidden md:block" style={{ backgroundColor: "#3B2010" }}>
-              <div className="w-12 h-0.5 rounded-full" style={{ backgroundColor: "#C4873E" }} />
-            </div>
-          </div>
-        ),
+          "Final: About (dropdown) · Our Menu (dropdown) · Our Service · Our Store · Career · Blog. Navbar sticky dengan warna primary solid agar selalu accessible dan langsung dikenali di setiap halaman.",
+        visual: <ScreenCrop src={homeScreenshot} heightClass="h-16" />,
       },
       {
         area: "Hero Layout",
         thinking:
-          "Hero adalah first impression — di website lama, hero tidak memiliki satu pesan yang jelas. CTA tidak visible, dan gambar produk tidak memperkuat appetite. Bagaimana hero bisa langsung menyampaikan value proposition dalam 3 detik?",
+          "Hero adalah first impression — di website lama, hero tidak memiliki satu pesan yang jelas. Bagaimana hero bisa langsung menyampaikan value proposition dan karakter brand dalam hitungan detik?",
         exploration:
-          "Diuji 2 pendekatan: (A) Full-width product photography dengan overlay text — visual kuat tapi text readability rendah. (B) Split layout (text kiri, image kanan) — lebih readable dan mobile-friendly. Pilihan (B) lebih feasible di Elementor.",
+          "Setiap halaman diberi hero yang disesuaikan dengan tujuannya — hero produk dengan fotografi appetizing di halaman Menu, hero naratif di halaman About & CSR — bukan satu template hero generik dipakai ulang di semua halaman.",
         decision:
-          "Split layout dengan: tagline rewritten ('Roti Segar, Setiap Hari'), sub-copy singkat, 2 CTA (Lihat Menu + Hubungi Kami), product image di kanan. Background warm cream untuk konsistensi brand.",
-        visual: (
-          <div className="mt-3 rounded-xl overflow-hidden border border-border" style={{ backgroundColor: "#FDF6EC" }}>
-            <div className="p-5 flex items-center justify-between gap-4">
-              <div className="flex-1">
-                <p className="text-[10px] font-semibold tracking-widest uppercase mb-1" style={{ color: "#C4873E" }}>
-                  Freshly Baked Daily
-                </p>
-                <p className="font-display font-bold leading-tight text-lg" style={{ color: "#3B2010" }}>
-                  Roti Segar,<br />Setiap Hari
-                </p>
-                <p className="text-xs mt-1.5 leading-relaxed" style={{ color: "#7B4F2E" }}>
-                  Dibuat dari bahan pilihan terbaik,<br />tanpa pengawet.
-                </p>
-                <div className="flex gap-2 mt-3">
-                  <button className="text-xs px-3 py-1.5 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>
-                    Lihat Menu
-                  </button>
-                  <button className="text-xs px-3 py-1.5 rounded-full font-semibold border" style={{ borderColor: "#C4873E", color: "#C4873E" }}>
-                    Hubungi Kami
-                  </button>
-                </div>
-              </div>
-              <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0" style={{ backgroundColor: "#F5DFC5" }}>
-                🍞
-              </div>
-            </div>
-          </div>
-        ),
+          "Halaman Menu memakai hero fotografi produk close-up dengan tagline yang lebih personal ('Kenalan Yuk Sama Rasa Baru!') dan CTA filter kategori langsung di bawahnya.",
+        visual: <ScreenCrop src={ourMenuScreenshot} heightClass="h-48" />,
       },
       {
         area: "Komponen Product Card",
         thinking:
-          "Card produk perlu menyampaikan 3 hal cepat: gambar yang appetizing, harga yang jelas, dan aksi yang mudah. Di Elementor, card harus bisa diduplikasi tim Marketing tanpa developer.",
+          "Card produk perlu menyampaikan 3 hal cepat: gambar yang appetizing, badge diskon yang menonjol, dan nama produk yang jelas — dan harus bisa diduplikasi tim Marketing tanpa developer.",
         exploration:
-          "Iterasi (A) List view — tidak visual enough untuk makanan. (B) Grid card dengan image besar — terlalu berat untuk mobile. (C) Compact card dengan image square + badge + price + CTA single button — optimal untuk grid 3-kolom dan mobile 1-kolom.",
+          "Iterasi mengarah ke card grid dengan foto produk asli berukuran besar sebagai fokus utama, dibanding layout list atau card padat berisi banyak elemen teks.",
         decision:
-          "Compact card: 1:1 image ratio, badge overlay (Best Seller/New/Promo), product name, deskripsi singkat 1 baris, harga bold, tombol '+ Pesan' di kanan. Modular di Elementor.",
-        visual: (
-          <div className="mt-3 grid grid-cols-3 gap-3">
-            {[
-              { emoji: "🍞", name: "Roti Gandum", price: "Rp 35.000", badge: "BEST SELLER", badgeColor: "#C4873E" },
-              { emoji: "🥐", name: "Croissant", price: "Rp 28.000", badge: "NEW", badgeColor: "#4CAF7D" },
-              { emoji: "🎂", name: "Lava Cake", price: "Rp 42.000", badge: "PROMO", badgeColor: "#F5A623" },
-            ].map((item) => (
-              <div key={item.name} className="rounded-xl border border-border overflow-hidden bg-card">
-                <div className="h-16 flex items-center justify-center relative text-3xl" style={{ backgroundColor: "#FDF6EC" }}>
-                  {item.emoji}
-                  <span className="absolute top-1.5 left-1.5 text-[8px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ backgroundColor: item.badgeColor }}>
-                    {item.badge}
-                  </span>
-                </div>
-                <div className="p-2.5">
-                  <p className="font-display font-semibold text-xs text-foreground">{item.name}</p>
-                  <div className="flex items-center justify-between mt-1.5">
-                    <p className="text-xs font-bold" style={{ color: "#C4873E" }}>{item.price}</p>
-                    <button className="text-[9px] px-1.5 py-1 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>
-                      + Pesan
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        ),
+          "Grid 4-kolom (desktop) dengan foto produk penuh, badge diskon merah di pojok, dan nama produk di bawah — filter kategori sebagai pill di atas grid untuk navigasi cepat antar varian.",
+        visual: <ScreenCrop src={ourMenuScreenshot} heightClass="h-52" />,
       },
     ].map((item, i) => (
       <div key={item.area} className="rounded-xl border border-border overflow-hidden">
@@ -375,390 +274,30 @@ const UIExplorationCards = () => (
   </div>
 );
 
-// ─── Before & After ──────────────────────────────────────────────────────────
+// ─── Final Pages ──────────────────────────────────────────────────────────────
 
-const BeforeAfterSlider = ({
-  beforeContent,
-  afterContent,
-}: {
-  beforeContent: React.ReactNode;
-  afterContent: React.ReactNode;
-}) => {
-  const [sliderPos, setSliderPos] = useState(50);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const isDragging = useRef(false);
-
-  const updateSlider = useCallback((clientX: number) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = Math.max(0, Math.min(clientX - rect.left, rect.width));
-    setSliderPos((x / rect.width) * 100);
-  }, []);
-
-  const onMouseMove = useCallback(
-    (e: React.MouseEvent) => {
-      if (isDragging.current) updateSlider(e.clientX);
-    },
-    [updateSlider]
-  );
-  const onTouchMove = useCallback(
-    (e: React.TouchEvent) => {
-      if (isDragging.current) updateSlider(e.touches[0].clientX);
-    },
-    [updateSlider]
-  );
-  const stop = () => { isDragging.current = false; };
-
-  return (
-    <div
-      ref={containerRef}
-      className="relative rounded-2xl overflow-hidden border border-border cursor-col-resize select-none"
-      style={{ userSelect: "none" }}
-      onMouseMove={onMouseMove}
-      onMouseUp={stop}
-      onMouseLeave={stop}
-      onTouchMove={onTouchMove}
-      onTouchEnd={stop}
-    >
-      {/* AFTER layer — full width */}
-      <div className="w-full">{afterContent}</div>
-
-      {/* BEFORE layer — clipped from left */}
-      <div
-        className="absolute inset-0 overflow-hidden"
-        style={{ clipPath: `inset(0 ${100 - sliderPos}% 0 0)` }}
-      >
-        {beforeContent}
-      </div>
-
-      {/* Divider line + handle */}
-      <div
-        className="absolute inset-y-0 z-20 flex items-center justify-center"
-        style={{ left: `${sliderPos}%`, transform: "translateX(-50%)" }}
-      >
-        <div className="w-0.5 h-full bg-white/80 shadow-lg" />
-        <div
-          className="absolute w-9 h-9 rounded-full bg-white border-2 border-border shadow-xl flex items-center justify-center gap-0.5 cursor-col-resize"
-          onMouseDown={(e) => { e.preventDefault(); isDragging.current = true; }}
-          onTouchStart={(e) => { e.preventDefault(); isDragging.current = true; }}
-        >
-          <span className="text-foreground/70 text-[10px] font-bold select-none">◀▶</span>
-        </div>
-      </div>
-
-      {/* Labels */}
-      <div className="absolute top-3 left-3 z-10 pointer-events-none">
-        <span className="text-[10px] font-bold px-2 py-1 rounded-full bg-black/60 text-white tracking-wide uppercase">
-          Sebelum
-        </span>
-      </div>
-      <div className="absolute top-3 right-3 z-10 pointer-events-none">
-        <span className="text-[10px] font-bold px-2 py-1 rounded-full text-white tracking-wide uppercase" style={{ backgroundColor: "#C4873E" }}>
-          Sesudah
-        </span>
-      </div>
-    </div>
-  );
-};
-
-// Individual comparison cards (static, side-by-side)
-const ComparisonCards = () => (
-  <div className="space-y-5 mt-4">
+const FinalPagesGallery = () => (
+  <div className="space-y-6">
     {[
-      {
-        area: "Navigation",
-        icon: "🧭",
-        before: {
-          label: "8+ item menu, tanpa hierarki",
-          preview: (
-            <div className="px-3 py-2 rounded-lg" style={{ backgroundColor: "#f2f2f2" }}>
-              <div className="flex flex-wrap gap-1.5">
-                {["Beranda", "Produk", "Roti", "Kue", "Pastri", "Snack", "Paket", "Promo", "Blog", "Kontak", "Tentang"].map((i) => (
-                  <span key={i} className="text-[9px] px-1.5 py-0.5 rounded bg-white border border-gray-200 text-gray-600">{i}</span>
-                ))}
-              </div>
-              <p className="text-[9px] text-red-400 mt-1.5 font-medium">↑ 11 items, user bingung harus mulai dari mana</p>
-            </div>
-          ),
-        },
-        after: {
-          label: "5 item rapi + dropdown pintar",
-          preview: (
-            <div className="px-3 py-2 rounded-lg" style={{ backgroundColor: "#3B2010" }}>
-              <div className="flex items-center gap-3">
-                {["Beranda", "Produk ▾", "Promo", "Blog", "Tentang"].map((i, idx) => (
-                  <span key={i} className="text-[9px] font-medium" style={{ color: idx === 0 ? "#F5DFC5" : "rgba(255,255,255,0.6)" }}>{i}</span>
-                ))}
-              </div>
-              <p className="text-[9px] mt-1.5 font-medium" style={{ color: "#C4873E" }}>↓ 5 items, sticky, sub-kategori tersembunyi rapi</p>
-            </div>
-          ),
-        },
-      },
-      {
-        area: "Hero Section",
-        icon: "🏠",
-        before: {
-          label: "Value prop tidak jelas, CTA tersembunyi",
-          preview: (
-            <div className="rounded-lg overflow-hidden border border-gray-200">
-              <div className="bg-gray-200 h-16 flex items-center justify-center">
-                <span className="text-[10px] text-gray-400">[gambar produk tidak fokus, teks tertumpuk]</span>
-              </div>
-              <div className="px-3 py-2 bg-gray-50">
-                <div className="text-xs font-bold text-gray-700 mb-1">Selamat Datang di Dea Bakery</div>
-                <div className="text-[10px] text-gray-500 leading-relaxed">Kami menyediakan berbagai macam roti dan kue untuk kebutuhan Anda sehari-hari...</div>
-                <div className="flex gap-1 mt-2">
-                  <span className="text-[9px] px-2 py-0.5 bg-gray-300 text-gray-600 rounded">Klik di sini</span>
-                </div>
-                <p className="text-[9px] text-red-400 mt-1.5 font-medium">↑ Tidak ada hierarchy, CTA tenggelam</p>
-              </div>
-            </div>
-          ),
-        },
-        after: {
-          label: "Split layout, tagline jelas, dua CTA",
-          preview: (
-            <div className="rounded-lg overflow-hidden border border-border" style={{ backgroundColor: "#FDF6EC" }}>
-              <div className="p-3 flex items-center gap-3">
-                <div className="flex-1">
-                  <p className="text-[8px] font-semibold tracking-widest uppercase mb-0.5" style={{ color: "#C4873E" }}>Freshly Baked Daily</p>
-                  <p className="font-bold leading-tight text-sm" style={{ color: "#3B2010" }}>Roti Segar,<br />Setiap Hari</p>
-                  <div className="flex gap-1.5 mt-2">
-                    <button className="text-[9px] px-2 py-1 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>Lihat Menu</button>
-                    <button className="text-[9px] px-2 py-1 rounded-full font-semibold border" style={{ borderColor: "#C4873E", color: "#C4873E" }}>Hubungi</button>
-                  </div>
-                </div>
-                <div className="w-14 h-14 rounded-xl flex items-center justify-center text-3xl shrink-0" style={{ backgroundColor: "#F5DFC5" }}>🍞</div>
-              </div>
-              <p className="text-[9px] font-medium px-3 pb-2" style={{ color: "#4CAF7D" }}>↑ Value prop jelas dalam 3 detik, 2 CTA terlihat</p>
-            </div>
-          ),
-        },
-      },
-      {
-        area: "Product Cards",
-        icon: "🛒",
-        before: {
-          label: "List view, tanpa gambar, harga tersembunyi",
-          preview: (
-            <div className="space-y-1.5">
-              {["Roti Gandum", "Croissant", "Lava Cake"].map((name) => (
-                <div key={name} className="flex items-center justify-between px-3 py-2 bg-gray-50 border border-gray-200 rounded text-[10px]">
-                  <span className="text-gray-700">{name}</span>
-                  <span className="text-gray-400 text-[9px]">lihat detail →</span>
-                </div>
-              ))}
-              <p className="text-[9px] text-red-400 font-medium">↑ Tidak ada gambar, harga tidak terlihat, tidak appetizing</p>
-            </div>
-          ),
-        },
-        after: {
-          label: "Grid card dengan badge, harga & order cepat",
-          preview: (
-            <div className="space-y-1.5">
-              <div className="grid grid-cols-3 gap-2">
-                {[
-                  { emoji: "🍞", name: "Roti Gandum", price: "Rp 35k", badge: "BEST", bc: "#C4873E" },
-                  { emoji: "🥐", name: "Croissant", price: "Rp 28k", badge: "NEW", bc: "#4CAF7D" },
-                  { emoji: "🎂", name: "Lava Cake", price: "Rp 42k", badge: "PROMO", bc: "#F5A623" },
-                ].map((item) => (
-                  <div key={item.name} className="rounded-lg border border-border overflow-hidden bg-card">
-                    <div className="h-10 flex items-center justify-center relative text-2xl" style={{ backgroundColor: "#FDF6EC" }}>
-                      {item.emoji}
-                      <span className="absolute top-0.5 left-0.5 text-[7px] font-bold px-1 py-0.5 rounded-full text-white" style={{ backgroundColor: item.bc }}>{item.badge}</span>
-                    </div>
-                    <div className="p-1.5">
-                      <p className="font-semibold text-[9px] text-foreground">{item.name}</p>
-                      <div className="flex items-center justify-between mt-0.5">
-                        <p className="text-[8px] font-bold" style={{ color: "#C4873E" }}>{item.price}</p>
-                        <button className="text-[7px] px-1 py-0.5 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>+</button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-[9px] font-medium" style={{ color: "#4CAF7D" }}>↑ Visual, price jelas, aksi mudah — optimal untuk grid</p>
-            </div>
-          ),
-        },
-      },
-      {
-        area: "Typography & Color",
-        icon: "🎨",
-        before: {
-          label: "Font tidak konsisten, warna generik",
-          preview: (
-            <div className="p-3 rounded-lg bg-white border border-gray-200 space-y-1">
-              <div className="font-bold text-sm" style={{ fontFamily: "Arial", color: "#333" }}>JUDUL HALAMAN</div>
-              <div className="text-[10px]" style={{ color: "#666" }}>Teks body menggunakan default font browser tanpa line-height yang diatur</div>
-              <div className="flex gap-1.5 mt-1">
-                {["#FF0000", "#0000FF", "#00AA00", "#FFA500"].map((c) => (
-                  <div key={c} className="w-5 h-5 rounded border border-gray-200" style={{ backgroundColor: c }} />
-                ))}
-              </div>
-              <p className="text-[9px] text-red-400 font-medium">↑ 4 warna tidak selaras, typography tidak konsisten</p>
-            </div>
-          ),
-        },
-        after: {
-          label: "Palette bakery warm + type scale konsisten",
-          preview: (
-            <div className="p-3 rounded-lg border border-border space-y-1" style={{ backgroundColor: "#FDF6EC" }}>
-              <div className="font-bold text-sm" style={{ color: "#3B2010" }}>Roti Segar, Setiap Hari</div>
-              <div className="text-[10px] leading-relaxed" style={{ color: "#7B4F2E" }}>Dibuat dari bahan pilihan terbaik, tanpa pengawet, setiap hari.</div>
-              <div className="flex gap-1.5 mt-1">
-                {["#FDF6EC", "#F5DFC5", "#C4873E", "#7B4F2E", "#3B2010"].map((c) => (
-                  <div key={c} className="w-5 h-5 rounded border border-border" style={{ backgroundColor: c }} />
-                ))}
-              </div>
-              <p className="text-[9px] font-medium" style={{ color: "#4CAF7D" }}>↑ Warm palette selaras, hierarchy jelas, brand cohesive</p>
-            </div>
-          ),
-        },
-      },
-    ].map((item) => (
-      <div key={item.area} className="rounded-xl border border-border overflow-hidden">
-        {/* Header */}
-        <div className="bg-secondary px-5 py-3 flex items-center gap-2">
-          <span className="text-base">{item.icon}</span>
-          <p className="text-sm font-display font-bold text-foreground">{item.area}</p>
+      { src: homeScreenshot, label: "Homepage", desc: "Hero carousel, Awal Mula Kami, Our Latest Blogs, Dea Promo, Our Popular After Meal, Order From App, Dea Friends, Our Social Media" },
+      { src: aboutUsScreenshot, label: "About Us", desc: "Discover Who We Are, We Are Dea Family, Certification & Achievement (Halal, BPOM, MURI), Our Commitment" },
+      { src: ourStoryScreenshot, label: "Our Story — Company Timeline", desc: "Perjalanan brand dari 2001 hingga ekspansi nasional 2025" },
+      { src: ourMenuScreenshot, label: "Our Menu", desc: "Hero produk, filter kategori, dan grid produk dengan badge diskon" },
+      { src: ourStoreScreenshot, label: "Our Store", desc: "Pencarian lokasi toko dengan kartu alamat & jam buka" },
+      { src: csrProgramScreenshot, label: "CSR Program", desc: "Tiga pilar kontribusi sosial dan pencapaian rekor MURI" },
+    ].map((page) => (
+      <figure key={page.label} className="space-y-2">
+        <div className="rounded-xl overflow-hidden border border-border bg-card">
+          <img src={page.src} alt={`Halaman ${page.label} — website Dea Bakery`} className="w-full h-auto block" loading="lazy" />
         </div>
-        {/* Side-by-side */}
-        <div className="grid grid-cols-2 divide-x divide-border">
-          <div className="p-4 space-y-2">
-            <div className="flex items-center gap-1.5 mb-2">
-              <span className="w-2 h-2 rounded-full bg-red-400/80 shrink-0" />
-              <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">Sebelum</p>
-            </div>
-            <p className="text-[10px] text-muted-foreground italic mb-2">{item.before.label}</p>
-            {item.before.preview}
-          </div>
-          <div className="p-4 space-y-2">
-            <div className="flex items-center gap-1.5 mb-2">
-              <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: "#C4873E" }} />
-              <p className="text-[10px] font-bold uppercase tracking-wider" style={{ color: "#C4873E" }}>Sesudah</p>
-            </div>
-            <p className="text-[10px] text-muted-foreground italic mb-2">{item.after.label}</p>
-            {item.after.preview}
-          </div>
-        </div>
-      </div>
+        <figcaption>
+          <p className="font-display font-semibold text-sm text-foreground">{page.label}</p>
+          <p className="text-xs text-muted-foreground">{page.desc}</p>
+        </figcaption>
+      </figure>
     ))}
   </div>
 );
-
-// Main Before & After Section
-const BeforeAfterSection = () => {
-  // Hero-level slider mockups
-  const beforeHero = (
-    <div style={{ backgroundColor: "#f0f0f0", minHeight: "220px" }} className="flex flex-col">
-      {/* Old navbar */}
-      <div className="px-4 py-3 flex items-center justify-between" style={{ backgroundColor: "#ffffff", borderBottom: "1px solid #ddd" }}>
-        <span className="font-bold text-sm text-gray-700">Dea Bakery</span>
-        <div className="flex gap-2 flex-wrap">
-          {["Beranda", "Produk", "Roti", "Kue", "Pastri", "Blog", "Kontak"].map((i) => (
-            <span key={i} className="text-[9px] text-gray-500">{i}</span>
-          ))}
-        </div>
-      </div>
-      {/* Old hero */}
-      <div className="flex-1 flex flex-col items-center justify-center p-6 gap-2">
-        <div className="text-gray-400 text-xs text-center">[Banner gambar generik]</div>
-        <div className="text-base font-bold text-gray-700 text-center">Selamat Datang di Dea Bakery</div>
-        <div className="text-[10px] text-gray-500 text-center max-w-xs">Kami menyediakan berbagai macam roti dan kue untuk kebutuhan Anda sehari-hari dengan kualitas terbaik...</div>
-        <button className="text-[10px] mt-2 px-3 py-1 bg-gray-300 text-gray-600 rounded">Klik di sini</button>
-      </div>
-      {/* Old product list */}
-      <div className="px-4 py-3 space-y-1.5">
-        <div className="text-[10px] font-bold text-gray-600 mb-1">Produk Kami</div>
-        {["Roti Gandum — lihat detail", "Croissant — lihat detail", "Lava Cake — lihat detail"].map((p) => (
-          <div key={p} className="text-[9px] text-gray-500 flex justify-between px-2 py-1.5 bg-white border border-gray-200 rounded">
-            <span>{p.split(" — ")[0]}</span>
-            <span className="text-gray-400">lihat detail →</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
-  const afterHero = (
-    <div style={{ backgroundColor: "#FDF6EC", minHeight: "220px" }} className="flex flex-col">
-      {/* New navbar */}
-      <div className="px-4 py-2.5 flex items-center justify-between" style={{ backgroundColor: "#3B2010" }}>
-        <span className="font-bold text-sm" style={{ color: "#F5DFC5" }}>Dea Bakery</span>
-        <div className="flex items-center gap-3">
-          {["Beranda", "Produk ▾", "Promo", "Blog", "Tentang"].map((i, idx) => (
-            <span key={i} className="text-[9px]" style={{ color: idx === 0 ? "#F5DFC5" : "rgba(255,255,255,0.6)" }}>{i}</span>
-          ))}
-        </div>
-        <button className="text-[9px] px-2.5 py-1 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>Pesan</button>
-      </div>
-      {/* New hero */}
-      <div className="flex items-center gap-4 px-6 py-5">
-        <div className="flex-1">
-          <p className="text-[9px] font-semibold tracking-widest uppercase mb-1" style={{ color: "#C4873E" }}>Freshly Baked Daily</p>
-          <p className="font-bold text-lg leading-tight" style={{ color: "#3B2010" }}>Roti Segar,<br />Setiap Hari</p>
-          <p className="text-[10px] mt-1 leading-relaxed" style={{ color: "#7B4F2E" }}>Dibuat dari bahan pilihan terbaik, tanpa pengawet.</p>
-          <div className="flex gap-2 mt-3">
-            <button className="text-[9px] px-3 py-1.5 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>Lihat Menu</button>
-            <button className="text-[9px] px-3 py-1.5 rounded-full font-semibold border" style={{ borderColor: "#C4873E", color: "#C4873E" }}>Hubungi</button>
-          </div>
-        </div>
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shrink-0" style={{ backgroundColor: "#F5DFC5" }}>🍞</div>
-      </div>
-      {/* New product grid */}
-      <div className="px-4 pb-4">
-        <p className="text-[9px] font-semibold tracking-widest uppercase mb-2" style={{ color: "#7B4F2E" }}>Produk Unggulan</p>
-        <div className="grid grid-cols-3 gap-2">
-          {[
-            { emoji: "🍞", name: "Roti Gandum", price: "35k", badge: "BEST", bc: "#C4873E" },
-            { emoji: "🥐", name: "Croissant", price: "28k", badge: "NEW", bc: "#4CAF7D" },
-            { emoji: "🎂", name: "Lava Cake", price: "42k", badge: "PROMO", bc: "#F5A623" },
-          ].map((item) => (
-            <div key={item.name} className="rounded-xl border border-border overflow-hidden bg-white">
-              <div className="h-12 flex items-center justify-center relative text-2xl" style={{ backgroundColor: "#FDF6EC" }}>
-                {item.emoji}
-                <span className="absolute top-1 left-1 text-[7px] font-bold px-1.5 py-0.5 rounded-full text-white" style={{ backgroundColor: item.bc }}>{item.badge}</span>
-              </div>
-              <div className="p-2">
-                <p className="font-semibold text-[9px]" style={{ color: "#3B2010" }}>{item.name}</p>
-                <div className="flex items-center justify-between mt-1">
-                  <p className="text-[9px] font-bold" style={{ color: "#C4873E" }}>Rp {item.price}</p>
-                  <button className="text-[8px] px-1.5 py-0.5 rounded-full font-semibold text-white" style={{ backgroundColor: "#C4873E" }}>+</button>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-
-  return (
-    <div className="space-y-6">
-      {/* Intro text */}
-      <div className="bg-secondary rounded-xl p-5 border border-border">
-        <p className="text-sm text-muted-foreground leading-relaxed">
-          Drag slider di bawah untuk melihat perbandingan langsung antara tampilan website lama dan hasil redesign.
-          Perubahan paling signifikan terjadi pada <strong className="text-foreground">navigasi, hero section, product cards</strong>, dan <strong className="text-foreground">sistem warna</strong>.
-        </p>
-      </div>
-
-      {/* Interactive slider */}
-      <div>
-        <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-3">Perbandingan Visual — Geser untuk Membandingkan</p>
-        <BeforeAfterSlider beforeContent={beforeHero} afterContent={afterHero} />
-      </div>
-
-      {/* Per-area comparison cards */}
-      <div>
-        <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-1">Rincian per Area</p>
-        <ComparisonCards />
-      </div>
-    </div>
-  );
-};
 
 // ─── Final Deliverables ───────────────────────────────────────────────────────
 
@@ -767,60 +306,20 @@ const FinalDeliverables = () => (
     {/* Style Guide */}
     <div>
       <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-3">
-        Deliverable 1 — Style Guide
+        Deliverable 1 — Sistem Visual
       </p>
-      <div className="bg-card rounded-xl border border-border p-5 space-y-5">
-        {/* Color tokens */}
-        <div>
-          <p className="text-xs font-medium text-muted-foreground mb-2">Color Tokens</p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { hex: "#FDF6EC", label: "bg-cream" },
-              { hex: "#F5DFC5", label: "bg-blush" },
-              { hex: "#C4873E", label: "primary" },
-              { hex: "#7B4F2E", label: "accent" },
-              { hex: "#3B2010", label: "text-primary" },
-              { hex: "#9E9E9E", label: "text-secondary" },
-              { hex: "#4CAF7D", label: "success" },
-              { hex: "#F5A623", label: "warning" },
-              { hex: "#E25C5C", label: "error" },
-            ].map((c) => (
-              <div key={c.hex} className="flex items-center gap-2 px-2.5 py-1.5 rounded-lg border border-border bg-background">
-                <div className="w-4 h-4 rounded" style={{ backgroundColor: c.hex }} />
-                <span className="font-mono text-[10px] text-muted-foreground">{c.label}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Type scale */}
-        <div>
-          <p className="text-xs font-medium text-muted-foreground mb-2">Type Scale</p>
-          <div className="space-y-1">
-            {[
-              { label: "H1 — 48px Bold", sample: "Roti Segar, Setiap Hari", size: "text-3xl" },
-              { label: "H2 — 32px SemiBold", sample: "Produk Unggulan", size: "text-2xl" },
-              { label: "H3 — 20px SemiBold", sample: "Roti Gandum Premium", size: "text-lg" },
-              { label: "Body — 16px Regular", sample: "Dibuat dari bahan pilihan terbaik.", size: "text-base" },
-              { label: "Label — 12px Medium", sample: "BEST SELLER · PROMO", size: "text-xs" },
-            ].map((row) => (
-              <div key={row.label} className="flex items-baseline gap-4">
-                <span className="text-[10px] text-muted-foreground/60 font-mono w-36 shrink-0">{row.label}</span>
-                <span className={`${row.size} font-semibold text-foreground leading-tight`}>{row.sample}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Spacing */}
-        <div>
-          <p className="text-xs font-medium text-muted-foreground mb-2">Spacing (8px base)</p>
-          <div className="flex items-end gap-2">
-            {[4, 8, 12, 16, 24, 32, 48].map((px) => (
-              <div key={px} className="flex flex-col items-center gap-1">
-                <div className="bg-accent/30 border border-accent/20 rounded-sm" style={{ width: `${Math.max(px / 2, 4)}px`, height: `${Math.max(px / 2, 4)}px` }} />
-                <span className="text-[9px] font-mono text-muted-foreground">{px}</span>
-              </div>
-            ))}
-          </div>
+      <div className="bg-card rounded-xl border border-border p-5 space-y-3">
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Merah maroon sebagai warna primary — dipakai konsisten di navbar, CTA, dan badge diskon
+          di seluruh halaman — dipasangkan dengan latar krem hangat dan fotografi produk asli
+          sebagai elemen visual utama, menggantikan placeholder generik di versi lama.
+        </p>
+        <div className="flex flex-wrap gap-2 pt-1">
+          {["Navbar & CTA konsisten", "Fotografi produk asli", "Badge diskon standar", "Card component reusable"].map((s) => (
+            <span key={s} className="text-[10px] px-2.5 py-1 rounded-full bg-secondary text-muted-foreground border border-border">
+              {s}
+            </span>
+          ))}
         </div>
       </div>
     </div>
@@ -834,27 +333,32 @@ const FinalDeliverables = () => (
         {[
           {
             page: "Homepage",
-            sections: ["Hero (tagline + CTA)", "Promo Banner", "Produk Unggulan", "Tentang Kami snippet", "Footer CTA"],
+            sections: ["Hero carousel", "Awal Mula Kami", "Our Latest Blogs", "Dea Promo", "Our Popular After Meal", "Order From App", "Dea Friends", "Our Social Media"],
             status: "Dirilis",
           },
           {
-            page: "Halaman Produk",
-            sections: ["Filter kategori (Roti, Kue, Pastri)", "Product grid 3-kolom", "Product detail with description"],
+            page: "About Us",
+            sections: ["Our Mission", "We Are Dea Family", "Certification & Achievement", "Our Commitment"],
             status: "Dirilis",
           },
           {
-            page: "Halaman Promo",
-            sections: ["Active promo banner", "Syarat & ketentuan inline", "Countdown timer (Elementor widget)"],
+            page: "Our Story",
+            sections: ["Company Timeline 2001–2025"],
             status: "Dirilis",
           },
           {
-            page: "Blog",
-            sections: ["Article card grid", "Category filter", "Featured post hero"],
+            page: "Our Menu",
+            sections: ["Hero produk", "Filter kategori", "Product grid dengan badge diskon"],
             status: "Dirilis",
           },
           {
-            page: "Tentang Kami",
-            sections: ["Brand story section", "Tim & values", "Gallery produk"],
+            page: "Our Store",
+            sections: ["Pencarian lokasi", "Kartu toko (alamat, jam buka)"],
+            status: "Dirilis",
+          },
+          {
+            page: "CSR Program",
+            sections: ["3 Dasar Kontribusi Sosial", "Pencapaian Rekor MURI"],
             status: "Dirilis",
           },
         ].map((item) => (
@@ -893,7 +397,7 @@ const FinalDeliverables = () => (
           {[
             {
               title: "Alur Navigasi",
-              desc: "Simulasi navigasi dari Homepage → Produk → Promo → Blog",
+              desc: "Simulasi navigasi dari Homepage → Our Menu → Our Store → About Us",
               icon: "🔗",
             },
             {
@@ -1101,22 +605,17 @@ const ProjectWebsiteDeaBakery = () => {
           <ResponsibilityTable />
         </SectionBlock>
 
-        {/* 04 — Problem Statement */}
-        <SectionBlock label="04 — Pernyataan Masalah" index={3}>
+        {/* 04 — Problem → Advantage */}
+        <SectionBlock label="04 — Masalah & Peluang" index={3}>
           <p>
-            Audit desain existing mengungkap empat masalah utama yang saling memperburuk satu sama lain.
-            Bukan sekadar "website lama kurang bagus" — tapi masalah struktural yang punya dampak nyata
-            ke user experience dan operasional bisnis.
+            Audit desain existing mengungkap empat masalah struktural — masing-masing juga membuka
+            peluang perbaikan yang konkret:
           </p>
-          <ProblemCards />
-          <div className="bg-secondary rounded-xl p-5 border border-border mt-4">
-            <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-2">
-              How Might We...
-            </p>
-            <p className="text-base font-display font-semibold text-foreground leading-snug">
-              "Bagaimana kita bisa membuat website yang secara visual mencerminkan brand Dea Bakery
-              secara konsisten, memungkinkan user menemukan informasi dalam 2 klik, dan bisa
-              di-maintain secara mandiri oleh tim non-teknis — semua dalam constraints Elementor?"
+          <ProblemAdvantageList />
+          <div className="bg-secondary rounded-xl p-4 border border-border mt-4">
+            <p className="text-sm font-display font-semibold text-foreground leading-snug">
+              "Bagaimana website bisa mencerminkan brand secara konsisten, mudah ditemukan dalam 2 klik,
+              dan mandiri dikelola tim non-teknis — dalam constraints Elementor?"
             </p>
           </div>
         </SectionBlock>
@@ -1141,13 +640,13 @@ const ProjectWebsiteDeaBakery = () => {
           <UIExplorationCards />
         </SectionBlock>
 
-        {/* 07 — Before & After */}
-        <SectionBlock label="07 — Sebelum & Sesudah" index={6}>
+        {/* 07 — Final Pages */}
+        <SectionBlock label="07 — Halaman Final" index={6}>
           <p>
-            Perbandingan nyata antara kondisi website sebelum dan sesudah redesign —
-            dari visual, navigasi, hingga cara produk ditampilkan kepada user.
+            Enam halaman inti yang dirilis — dari homepage hingga program CSR — masing-masing
+            dengan hero dan struktur konten yang disesuaikan dengan tujuannya sendiri.
           </p>
-          <BeforeAfterSection />
+          <FinalPagesGallery />
         </SectionBlock>
 
         {/* 08 — Deliverables */}

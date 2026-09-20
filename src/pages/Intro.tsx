@@ -3,27 +3,196 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, Mail, Phone, Linkedin, Instagram, Layers, BarChart2 } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import profilePhoto from "@/assets/profile-photo.webp";
-import deaBakeryMockup from "@/assets/project-dea-bakery-mockup.webp";
+import deaBakeryAppMockup from "@/assets/Home V3.png";
+import deaBakeryPoinScreen from "@/assets/Point - Hadiah.png";
+import deaBakeryAkunScreen from "@/assets/Akun.png";
 import staffAppMockup from "@/assets/project-staff-app-mockup.webp";
+import staffAppHomeScreen from "@/assets/[V5] Presensi Online - Home Page.png";
 import websiteDeaBakeryMockup from "@/assets/project-website-dea-bakery-mockup.webp";
+import websiteHomeScreenshot from "@/assets/Home.png";
+import hrisDaftarPresensi from "@/assets/Daftar Presensi.png";
 
 
 type Tab = "about" | "resume" | "work";
 
+// Stylized app-store-style cover collage for Project 01 — tilted phone frames + floating badges
+const DeaBakeryHeroThumbnail = () => (
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm">
+    {/* Sky gradient background */}
+    <div className="absolute inset-0 bg-gradient-to-b from-sky-500 via-sky-300 to-orange-100" />
+    <div className="absolute bottom-0 left-[-10%] w-[60%] h-8 bg-white/60 rounded-full blur-md" />
+    <div className="absolute bottom-[-4px] right-[-5%] w-[55%] h-9 bg-white/50 rounded-full blur-md" />
+
+    {/* Headline */}
+    <p className="absolute top-2 left-2.5 z-20 font-display font-bold text-white text-[11px] md:text-xs leading-tight drop-shadow-[0_1px_2px_rgba(0,0,0,0.35)] max-w-[70%]">
+      Reputasi.<br />Loyalty. Satu App.
+    </p>
+
+    {/* Tilted phone frames */}
+    <div className="absolute inset-0 flex items-end justify-center gap-[-14px] pb-[-6px]">
+      {/* Left phone — Poin */}
+      <div className="relative w-11 h-[76px] md:w-12 md:h-[84px] rounded-[8px] border border-white/70 bg-black overflow-hidden shadow-lg rotate-[-12deg] translate-y-2 translate-x-2 z-10">
+        <img src={deaBakeryPoinScreen} alt="" className="w-full h-full object-cover object-top" />
+      </div>
+      {/* Center phone — Home */}
+      <div className="relative w-12 h-[88px] md:w-14 md:h-[98px] rounded-[9px] border-[1.5px] border-white/90 bg-black overflow-hidden shadow-xl z-20 -mx-2">
+        <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-3 h-[3px] rounded-full bg-black z-10" />
+        <img src={deaBakeryAppMockup} alt="" className="w-full h-full object-cover object-top" />
+      </div>
+      {/* Right phone — Akun */}
+      <div className="relative w-11 h-[76px] md:w-12 md:h-[84px] rounded-[8px] border border-white/70 bg-black overflow-hidden shadow-lg rotate-[12deg] translate-y-2 -translate-x-2 z-10">
+        <img src={deaBakeryAkunScreen} alt="" className="w-full h-full object-cover object-top" />
+      </div>
+    </div>
+
+    {/* Floating badges */}
+    <div className="absolute top-2 right-2 z-20 bg-white/95 rounded-full px-2 py-0.5 shadow-sm flex items-center gap-1">
+      <span className="text-[9px]">🏆</span>
+      <span className="text-[8px] font-display font-bold text-foreground">135 Poin</span>
+    </div>
+    <div className="absolute bottom-2 left-2 z-20 bg-white/95 rounded-full px-2 py-0.5 shadow-sm">
+      <span className="text-[8px] font-display font-bold text-foreground">📱 Media Sosial</span>
+    </div>
+  </div>
+);
+
+// Stylized cover for Project 02 — flat-color app-poster layout (tag + big wordmark + tilted phone + sticker badge)
+const StaffAppHeroThumbnail = () => (
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-indigo-600">
+    {/* Soft white sweep behind the phone, like the reference */}
+    <div className="absolute bottom-[-30%] right-[-15%] w-[75%] h-[75%] bg-white/15 rounded-full blur-sm" />
+
+    {/* Tag pill + headline */}
+    <div className="absolute top-2 left-2.5 z-20 max-w-[62%]">
+      <span className="inline-block bg-neutral-900 text-white text-[6.5px] md:text-[7.5px] font-display font-medium px-1.5 py-0.5 rounded-full leading-none">
+        Satu app, semua urusan HR
+      </span>
+      <p className="font-display font-black text-white text-xl md:text-2xl leading-[0.9] mt-1 tracking-tight">
+        STAF!
+      </p>
+    </div>
+
+    {/* Large tilted phone — Home dashboard */}
+    <div
+      className="absolute bottom-[-6px] right-[-10px] w-[88px] h-[118px] md:w-[100px] md:h-[132px] rounded-[11px] border-[2.5px] border-white bg-black overflow-hidden shadow-2xl z-10"
+      style={{ transform: "perspective(500px) rotateY(-24deg) rotateX(3deg) rotate(2deg)" }}
+    >
+      <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-4 h-[3px] rounded-full bg-black z-10" />
+      <img src={staffAppHomeScreen} alt="" className="w-full h-full object-cover object-top" />
+    </div>
+
+    {/* Scalloped sticker badge, overlapping the phone */}
+    <div
+      className="absolute bottom-1.5 right-1.5 z-20 w-8 h-8 md:w-9 md:h-9 bg-neutral-900 flex items-center justify-center shadow-md"
+      style={{ borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%" }}
+    >
+      <span className="text-[11px] md:text-xs">💬</span>
+    </div>
+  </div>
+);
+
+// Stylized cover for Project 03 — laptop-poster layout (tag + big headline + tilted laptop + organic shapes)
+const WebsiteHeroThumbnail = () => (
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-[#7A1F2B]">
+    {/* Decorative organic shapes */}
+    <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-black/20" />
+    <div
+      className="absolute top-6 right-8 w-3.5 h-3.5 bg-[#F3C969]/70"
+      style={{ borderRadius: "60% 40% 55% 45% / 45% 55% 40% 60%" }}
+    />
+    <div
+      className="absolute bottom-8 left-2 w-2.5 h-2.5 bg-white/25"
+      style={{ borderRadius: "50% 50% 60% 40% / 40% 60% 50% 50%" }}
+    />
+
+    {/* Headline */}
+    <div className="absolute top-2 left-2.5 z-20 max-w-[60%]">
+      <p className="font-display font-black text-white text-[13px] md:text-base leading-[0.95] tracking-tight">
+        LIHAT<br />→ WEBSITENYA
+      </p>
+      <p className="text-white/70 text-[6.5px] md:text-[7.5px] mt-1 leading-snug">
+        Redesign resmi brand bakery lokal
+      </p>
+    </div>
+
+    {/* Tilted laptop mockup */}
+    <div
+      className="absolute bottom-1 right-[-8px] z-10"
+      style={{ transform: "perspective(500px) rotateY(18deg) rotateX(6deg) rotate(-2deg)" }}
+    >
+      {/* Screen */}
+      <div className="w-28 h-[70px] md:w-32 md:h-20 rounded-t-[6px] border-[3px] border-neutral-800 bg-black overflow-hidden">
+        <img src={websiteHomeScreenshot} alt="" className="w-full h-full object-cover object-top" />
+      </div>
+      {/* Base */}
+      <div className="w-32 h-1.5 md:w-36 -ml-2 bg-neutral-700 rounded-b-sm" />
+    </div>
+
+    {/* URL label */}
+    <div className="absolute bottom-1.5 left-2.5 z-20">
+      <span className="text-[6.5px] md:text-[7.5px] font-display font-semibold text-white/80 tracking-wide">
+        www.deabakery.co.id
+      </span>
+    </div>
+  </div>
+);
+
+// Stylized cover for Project 05 — scrapbook/collage layout (cream bg, washi tags, laptop screen, sticky note)
+const AttendanceHeroThumbnail = () => (
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-[#F5F1E6]">
+    {/* Washi-tape tag */}
+    <div className="absolute -top-1 right-2 z-20 rotate-[6deg] bg-[#D9C9A3] px-2 py-0.5 shadow-sm">
+      <span className="text-[6.5px] md:text-[7.5px] font-display font-bold text-[#4A3B22] tracking-wide">HR TOOL</span>
+    </div>
+
+    {/* Headline */}
+    <div className="absolute top-2.5 left-2.5 z-20 max-w-[55%]">
+      <p className="font-display font-black text-[#2B2620] text-[11px] md:text-xs leading-[1.05]">
+        Presensi yang
+        <br />
+        <span className="relative inline-block">
+          Bisa Dipercaya
+          <svg className="absolute -inset-1 w-[calc(100%+8px)] h-[calc(100%+8px)]" viewBox="0 0 100 30" preserveAspectRatio="none">
+            <ellipse cx="50" cy="15" rx="48" ry="13" fill="none" stroke="#C0392B" strokeWidth="2.5" />
+          </svg>
+        </span>
+      </p>
+    </div>
+
+    {/* Small pinned photo sticker */}
+    <div className="absolute top-8 left-2 z-10 w-6 h-6 md:w-7 md:h-7 bg-white border border-[#00000014] shadow-sm rotate-[-8deg] flex items-center justify-center">
+      <span className="text-[10px]">📌</span>
+    </div>
+
+    {/* Laptop with real screenshot */}
+    <div className="absolute bottom-1 left-1/2 -translate-x-1/2 z-10">
+      <div className="w-32 h-[70px] md:w-36 md:h-20 rounded-t-[5px] border-[3px] border-neutral-800 bg-black overflow-hidden">
+        <img src={hrisDaftarPresensi} alt="" className="w-full h-full object-cover object-top" />
+      </div>
+      <div className="w-36 h-1.5 md:w-40 -ml-2 bg-neutral-700 rounded-b-sm" />
+    </div>
+
+    {/* Sticky note */}
+    <div className="absolute bottom-2 right-2 z-20 rotate-[5deg] bg-[#F4C9D8] px-2 py-1 shadow-sm">
+      <span className="text-[6.5px] md:text-[7.5px] font-display font-bold text-[#5C2A3A]">56+ Outlet</span>
+    </div>
+  </div>
+);
+
 const skills = [
-  "UX & UI Design",
-  "Wireframing",
-  "Interactive & Responsive Design",
-  "UX Writing",
-  "Prototyping",
-  "Usability Testing",
-  "Problem Solving",
-  "Strategic Planning",
-  "User Research",
-  "Information Architecture",
-  "Design Handoff",
-  "Cross-functional Collaboration",
-  "Project Coordination",
+  { title: "UX & UI Design", desc: "Diterapkan di semua studi kasus, dari mobile app hingga redesign website." },
+  { title: "Information Architecture", desc: "Merapikan sitemap & navigasi pada redesign Website Dea Bakery." },
+  { title: "UX Writing", desc: "Menulis ulang heading & microcopy pada redesign Website Dea Bakery." },
+  { title: "Design Systems", desc: "Menyusun style guide di Bahan Baku, Online Attendance, dan Website Dea Bakery." },
+  { title: "Wireframing & Prototyping", desc: "Wireframe hingga prototype Figma untuk Dea Bakery App & Website Redesign." },
+  { title: "Interaction & Responsive Design", desc: "Layout mobile-first & responsif pada redesign Website Dea Bakery." },
+  { title: "Access & Permission Design", desc: "Merancang akses berjenjang pada Personal App Staff Dea Bakery." },
+  { title: "Design Handoff", desc: "Menyiapkan dokumentasi handoff developer di Website Dea Bakery." },
+  { title: "Cross-functional Coordination", desc: "Mengoordinasikan developer & marketing di seluruh proyek Asst. PM." },
+  { title: "Release & Sprint Planning", desc: "Menyusun rencana partial release pada proyek HRIS Release Planning." },
+  { title: "Scope Management", desc: "Mengelola scope 3 sistem paralel pada Online Attendance Rollout." },
+  { title: "Stakeholder Communication", desc: "Menjembatani bisnis & tim teknis di Dea Bakery App dan proyek PM." },
+  { title: "Problem Solving", desc: "Mengubah masalah nyata jadi keputusan desain terukur di tiap studi kasus." },
 ];
 
 
@@ -31,7 +200,7 @@ const skills = [
 const experiences = [
   {
     company: "CV. Dea Bakery",
-    role: "UI/UX Designer – Assistant Project Manager",
+    role: "Product Designer – Assistant Project Manager",
     period: "2024 – Present",
   },
   {
@@ -73,13 +242,15 @@ const projects = [
   {
     id: "dea-bakery-mobile-app",
     number: "01",
-    title: "Membangun Pengalaman Order Digital untuk Brand Bakery Lokal",
+    title: "Transformasi Reputasi Dea Bakery Lewat Digitalisasi Pengalaman Pelanggan",
     type: "Product Strategy",
     description:
-      "Merancang platform loyalty dan engagement untuk bakery lokal. Menavigasi batasan bisnis nyata untuk beralih dari e-commerce penuh menjadi pengalaman loyalty-first yang fokus.",
-    tags: ["Product Thinking", "Scope Decision", "Loyalty System"],
+      "Merancang aplikasi loyalty dan order untuk bakery lokal yang reputasinya dibangun secara organik lewat walk-in, mulut ke mulut, dan media sosial — namun caranya beradaptasi ke kanal digital masih tertinggal.",
+    tags: ["Product Strategy", "Loyalty System", "Digital Transformation"],
     section: "uiux",
-    image: deaBakeryMockup,
+    image: deaBakeryAppMockup,
+    imagePosition: "top",
+    thumbnailStyle: "hero-collage",
   },
   {
     id: "staff-app-dea-bakery",
@@ -91,6 +262,7 @@ const projects = [
     tags: ["Access Design", "Mobile App", "HR & People Ops"],
     section: "uiux",
     image: staffAppMockup,
+    thumbnailStyle: "hero-collage-hr",
   },
   {
     id: "website-dea-bakery-redesign",
@@ -102,6 +274,7 @@ const projects = [
     tags: ["UI Design", "Information Architecture", "UX Writing"],
     section: "uiux",
     image: websiteDeaBakeryMockup,
+    thumbnailStyle: "hero-collage-web",
   },
   {
     id: "bahan-baku-inventory-system",
@@ -122,6 +295,7 @@ const projects = [
       "Merancang ulang presensi 1.000+ karyawan di 56+ outlet dari mesin fingerprint tetap menjadi tiga sistem terhubung — aplikasi mobile, dashboard HR, dan perencana jadwal shift — yang berbagi satu domain data agar bisa dipercaya sebagai dasar penggajian.",
     tags: ["Product Design", "System Design", "Mobile App", "Ongoing"],
     section: "uiux",
+    thumbnailStyle: "hero-collage-attendance",
   },
   {
     id: "production-workflow-optimization",
@@ -256,14 +430,30 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
                   className="group flex items-start gap-4 py-5 border-b border-border hover:bg-card/50 -mx-6 px-6 transition-colors"
                 >
                   {/* Thumbnail */}
-                  {"image" in project && project.image && (
-                    <div className="w-20 h-14 shrink-0 rounded-md overflow-hidden border border-border bg-secondary">
-                      <img
-                        src={project.image as string}
-                        alt={project.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                    </div>
+                  {"thumbnailStyle" in project && project.thumbnailStyle === "hero-collage" ? (
+                    <DeaBakeryHeroThumbnail />
+                  ) : "thumbnailStyle" in project && project.thumbnailStyle === "hero-collage-hr" ? (
+                    <StaffAppHeroThumbnail />
+                  ) : "thumbnailStyle" in project && project.thumbnailStyle === "hero-collage-web" ? (
+                    <WebsiteHeroThumbnail />
+                  ) : "thumbnailStyle" in project && project.thumbnailStyle === "hero-collage-attendance" ? (
+                    <AttendanceHeroThumbnail />
+                  ) : (
+                    "image" in project && project.image && (
+                      <div className="w-20 h-14 shrink-0 rounded-md overflow-hidden border border-border bg-secondary">
+                        <img
+                          src={project.image as string}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          style={{
+                            objectPosition:
+                              "imagePosition" in project && project.imagePosition
+                                ? (project.imagePosition as string)
+                                : "center",
+                          }}
+                        />
+                      </div>
+                    )
                   )}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
@@ -271,7 +461,7 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
                         {project.number}
                       </span>
                       <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/20 font-medium">
-                        UI/UX Designer
+                        Product Designer
                       </span>
                       <span className="text-xs text-muted-foreground/60">{project.type}</span>
                     </div>
@@ -436,7 +626,7 @@ const Intro = () => {
                 Fajriwati Qoyyum<br />Rizqini
               </h1>
               <p className="text-muted-foreground text-base leading-relaxed max-w-xl">
-                A <span className="text-foreground font-medium">UI/UX Designer</span> with 1+ year of experience.
+                A <span className="text-foreground font-medium">Product Designer</span> with 3+ years of experience.
                 My design process is driven by{" "}
                 <span className="text-foreground underline decoration-accent/40 underline-offset-2 decoration-[1.5px]">empathy and structured problem-solving</span>,
                 allowing me to craft{" "}
@@ -678,11 +868,16 @@ const Intro = () => {
                     <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
                       Skills
                     </h2>
-                    <div className="space-y-2">
+                    <div className="space-y-3">
                       {skills.map((skill) => (
-                        <p key={skill} className="text-sm text-foreground/80">
-                          {skill}
-                        </p>
+                        <div key={skill.title}>
+                          <p className="text-sm font-medium text-foreground/90">
+                            {skill.title}
+                          </p>
+                          <p className="text-xs text-muted-foreground mt-0.5 leading-relaxed">
+                            {skill.desc}
+                          </p>
+                        </div>
                       ))}
                     </div>
                   </div>

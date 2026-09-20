@@ -1,8 +1,38 @@
 import ProjectHeader from "@/components/ProjectHeader";
 import MetaRow from "@/components/MetaRow";
 import SectionBlock from "@/components/SectionBlock";
-import ProjectImage from "@/components/ProjectImage";
-import staffAppMockup from "@/assets/project-staff-app-mockup.webp";
+import walkthrough1 from "@/assets/Walkthrought - 1.svg";
+import walkthrough2 from "@/assets/Walkthrought - 2.svg";
+import staffAppHomeScreen from "@/assets/[V5] Presensi Online - Home Page.png";
+import staffAppCheckoutScreen from "@/assets/Dashboard Absen - Checkout.png";
+import staffAppHistoryScreen from "@/assets/Dashboard Absen - History.png";
+
+const AppScreensGallery = () => (
+  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+    {[
+      { src: walkthrough1, label: "Walkthrough — Deteksi Lokasi", desc: "Absen otomatis terdeteksi begitu karyawan sampai di lokasi outlet" },
+      { src: walkthrough2, label: "Walkthrough — Riwayat Akurat", desc: "Jam masuk, pulang, lokasi, dan durasi kerja terekam otomatis" },
+      { src: staffAppHomeScreen, label: "Home", desc: "Dashboard karyawan — voucher, menu cepat, CTA presensi" },
+      { src: staffAppCheckoutScreen, label: "Presensi", desc: "Check-in/check-out dengan agenda sesi kerja" },
+      { src: staffAppHistoryScreen, label: "Riwayat Presensi", desc: "Histori kehadiran dengan durasi & status" },
+    ].map((screen) => (
+      <figure key={screen.label} className="space-y-2">
+        <div className="rounded-xl overflow-hidden border border-border bg-card">
+          <img
+            src={screen.src}
+            alt={`Layar ${screen.label} — Personal App HR Dea Bakery`}
+            className="w-full h-auto block"
+            loading="lazy"
+          />
+        </div>
+        <figcaption>
+          <p className="font-display font-semibold text-xs text-foreground">{screen.label}</p>
+          <p className="text-xs text-muted-foreground">{screen.desc}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+);
 
 const ProjectStaffApp = () => {
   return (
@@ -77,7 +107,7 @@ const ProjectStaffApp = () => {
         <SectionBlock label="03 — Scope & Batasan" index={2}>
           <p className="text-sm text-muted-foreground mb-4">
             Tersedia di app store publik, tapi secara fungsional khusus karyawan —
-            login OTP lewat nomor HP terdaftar bertindak sebagai gerbang akses.
+            akses dibatasi lewat login akun karyawan yang sudah terdaftar di sistem HR.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Phase 1 */}
@@ -88,11 +118,10 @@ const ProjectStaffApp = () => {
               <ul className="space-y-2">
                 {[
                   "Slip Gaji Digital",
-                  "Riwayat presensi & check-in",
+                  "Presensi online — check-in/check-out mandiri",
+                  "Chat langsung dengan HR untuk pertanyaan",
                   "Pengajuan benefit & cuti",
                   "Info THR",
-                  "Login OTP — tanpa password",
-                  "Alur verifikasi ulang perangkat",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
                     <span className="text-accent font-bold mt-0.5">✓</span>
@@ -109,7 +138,6 @@ const ProjectStaffApp = () => {
               <ul className="space-y-2">
                 {[
                   { item: "Perhitungan payroll otomatis", note: "Data slip gaji diinput manual oleh HR" },
-                  { item: "Chat langsung dengan HR", note: "" },
                   { item: "Performance review", note: "" },
                 ].map(({ item, note }) => (
                   <li key={item} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -131,18 +159,18 @@ const ProjectStaffApp = () => {
             {[
               {
                 num: "01",
-                title: "Autentikasi Berfriksi Rendah",
-                desc: "OTP lewat nomor HP terdaftar — tanpa password, tanpa kredensial yang dikelola HR.",
-              },
-              {
-                num: "02",
                 title: "Kejelasan Informasi di Atas Kelengkapan Fitur",
                 desc: "Dashboard memunculkan slip gaji, presensi, dan benefit lebih dulu — karyawan menemukan yang mereka butuhkan dalam satu tap.",
               },
               {
+                num: "02",
+                title: "Konsolidasi Data Kerja ke Satu Tempat",
+                desc: "Slip gaji yang dulu lewat email, presensi lewat logbook fisik, dan pengajuan benefit lewat WhatsApp disatukan ke satu aplikasi — karyawan tidak perlu mengingat harus mencari ke mana.",
+              },
+              {
                 num: "03",
-                title: "Keamanan lewat Verifikasi Perangkat",
-                desc: "Akses dari HP baru membutuhkan verifikasi ulang OTP — melindungi data payroll sensitif tanpa kompleksitas berlebih.",
+                title: "Saluran Tanya Jawab Tanpa Ganti Kanal",
+                desc: "Chat dengan HR ditempatkan langsung di dalam aplikasi — karyawan bisa bertanya soal gaji, cuti, atau benefit tanpa perlu berpindah ke WhatsApp atau datang langsung ke kantor.",
               },
             ].map((item) => (
               <div key={item.num} className="flex gap-4 bg-card rounded-xl p-4 border border-border">
@@ -158,22 +186,24 @@ const ProjectStaffApp = () => {
           </div>
         </SectionBlock>
 
-        <ProjectImage
-          src={staffAppMockup}
-          alt="Personal App Karyawan Dea Bakery — layar login, dashboard, dan verifikasi perangkat"
-          caption="Login OTP lewat nomor HP terdaftar · Home dashboard (slip gaji, presensi, benefit) · Verifikasi ulang perangkat untuk akses HP baru"
-        />
+        {/* 05 — App Screens */}
+        <SectionBlock label="05 — Tampilan Aplikasi" index={4}>
+          <p className="text-sm text-muted-foreground mb-4">
+            Dari walkthrough pengenalan hingga layar inti sehari-hari — presensi, riwayat kehadiran,
+            dan dashboard utama karyawan.
+          </p>
+          <AppScreensGallery />
+        </SectionBlock>
 
-        {/* 05 — Key Features */}
-        <SectionBlock label="05 — Fitur Utama" index={4}>
+        {/* 06 — Key Features */}
+        <SectionBlock label="06 — Fitur Utama" index={5}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {[
               { title: "Slip Gaji Digital", desc: "Rincian gaji bulanan, on-demand, di HP" },
-              { title: "Cek Kehadiran", desc: "Riwayat presensi pribadi — verifikasi & tandai ketidaksesuaian" },
+              { title: "Presensi Online", desc: "Check-in/check-out mandiri lewat aplikasi — menggantikan logbook fisik" },
+              { title: "Chat dengan HR", desc: "Tanya langsung ke HR untuk pertanyaan seputar gaji, cuti, atau benefit — tanpa perlu WhatsApp atau datang langsung" },
               { title: "Pengajuan Benefit", desc: "Klaim & cuti dalam aplikasi dengan status persetujuan yang bisa dilacak" },
               { title: "Info THR", desc: "Detail tunjangan hari raya, self-serve sebelum Lebaran" },
-              { title: "OTP Login", desc: "Autentikasi berbasis nomor HP — nol password yang perlu dikelola" },
-              { title: "Verifikasi Perangkat", desc: "HP baru memicu pengecekan ulang identitas untuk proteksi data" },
             ].map((item) => (
               <div key={item.title} className="bg-card rounded-xl px-4 py-3 border border-border flex items-start gap-3">
                 <div>
@@ -186,11 +216,11 @@ const ProjectStaffApp = () => {
         </SectionBlock>
 
         {/* Outcome */}
-        <SectionBlock label="Hasil" index={5}>
+        <SectionBlock label="Hasil" index={6}>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
-              { metric: "6", label: "Fitur self-service yang dirilis" },
-              { metric: "0", label: "Password yang perlu dikelola" },
+              { metric: "5", label: "Fitur self-service yang dirilis" },
+              { metric: "1", label: "Aplikasi terpusat menggantikan spreadsheet & WhatsApp" },
               { metric: "↓", label: "Beban kerja manual HR" },
             ].map((item) => (
               <div key={item.label} className="bg-card rounded-xl p-4 text-center border border-border">
@@ -202,7 +232,7 @@ const ProjectStaffApp = () => {
         </SectionBlock>
 
         {/* Reflection */}
-        <SectionBlock label="Refleksi" index={6}>
+        <SectionBlock label="Refleksi" index={7}>
           <p className="text-sm text-muted-foreground mb-4">
             Internal tool mudah dianggap kurang prioritas — biaya friksinya tidak terlihat sampai
             menumpuk: waktu HR yang terbuang, karyawan yang frustrasi, dan sinyal diam-diam bahwa

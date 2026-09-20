@@ -2,19 +2,15 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import miniInventory from "@/assets/mini-inventory.webp";
-import miniScheduling from "@/assets/mini-scheduling.webp";
-import miniSupport from "@/assets/mini-support.webp";
-import miniKanban from "@/assets/mini-kanban.webp";
 
 const projects = [
   {
     id: "dea-bakery-mobile-app",
     number: "01",
-    title: "Dea Bakery Mobile App",
+    title: "Dea Bakery Reputation Transformation Mobile App",
     description:
-      "Designed a loyalty and engagement platform for a local bakery. Navigated real business constraints to pivot from full e-commerce to a focused loyalty-first experience that aligned with operational capacity.",
-    tags: ["Product Thinking", "Scope Decision", "Loyalty System"],
+      "Designed a loyalty, ordering, and account experience that gave a local bakery's organically-built reputation a digital home — unifying scattered word-of-mouth, WhatsApp, and social channels into one trusted app.",
+    tags: ["Product Strategy", "Loyalty System", "Digital Transformation"],
     type: "Product Strategy",
     section: "uiux",
   },
@@ -220,47 +216,6 @@ const Index = () => {
             )}
           </div>
         </section>
-
-        {/* More Work — Mini Cards */}
-        <section className="py-12 border-t border-border">
-          <p className="section-label mb-2">More Work</p>
-          <p className="text-sm text-muted-foreground mb-8">
-            Quick previews — visual snapshots from other projects.
-          </p>
-          <div className="grid grid-cols-2 gap-4">
-            {[
-              { img: miniInventory, title: "Inventory Management System", hint: "Table-heavy data UI with status tracking" },
-              { img: miniScheduling, title: "Employee Scheduling App", hint: "Calendar-based shift management" },
-              { img: miniSupport, title: "Support Ticket System", hint: "Conversation threads & priority labels" },
-              { img: miniKanban, title: "Project Tracker — Kanban", hint: "Drag-and-drop task board" },
-            ].map((item, i) => (
-              <motion.div
-                key={item.title}
-                className="group rounded-lg overflow-hidden border border-border bg-card hover:border-accent/40 transition-colors"
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-              >
-                <div className="aspect-[16/10] overflow-hidden">
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="p-3">
-                  <p className="text-sm font-display font-semibold text-foreground leading-tight">
-                    {item.title}
-                  </p>
-                  <p className="text-sm text-muted-foreground mt-1">{item.hint}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
 
         <footer className="py-12 border-t border-border">
           <p className="text-sm text-muted-foreground">

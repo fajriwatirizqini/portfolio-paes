@@ -1,6 +1,12 @@
+import { Link } from "react-router-dom";
 import ProjectHeader from "@/components/ProjectHeader";
 import MetaRow from "@/components/MetaRow";
 import SectionBlock from "@/components/SectionBlock";
+import daftarPresensiSemua from "@/assets/Daftar Presensi.png";
+import daftarPresensiPerluDiperiksa from "@/assets/Daftar Presensi-1.png";
+import detailPresensi from "@/assets/Detail Presensi.png";
+import tinjauPerbaikan from "@/assets/Antrean Perbaikan - Tinjau Perbaikan.png";
+import pengaturanOutlet from "@/assets/Pengaturan Outlet.png";
 
 // ─── Inline UX Artifact Components ──────────────────────────────────────────
 
@@ -262,11 +268,33 @@ const ValidationTable = () => (
   </div>
 );
 
+const HrisScreensGallery = () => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {[
+      { src: daftarPresensiSemua, label: "HRIS-01 · Daftar Presensi — Semua Absensi", desc: "Filter per outlet/tanggal/nama; baris bertemuan sistem ditandai (GPS Dipalsukan, GPS Jauh dari Outlet, Jeda Presensi Lama)" },
+      { src: daftarPresensiPerluDiperiksa, label: "HRIS-01 · Tab \"Perlu Diperiksa\"", desc: "Hanya menampilkan rekam yang punya temuan sistem — antrean tinjauan HR" },
+      { src: detailPresensi, label: "HRIS-02 · Detail Presensi", desc: "Bukti selfie, jarak & akurasi GPS, rincian per sesi, tindakan Batalkan Absensi / Konfirmasi Data Diperiksa" },
+      { src: tinjauPerbaikan, label: "HRIS-03/04 · Tinjau Pengajuan Perbaikan", desc: "Perbandingan data tercatat vs. diminta karyawan, alasan tertulis, Setujui/Tolak" },
+      { src: pengaturanOutlet, label: "HRIS-06/07 · Pengaturan Outlet", desc: "Titik koordinat & radius jangkauan absen per outlet — dipakai PA untuk validasi GPS real-time" },
+    ].map((screen) => (
+      <figure key={screen.label} className="space-y-2">
+        <div className="rounded-xl overflow-hidden border border-border bg-card">
+          <img src={screen.src} alt={`${screen.label} — HRIS Chocoa Online Attendance`} className="w-full h-auto block" loading="lazy" />
+        </div>
+        <figcaption>
+          <p className="font-display font-semibold text-xs text-foreground">{screen.label}</p>
+          <p className="text-xs text-muted-foreground">{screen.desc}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+);
+
 const ScreensTables = () => (
   <div className="space-y-5">
     {[
       {
-        title: "Personal Account (mobile)",
+        title: "Personal Account — Presensi Online (Proyek 02)",
         rows: [
           { a: "Gerbang sesi + onboarding", b: "Menentukan satu aksi yang tampil; walkthrough 3–4 layar bisa dilewati" },
           { a: "Pilih outlet & proksimitas", b: "Diurutkan jarak terdekat; status strip jarak hidup real-time" },
@@ -323,7 +351,7 @@ const TrackProgress = () => (
     </div>
     <div className="space-y-2.5">
       {[
-        { label: "Part A — PA", pct: 100, note: "77 SP · live" },
+        { label: "Part A — PA (Proyek 02)", pct: 100, note: "77 SP · live" },
         { label: "Part B — HRIS", pct: 36, note: "50 SP · sprint 1/3" },
         { label: "Part C — Outlet", pct: 50, note: "26 SP · sprint 1/2" },
       ].map((row) => (
@@ -355,7 +383,7 @@ const ProjectOnlineAttendance = () => {
         <ProjectHeader
           projectNumber="Proyek 05"
           title="Menyatukan Presensi GPS Lintas Tiga Sistem agar Bisa Dipercaya sebagai Dasar Penggajian"
-          subtitle="Presensi 1.000+ karyawan Dea Bakery di 56+ outlet dirancang ulang dari mesin fingerprint yang terikat lokasi menjadi tiga sistem yang saling terhubung: aplikasi mobile untuk menangkap kehadiran, dashboard HR untuk meninjau dan mengoreksi, serta perencana jadwal shift untuk outlet — satu domain data, tiga permukaan desain."
+          subtitle="Kelanjutan dari fitur Presensi Online yang dirilis di Personal App Staff (Proyek 02) — proyek ini membangun sisi manajemen HR untuk data presensi itu: dashboard peninjauan & koreksi, plus perencana jadwal shift outlet, agar presensi 1.000+ karyawan di 56+ outlet bisa dipercaya sebagai dasar penggajian, bukan cuma tercatat."
           tags={["Product Design", "System Design", "Mobile App", "HR Tech", "Ongoing Project"]}
         />
 
@@ -376,6 +404,19 @@ const ProjectOnlineAttendance = () => {
             paling sering berpindah:
           </p>
           <PersonaGrid />
+          <div className="flex items-start gap-3 bg-card rounded-xl p-4 border border-border mt-2">
+            <span className="text-xl mt-0.5 shrink-0">🔗</span>
+            <p className="text-sm text-muted-foreground">
+              Fitur <strong className="text-foreground">Presensi Online</strong> — check-in/check-out mandiri lewat
+              HP — sudah dirilis sebagai bagian dari{" "}
+              <Link to="/project/staff-app-dea-bakery" className="text-accent underline underline-offset-2 hover:text-accent/80">
+                Personal App Staff (Proyek 02)
+              </Link>
+              . Yang belum ada saat itu adalah sisi HR-nya: tempat rekam yang mencurigakan ditinjau, waktu yang
+              salah dikoreksi secara tertelusur, dan jadwal shift dikelola sebagai satu sumber kebenaran. Proyek
+              ini membangun ketiganya.
+            </p>
+          </div>
         </SectionBlock>
 
         <SectionBlock label="02 — Masalah" index={1}>
@@ -404,8 +445,9 @@ const ProjectOnlineAttendance = () => {
           <p>
             Online Attendance bukan aplikasi tunggal — ia adalah satu domain data yang dipakai bersama oleh tiga
             sistem berbeda, semuanya dilayani backend Laravel yang sama dan menulis ke satu database MySQL yang
-            sama. Personal Account (PA) dan HRIS tidak saling memanggil API satu sama lain secara langsung —
-            keduanya terhubung lewat tabel yang sama: PA menulis kenyataan lapangan, HRIS membaca dan mengoreksinya.
+            sama. Personal Account (PA) — yaitu fitur Presensi Online di Personal App Staff, Proyek 02 — dan HRIS
+            tidak saling memanggil API satu sama lain secara langsung; keduanya terhubung lewat tabel yang sama:
+            PA menulis kenyataan lapangan, HRIS (dibangun di proyek ini) membaca dan mengoreksinya.
           </p>
           <DataFlowDiagram />
           <TableOwnershipTable />
@@ -488,7 +530,13 @@ const ProjectOnlineAttendance = () => {
           <p>
             Tiga sistem, tiga permukaan — didesain hi-fi di Figma dengan penamaan frame yang konsisten dengan ID
             spesifikasi (mis. <code className="text-xs bg-secondary px-1.5 py-0.5 rounded">HRIS-02 Detail Presensi v1.0</code>)
-            agar developer bisa langsung memetakan layar ke endpoint API-nya.
+            agar developer bisa langsung memetakan layar ke endpoint API-nya. Berikut lima layar HRIS yang sudah
+            live — sisi manajemen yang dibangun di proyek ini untuk mengelola data dari Presensi Online (Proyek 02):
+          </p>
+          <HrisScreensGallery />
+          <p className="mt-2">
+            Tabel di bawah melengkapi cakupan layar penuh di ketiga sistem — termasuk Personal Account (Proyek 02)
+            dan Outlet System yang masih berjalan di Part C:
           </p>
           <ScreensTables />
         </SectionBlock>
