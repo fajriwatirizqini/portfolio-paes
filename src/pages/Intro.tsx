@@ -8,7 +8,7 @@ import deaBakeryPoinScreen from "@/assets/Point - Hadiah.png";
 import deaBakeryAkunScreen from "@/assets/Akun.png";
 import staffAppMockup from "@/assets/project-staff-app-mockup.webp";
 import staffAppHomeScreen from "@/assets/[V5] Presensi Online - Home Page.png";
-import websiteDeaBakeryMockup from "@/assets/project-website-dea-bakery-mockup.webp";
+import websiteDeaBakeryMockup from "@/assets/project-card-thumb.webp";
 import websiteHomeScreenshot from "@/assets/Home.png";
 import hrisDaftarPresensi from "@/assets/Daftar Presensi.png";
 
@@ -201,7 +201,7 @@ const experiences = [
   {
     company: "CV. Dea Bakery",
     role: "Product Designer – Assistant Project Manager",
-    period: "2024 – Present",
+    period: "July 2024 – Present",
   },
   {
     company: "PT. Kalbe Radha Mustika (Kalbe Group)",
@@ -298,40 +298,40 @@ const projects = [
     thumbnailStyle: "hero-collage-attendance",
   },
   {
-    id: "production-workflow-optimization",
+    id: "online-attendance-rollout-coordination",
     number: "01",
-    title: "Feature Rollout Coordination",
+    title: "Rollout Presensi GPS — Koordinasi 3 Track",
+    type: "Cross-team Coordination",
+    description:
+      "Mengoordinasikan rollout 153 story point sistem presensi GPS Dea Bakery lintas tim mobile, HR, dan perencana outlet — menulis batasan cakupan dan urutan kerja yang menjaga 4 tim tetap bergerak tanpa scope drift.",
+    tags: ["Scope Management", "Sprint Sequencing", "Cross-team Coordination"],
+    section: "pm",
+    period: "Jul 2026 – Berjalan",
+    outcome: "56+ outlet live di Part A; 3 track tersusun dengan 0 edit data tanpa audit",
+  },
+  {
+    id: "production-workflow-optimization",
+    number: "02",
+    title: "Koordinasi Rollout Fitur",
     type: "Process & Coordination",
     description:
-      "Coordinated end-to-end feature rollout across dev and design teams — tracking progress via Jira, managing sprint ceremonies, and aligning stakeholders weekly.",
+      "Mengoordinasikan rollout fitur end-to-end lintas tim dev dan design — tracking progres lewat Jira, mengelola sprint ceremony, dan menyelaraskan stakeholder setiap minggu.",
     tags: ["Sprint Planning", "Jira", "Stakeholder Sync"],
     section: "pm",
     period: "Jan 2025 – Mar 2025",
-    outcome: "2 features shipped on schedule, 0 critical blockers missed",
+    outcome: "2 fitur rilis sesuai jadwal, 0 critical blocker terlewat",
   },
   {
-    id: "bakery-production-scheduling",
-    number: "02",
-    title: "Production Scheduling & Workflow Ops",
-    type: "Operational Management",
-    description:
-      "Rebuilt the daily production schedule system for Dea Bakery — transitioning from manual WhatsApp coordination to a structured Lark-based workflow with task ownership and shift visibility.",
-    tags: ["Lark", "Ops Design", "SOP Documentation"],
-    section: "pm",
-    period: "Apr 2024 – Jun 2024",
-    outcome: "Reduced task confusion by ~60% across 3 production shifts",
-  },
-  {
-    id: "cross-team-delivery-tracker",
+    id: "hris-release-planning",
     number: "03",
-    title: "Cross-Team Delivery Tracker",
-    type: "Reporting & Tracking",
+    title: "Proposal Kedua: Rilis Bertahap Fitur HRIS",
+    type: "Release Planning",
     description:
-      "Owned weekly delivery reporting for a cross-functional team — consolidating progress from design, dev, and ops into a single dashboard reviewed by leadership.",
-    tags: ["Reporting", "Google Sheets", "Cross-functional"],
+      "Proyek pertama saya sebagai Assistant PM — menulis ulang proposal full release Personal Account (HRIS) yang tidak realistis jadi rencana partial release, dengan person-in-charge dan progress percentage per orang dari Oktober sampai Desember 2024.",
+    tags: ["Release Planning", "Figma", "Cross-functional Coordination"],
     section: "pm",
-    period: "Jul 2024 – Dec 2024",
-    outcome: "Leadership visibility improved; fewer escalations in monthly reviews",
+    period: "Sep 2024 – Des 2024",
+    outcome: "6 fitur live di rilis pertama; 4 fitur dipetakan untuk rilis berikutnya",
   },
 ];
 
@@ -864,7 +864,7 @@ const Intro = () => {
                   </div>
 
                   {/* Right column: Skills */}
-                  <div className="md:min-w-[180px]">
+                  <div className="md:w-72">
                     <h2 className="text-xs font-display font-bold text-foreground uppercase tracking-[0.15em] mb-6">
                       Skills
                     </h2>
