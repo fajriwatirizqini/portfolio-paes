@@ -1,6 +1,12 @@
 import ProjectHeader from "@/components/ProjectHeader";
 import MetaRow from "@/components/MetaRow";
 import SectionBlock from "@/components/SectionBlock";
+import bahanBakuKatalog from "@/assets/[A] Bahan Baku.png";
+import resepAdonan from "@/assets/[A] Aturan Konversi.png";
+import itemMasukAdmin from "@/assets/[A] Item Masuk.png";
+import transferStok from "@/assets/[A] Transfer Stok.png";
+import itemKeluarLeader from "@/assets/[L] Item Keluar - Closed Table.png";
+import preAdjustmentLeader from "@/assets/[L] Pre-Adjustment - V2.png";
 
 // ─── Inline UX Artifact Components ──────────────────────────────────────────
 
@@ -217,11 +223,6 @@ const ValidationTable = () => (
               issue: "Outlet harus memahami \"membuka karung\" sebagai transaksi terpisah dari \"memakai bahan\" — dua langkah untuk satu maksud",
               action: "Layar Konversi dihapus total; setiap layar transaksi kini langsung menerima input dalam satuan apa pun yang didefinisikan",
             },
-            {
-              finding: "⚠️ Frontend berjalan mendahului desain (ditemukan Juli 2026, dicatat sebagai risiko oleh PM)",
-              issue: "20+ route sudah dibangun dan dirilis, sementara desain baru menyelesaikan 3 dari 8 story — 5 layar tersisa berisiko dibangun tanpa acuan final, berujung rework di frontend maupun backend",
-              action: "Dikunci sebagai keputusan sadar di rapat bulanan: menyelesaikan 5 story tersisa di Agustus sebelum layar-layar itu di-hardening lebih jauh",
-            },
           ].map((row) => (
             <tr key={row.finding} className="hover:bg-card/60 transition-colors align-top">
               <td className="px-4 py-3 font-display font-medium text-foreground max-w-[180px]">{row.finding}</td>
@@ -241,7 +242,7 @@ const ScreensTable = () => (
       <table className="w-full text-left">
         <thead>
           <tr className="border-b border-border bg-card">
-            {["Layar", "Untuk", "UI Pattern"].map((h) => (
+            {["Layar", "Untuk", "UI Pattern", "Status"].map((h) => (
               <th key={h} className="px-4 py-2.5 font-display font-semibold text-xs text-foreground whitespace-nowrap">
                 {h}
               </th>
@@ -250,16 +251,31 @@ const ScreensTable = () => (
         </thead>
         <tbody className="divide-y divide-border">
           {[
-            { screen: "Manajemen Satuan", who: "Admin", pattern: "Panel ganda + live preview rasio (\"1 Karung = 50.000 Gram\")" },
-            { screen: "Item Masuk", who: "Outlet", pattern: "Form batch multi-baris, unit chips per bahan" },
-            { screen: "Item Keluar", who: "Outlet", pattern: "Form batch + guardrail stok negatif, baris bermasalah disorot merah" },
-            { screen: "Manajemen Resep", who: "Admin", pattern: "Deskriptor output (\"1 Loyang\") + baris bahan yang unit-aware" },
-            { screen: "Produksi", who: "Outlet", pattern: "Antrean multi-resep + panel konfirmasi gabungan, sisa stok berwarna" },
+            { screen: "Manajemen Satuan", who: "Admin", pattern: "Panel ganda + live preview rasio (\"1 Karung = 50.000 Gram\")", done: true },
+            { screen: "Item Masuk", who: "Outlet", pattern: "Form batch multi-baris, unit chips per bahan", done: true },
+            { screen: "Item Keluar", who: "Outlet", pattern: "Form batch + guardrail stok negatif, baris bermasalah disorot merah", done: true },
+            { screen: "Transfer Stok", who: "All Role", pattern: "Pengiriman bahan antar outlet, alur status Diproses/Perbaikan/Disetujui sama seperti Item Masuk", done: true },
+            { screen: "Pre-Adjustment", who: "Leader", pattern: "Antrean approval penyesuaian stok — Leader meninjau dan menyetujui sebelum koreksi diterapkan", done: true },
+            { screen: "Manajemen Resep", who: "Admin", pattern: "Daftar adonan resep dengan \"Sekali Pembuatan\" sebagai deskriptor output (\"1 Batch\", \"1 Loyang\", \"1 Kg\")", done: true },
+            { screen: "Produksi", who: "Outlet", pattern: "Antrean multi-resep + panel konfirmasi gabungan, sisa stok berwarna", done: false },
           ].map((row) => (
             <tr key={row.screen} className="hover:bg-card/60 transition-colors">
               <td className="px-4 py-3 font-display font-medium text-foreground whitespace-nowrap">{row.screen}</td>
               <td className="px-4 py-3 text-muted-foreground whitespace-nowrap">{row.who}</td>
               <td className="px-4 py-3 text-muted-foreground">{row.pattern}</td>
+              <td className="px-4 py-3 whitespace-nowrap">
+                {row.done ? (
+                  <span className="inline-flex items-center gap-1.5 text-xs font-display font-semibold text-accent">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+                    Done
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/30" />
+                    Berjalan
+                  </span>
+                )}
+              </td>
             </tr>
           ))}
         </tbody>
@@ -268,21 +284,39 @@ const ScreensTable = () => (
   </div>
 );
 
+const BahanBakuScreensGallery = () => (
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+    {[
+      { src: bahanBakuKatalog, label: "Katalog Bahan Baku — Admin", desc: "Master data bahan baku pabrik: kode item, satuan, harga per satuan, stok saat ini, status aktif/non-aktif. Tab kedua di halaman ini berisi Manajemen Satuan." },
+      { src: itemMasukAdmin, label: "Item Masuk — Tinjauan Admin Factory", desc: "Pusat menerima & mengevaluasi pengajuan Item Masuk dari Leader outlet, dengan status Diproses / Perbaikan / Disetujui / Ditolak." },
+      { src: itemKeluarLeader, label: "Item Keluar — Riwayat Harian (Leader)", desc: "Leader mencatat & meninjau riwayat item keluar harian per transaksi, lengkap dengan siapa yang mencatat dan total bahan." },
+      { src: transferStok, label: "Transfer Stok — Pengiriman Antar Outlet", desc: "Pengiriman bahan baku dari satu outlet ke outlet lain, memakai alur status yang sama seperti Item Masuk." },
+      { src: preAdjustmentLeader, label: "Pre-Adjustment — Rekam Selisih Stok (Leader)", desc: "Leader merekam selisih antara stok fisik dan catatan sistem per bahan — belum mengubah stok utama sampai disetujui Admin." },
+      { src: resepAdonan, label: "Manajemen Resep — Konversi Bahan (Admin)", desc: "Daftar adonan resep dengan kode massa dan \"Sekali Pembuatan\" sebagai deskriptor output (\"1 Batch\", \"1 Loyang\", \"1 Kg\")." },
+    ].map((screen) => (
+      <figure key={screen.label} className="space-y-2">
+        <div className="rounded-xl overflow-hidden border border-border bg-card">
+          <img src={screen.src} alt={`${screen.label} — Modul Bahan Baku Chocoa POS`} className="w-full h-auto block" loading="lazy" />
+        </div>
+        <figcaption>
+          <p className="font-display font-semibold text-xs text-foreground">{screen.label}</p>
+          <p className="text-xs text-muted-foreground">{screen.desc}</p>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+);
+
 const ImpactGrid = () => (
   <div className="space-y-6">
     <div>
-      <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-3">Progres Desain & Build (per Agustus 2026)</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-        {[
-          { metric: "3 / 8", label: "Story desain selesai (34 dari 65 SP) — 5 tersisa, ditargetkan Agustus" },
-          { metric: "20+", label: "Route frontend sudah dibangun & tersambung API v6, dirilis di v3.4.35" },
-          { metric: "9 / 40+", label: "Controller / endpoint backend baru (~4.600 baris kode) dari spec desain" },
-        ].map((item) => (
-          <div key={item.label} className="bg-card rounded-xl p-4 border border-border text-center">
-            <p className="text-xl font-display font-bold text-accent mb-1">{item.metric}</p>
-            <p className="text-xs text-muted-foreground">{item.label}</p>
-          </div>
-        ))}
+      <p className="text-xs font-display font-semibold tracking-widest uppercase text-muted-foreground mb-3">Progres Desain (per September 2026)</p>
+      <div className="bg-card rounded-xl p-4 border border-border flex items-center gap-4">
+        <p className="text-xl font-display font-bold text-accent whitespace-nowrap">Milestone 1: 5/5</p>
+        <div className="w-px self-stretch bg-border shrink-0" />
+        <p className="text-xs text-muted-foreground">
+          Story desain Milestone 1 selesai — Manajemen Satuan, Item Masuk, Item Keluar, Transfer Stok, Pre-Adjustment
+        </p>
       </div>
     </div>
     <div>
@@ -290,7 +324,7 @@ const ImpactGrid = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         {[
           { metric: "~33%", label: "Dari beban kasus operasional bulanan (7 dari 21) yang disasar modul ini" },
-          { metric: "103 SP", label: "Rencana rollout penuh — 13 fase / 57 task, 8–12 minggu pasca-fondasi" },
+          { metric: "13 fase", label: "Rencana rollout penuh — 57 task, 8–12 minggu pasca-fondasi" },
           { metric: "1 gerbang", label: "End-to-end smoke test wajib + patch dua-baris pada view sebelum go-live" },
         ].map((item) => (
           <div key={item.label} className="bg-card rounded-xl p-4 border border-border text-center">
@@ -415,8 +449,7 @@ const ProjectBahanBaku = () => {
         <SectionBlock label="06 — Validasi Lintas-Fungsi" index={5}>
           <p>
             Tanpa prototipe yang bisa diuji ke pengguna, validasi terjadi lewat siklus review spec bersama
-            PM/Frontend owner dan tim backend — dan, yang lebih jujur untuk dilaporkan, lewat satu risiko nyata
-            yang muncul selama eksekusi paralel.
+            PM/Frontend owner dan tim backend.
           </p>
           <ValidationTable />
         </SectionBlock>
@@ -428,6 +461,7 @@ const ProjectBahanBaku = () => {
             untuk semua alur.
           </p>
           <ScreensTable />
+          <BahanBakuScreensGallery />
           <p>
             Dibangun di atas DaisyUI dengan brand theme kustom{" "}
             <code className="text-xs bg-secondary px-1.5 py-0.5 rounded">dea</code> (26 token warna dipetakan),
@@ -438,7 +472,7 @@ const ProjectBahanBaku = () => {
           </p>
         </SectionBlock>
 
-        <SectionBlock label="08 — Dampak & Status Implementasi" index={7}>
+        <SectionBlock label="08 — Dampak & Progres Desain" index={7}>
           <p>
             Modul ini <strong>belum live di outlet</strong> — bagian ini melaporkan progres nyata yang sedang
             berjalan, bukan hasil pasca-rilis.
@@ -458,12 +492,6 @@ const ProjectBahanBaku = () => {
             eksplisit (v2.0) valid sebagai data model, tapi memaksa outlet melewati langkah yang tidak
             mencerminkan cara mereka berpikir tentang stok fisik. Pindah ke sistem satuan per-item bukan soal
             menambah fitur — tapi soal menghapus satu langkah penuh dari alur kerja harian mereka.
-          </p>
-          <p>
-            <strong>Desain dan implementasi yang berjalan paralel punya risiko nyata, bukan cuma teoretis.</strong>{" "}
-            Frontend yang membangun lebih cepat dari desain menciptakan risiko rework yang harus dikunci lewat
-            keputusan tim yang eksplisit, bukan dibiarkan menyelesaikan diri sendiri — pelajaran yang saya bawa
-            ke cara menyepakati scope sebelum development paralel dimulai di proyek berikutnya.
           </p>
         </SectionBlock>
       </div>

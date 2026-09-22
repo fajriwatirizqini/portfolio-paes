@@ -11,6 +11,7 @@ import staffAppHomeScreen from "@/assets/[V5] Presensi Online - Home Page.png";
 import websiteDeaBakeryMockup from "@/assets/project-card-thumb.webp";
 import websiteHomeScreenshot from "@/assets/Home.png";
 import hrisDaftarPresensi from "@/assets/Daftar Presensi.png";
+import bahanBakuKatalogScreen from "@/assets/[A] Bahan Baku.png";
 
 
 type Tab = "about" | "resume" | "work";
@@ -56,83 +57,92 @@ const DeaBakeryHeroThumbnail = () => (
   </div>
 );
 
-// Stylized cover for Project 02 — flat-color app-poster layout (tag + big wordmark + tilted phone + sticker badge)
+// Stylized cover for Project 02 — grid-paper app-poster layout (white grid bg, tiny wordmark + URL-style tag, giant brand wordmark, centered phone, rotated checklist sticky badges)
 const StaffAppHeroThumbnail = () => (
-  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-indigo-600">
-    {/* Soft white sweep behind the phone, like the reference */}
-    <div className="absolute bottom-[-30%] right-[-15%] w-[75%] h-[75%] bg-white/15 rounded-full blur-sm" />
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-white">
+    {/* Graph-paper grid */}
+    <div
+      className="absolute inset-0 opacity-60"
+      style={{
+        backgroundImage:
+          "linear-gradient(to right, #EEF0F5 1px, transparent 1px), linear-gradient(to bottom, #EEF0F5 1px, transparent 1px)",
+        backgroundSize: "9px 9px",
+      }}
+    />
+    {/* Blue wave accent, bottom */}
+    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-[130%] h-10 rounded-t-full bg-indigo-600/90" />
 
-    {/* Tag pill + headline */}
-    <div className="absolute top-2 left-2.5 z-20 max-w-[62%]">
-      <span className="inline-block bg-neutral-900 text-white text-[6.5px] md:text-[7.5px] font-display font-medium px-1.5 py-0.5 rounded-full leading-none">
-        Satu app, semua urusan HR
-      </span>
-      <p className="font-display font-black text-white text-xl md:text-2xl leading-[0.9] mt-1 tracking-tight">
+    {/* Tiny wordmark + tag, like the reference's logo + URL row */}
+    <span className="absolute top-1.5 left-2 z-20 font-display font-black text-[7px] text-neutral-900">Staf!</span>
+    <span className="absolute top-1.5 right-2 z-20 text-[5.5px] text-neutral-400 tracking-wide">HR Chocoa</span>
+
+    {/* Giant brand wordmark */}
+    <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10 text-center">
+      <p className="font-display font-black text-indigo-600 text-xl md:text-2xl leading-[0.85] tracking-tight">
         STAF!
       </p>
+      <p className="font-display font-bold text-neutral-800 text-[8px] md:text-[9px] mt-0.5">Nunjukin Semua</p>
     </div>
 
-    {/* Large tilted phone — Home dashboard */}
-    <div
-      className="absolute bottom-[-6px] right-[-10px] w-[88px] h-[118px] md:w-[100px] md:h-[132px] rounded-[11px] border-[2.5px] border-white bg-black overflow-hidden shadow-2xl z-10"
-      style={{ transform: "perspective(500px) rotateY(-24deg) rotateX(3deg) rotate(2deg)" }}
-    >
-      <div className="absolute top-[3px] left-1/2 -translate-x-1/2 w-4 h-[3px] rounded-full bg-black z-10" />
+    {/* Centered phone mockup */}
+    <div className="absolute bottom-[-4px] left-1/2 -translate-x-1/2 z-10 w-11 h-[70px] md:w-12 md:h-20 rounded-[8px] border-[2px] border-neutral-900 bg-black overflow-hidden shadow-xl">
+      <div className="absolute top-[2px] left-1/2 -translate-x-1/2 w-2.5 h-[2px] rounded-full bg-black z-10" />
       <img src={staffAppHomeScreen} alt="" className="w-full h-full object-cover object-top" />
     </div>
 
-    {/* Scalloped sticker badge, overlapping the phone */}
-    <div
-      className="absolute bottom-1.5 right-1.5 z-20 w-8 h-8 md:w-9 md:h-9 bg-neutral-900 flex items-center justify-center shadow-md"
-      style={{ borderRadius: "38% 62% 63% 37% / 41% 44% 56% 59%" }}
-    >
-      <span className="text-[11px] md:text-xs">💬</span>
+    {/* Rotated checklist sticky badges around the phone */}
+    <div className="absolute top-10 left-1.5 z-20 rotate-[-10deg] bg-emerald-200 border border-emerald-400 rounded px-1 py-0.5 shadow-md">
+      <span className="text-[6px] font-display font-bold text-emerald-900">✓ Gaji</span>
+    </div>
+    <div className="absolute top-14 right-1.5 z-20 rotate-[8deg] bg-violet-200 border border-violet-400 rounded px-1 py-0.5 shadow-md">
+      <span className="text-[6px] font-display font-bold text-violet-900">✓ Cuti</span>
+    </div>
+    <div className="absolute bottom-8 left-2 z-20 rotate-[6deg] bg-sky-200 border border-sky-400 rounded px-1 py-0.5 shadow-md">
+      <span className="text-[6px] font-display font-bold text-sky-900">✓ Presensi</span>
     </div>
   </div>
 );
 
-// Stylized cover for Project 03 — laptop-poster layout (tag + big headline + tilted laptop + organic shapes)
+// Stylized cover for Project 03 — gradient studio-poster layout (pink→purple bg, two-tone headline with dashed selection + badge, sparkles, pedestal laptop)
 const WebsiteHeroThumbnail = () => (
-  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-[#7A1F2B]">
-    {/* Decorative organic shapes */}
-    <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-black/20" />
-    <div
-      className="absolute top-6 right-8 w-3.5 h-3.5 bg-[#F3C969]/70"
-      style={{ borderRadius: "60% 40% 55% 45% / 45% 55% 40% 60%" }}
-    />
-    <div
-      className="absolute bottom-8 left-2 w-2.5 h-2.5 bg-white/25"
-      style={{ borderRadius: "50% 50% 60% 40% / 40% 60% 50% 50%" }}
-    />
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-gradient-to-b from-[#F6E9F5] via-[#E3D3F0] to-[#2E1B42]">
+    {/* Sparkle accents */}
+    <span className="absolute top-3 right-4 text-white/80 text-[8px] leading-none">✦</span>
+    <span className="absolute top-8 right-9 text-white/50 text-[6px] leading-none">✦</span>
 
-    {/* Headline */}
-    <div className="absolute top-2 left-2.5 z-20 max-w-[60%]">
-      <p className="font-display font-black text-white text-[13px] md:text-base leading-[0.95] tracking-tight">
-        LIHAT<br />→ WEBSITENYA
+    {/* Two-tone headline: plain word + gradient word with dashed selection + badge */}
+    <div className="absolute top-2 left-2.5 z-20">
+      <p className="font-display font-black text-[#241C2E] text-sm md:text-base leading-[0.9] tracking-tight">
+        Lihat
       </p>
-      <p className="text-white/70 text-[6.5px] md:text-[7.5px] mt-1 leading-snug">
-        Redesign resmi brand bakery lokal
-      </p>
+      <div className="relative inline-block mt-1">
+        <span className="font-display font-black text-sm md:text-base leading-[0.9] tracking-tight bg-gradient-to-r from-orange-400 via-pink-500 to-purple-500 bg-clip-text text-transparent">
+          Websitenya
+        </span>
+        <span className="absolute -inset-1 border border-dashed border-purple-400/60 rounded-[3px] pointer-events-none" />
+        <span className="absolute -right-2.5 -bottom-2.5 w-3.5 h-3.5 bg-white rounded-md shadow-sm flex items-center justify-center text-[7px]">
+          ↗
+        </span>
+      </div>
     </div>
 
-    {/* Tilted laptop mockup */}
+    {/* Pedestal strip beneath the laptop, echoes the 3D block in the reference */}
     <div
-      className="absolute bottom-1 right-[-8px] z-10"
-      style={{ transform: "perspective(500px) rotateY(18deg) rotateX(6deg) rotate(-2deg)" }}
+      className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[92%] h-5"
+      style={{ background: "linear-gradient(135deg,#F97316,#A855F7)" }}
+    />
+
+    {/* Tilted laptop mockup, sitting on the pedestal */}
+    <div
+      className="absolute bottom-3 right-[-6px] z-10"
+      style={{ transform: "perspective(500px) rotateY(16deg) rotateX(4deg) rotate(-1deg)" }}
     >
       {/* Screen */}
-      <div className="w-28 h-[70px] md:w-32 md:h-20 rounded-t-[6px] border-[3px] border-neutral-800 bg-black overflow-hidden">
+      <div className="w-28 h-[66px] md:w-32 md:h-[74px] rounded-t-[6px] border-[3px] border-neutral-800 bg-black overflow-hidden">
         <img src={websiteHomeScreenshot} alt="" className="w-full h-full object-cover object-top" />
       </div>
       {/* Base */}
-      <div className="w-32 h-1.5 md:w-36 -ml-2 bg-neutral-700 rounded-b-sm" />
-    </div>
-
-    {/* URL label */}
-    <div className="absolute bottom-1.5 left-2.5 z-20">
-      <span className="text-[6.5px] md:text-[7.5px] font-display font-semibold text-white/80 tracking-wide">
-        www.deabakery.co.id
-      </span>
+      <div className="w-32 h-1.5 md:w-36 -ml-2 bg-neutral-300 rounded-b-sm" />
     </div>
   </div>
 );
@@ -175,6 +185,43 @@ const AttendanceHeroThumbnail = () => (
     {/* Sticky note */}
     <div className="absolute bottom-2 right-2 z-20 rotate-[5deg] bg-[#F4C9D8] px-2 py-1 shadow-sm">
       <span className="text-[6.5px] md:text-[7.5px] font-display font-bold text-[#5C2A3A]">56+ Outlet</span>
+    </div>
+  </div>
+);
+
+// Stylized cover for Project 04 — light editorial poster (cream bg, dot-grid corners, serif headline + italic accent line, thin rule, tilted laptop screenshot)
+const BahanBakuHeroThumbnail = () => (
+  <div className="relative w-44 h-32 md:w-52 md:h-36 shrink-0 rounded-xl overflow-hidden border border-border shadow-sm bg-[#F6F2EA]">
+    {/* Dot-grid corner accents */}
+    <div
+      className="absolute top-1.5 left-1.5 w-6 h-6 opacity-40"
+      style={{ backgroundImage: "radial-gradient(#8A8477 1px, transparent 1px)", backgroundSize: "5px 5px" }}
+    />
+    <div
+      className="absolute bottom-1.5 right-1.5 w-6 h-6 opacity-40"
+      style={{ backgroundImage: "radial-gradient(#8A8477 1px, transparent 1px)", backgroundSize: "5px 5px" }}
+    />
+
+    {/* Serif headline + italic accent line */}
+    <div className="absolute top-2.5 left-2.5 z-20 max-w-[62%]">
+      <p className="font-serif font-bold text-[#241C14] text-sm md:text-base leading-[1.05]">
+        Stok yang
+      </p>
+      <p className="font-serif italic font-semibold text-accent text-base md:text-lg leading-[1.05] -mt-0.5">
+        gak bohong.
+      </p>
+      <div className="w-4 h-[2px] bg-accent mt-1.5" />
+    </div>
+
+    {/* Tilted laptop with real screenshot */}
+    <div
+      className="absolute bottom-[-6px] right-[-14px] z-10"
+      style={{ transform: "perspective(500px) rotateY(18deg) rotateX(5deg) rotate(-2deg)" }}
+    >
+      <div className="w-28 h-[70px] md:w-32 md:h-20 rounded-t-[6px] border-[3px] border-neutral-800 bg-black overflow-hidden shadow-xl">
+        <img src={bahanBakuKatalogScreen} alt="" className="w-full h-full object-cover object-top" />
+      </div>
+      <div className="w-32 h-1.5 md:w-36 -ml-2 bg-neutral-300 rounded-b-sm" />
     </div>
   </div>
 );
@@ -285,6 +332,7 @@ const projects = [
       "Merancang modul Bahan Baku untuk back-office POS Dea Bakery dari nol — merombak spec dua kali sebelum implementasi untuk menghapus satu langkah konversi manual dan menutup celah audit formal di balik ~33% kasus operasional bulanan.",
     tags: ["Product Design", "Asst. PM", "Internal Tool", "Ongoing"],
     section: "uiux",
+    thumbnailStyle: "hero-collage-bahanbaku",
   },
   {
     id: "online-attendance-system",
@@ -438,6 +486,8 @@ const WorkTab = ({ projects }: { projects: Project[] }) => {
                     <WebsiteHeroThumbnail />
                   ) : "thumbnailStyle" in project && project.thumbnailStyle === "hero-collage-attendance" ? (
                     <AttendanceHeroThumbnail />
+                  ) : "thumbnailStyle" in project && project.thumbnailStyle === "hero-collage-bahanbaku" ? (
+                    <BahanBakuHeroThumbnail />
                   ) : (
                     "image" in project && project.image && (
                       <div className="w-20 h-14 shrink-0 rounded-md overflow-hidden border border-border bg-secondary">
