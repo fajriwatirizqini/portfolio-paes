@@ -227,19 +227,19 @@ const BahanBakuHeroThumbnail = () => (
 );
 
 const skills = [
-  { title: "UX & UI Design", desc: "Diterapkan di semua studi kasus, dari mobile app hingga redesign website." },
-  { title: "Information Architecture", desc: "Merapikan sitemap & navigasi pada redesign Website Dea Bakery." },
-  { title: "UX Writing", desc: "Menulis ulang heading & microcopy pada redesign Website Dea Bakery." },
-  { title: "Design Systems", desc: "Menyusun style guide di Bahan Baku, Online Attendance, dan Website Dea Bakery." },
-  { title: "Wireframing & Prototyping", desc: "Wireframe hingga prototype Figma untuk Dea Bakery App & Website Redesign." },
-  { title: "Interaction & Responsive Design", desc: "Layout mobile-first & responsif pada redesign Website Dea Bakery." },
-  { title: "Access & Permission Design", desc: "Merancang akses berjenjang pada Personal App Staff Dea Bakery." },
-  { title: "Design Handoff", desc: "Menyiapkan dokumentasi handoff developer di Website Dea Bakery." },
-  { title: "Cross-functional Coordination", desc: "Mengoordinasikan developer & marketing di seluruh proyek Asst. PM." },
-  { title: "Release & Sprint Planning", desc: "Menyusun rencana partial release pada proyek HRIS Release Planning." },
-  { title: "Scope Management", desc: "Mengelola scope 3 sistem paralel pada Online Attendance Rollout." },
-  { title: "Stakeholder Communication", desc: "Menjembatani bisnis & tim teknis di Dea Bakery App dan proyek PM." },
-  { title: "Problem Solving", desc: "Mengubah masalah nyata jadi keputusan desain terukur di tiap studi kasus." },
+  { title: "UX & UI Design", desc: "Applied across every case study, from mobile apps to website redesigns." },
+  { title: "Information Architecture", desc: "Restructured sitemap & navigation on the Dea Bakery website redesign." },
+  { title: "UX Writing", desc: "Rewrote headings & microcopy on the Dea Bakery website redesign." },
+  { title: "Design Systems", desc: "Built style guides for Bahan Baku, Online Attendance, and the Dea Bakery website." },
+  { title: "Wireframing & Prototyping", desc: "Wireframe through Figma prototype for the Dea Bakery App & website redesign." },
+  { title: "Interaction & Responsive Design", desc: "Mobile-first, responsive layout on the Dea Bakery website redesign." },
+  { title: "Access & Permission Design", desc: "Designed tiered access for the Dea Bakery Staff Personal App." },
+  { title: "Design Handoff", desc: "Prepared developer handoff documentation for the Dea Bakery website." },
+  { title: "Cross-functional Coordination", desc: "Coordinated developers & marketing across all Asst. PM projects." },
+  { title: "Release & Sprint Planning", desc: "Built the partial release plan for the HRIS Release Planning project." },
+  { title: "Scope Management", desc: "Managed scope across 3 parallel systems on the Online Attendance Rollout." },
+  { title: "Stakeholder Communication", desc: "Bridged business & technical teams on the Dea Bakery App and PM projects." },
+  { title: "Problem Solving", desc: "Turned real problems into measurable design decisions in every case study." },
 ];
 
 
