@@ -243,7 +243,7 @@ const ProjectDeaBakery = () => {
           items={[
             { label: "Durasi", value: "6 Minggu (Riset & Desain)" },
             { label: "Tim", value: "1 Designer, 1 PM, 2 Engineer, 2 Stakeholder" },
-            { label: "Peran", value: "UI/UX Designer" },
+            { label: "Peran", value: "Product Designer" },
             { label: "Platform", value: "iOS & Android" },
           ]}
         />
