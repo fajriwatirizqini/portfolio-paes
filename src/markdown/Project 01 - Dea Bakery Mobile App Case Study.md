@@ -6,7 +6,7 @@ Merancang aplikasi mobile order & loyalty untuk bakery lokal yang reputasinya se
 
 | | |
 |---|---|
-| **Peran** | UI/UX Designer |
+| **Peran** | Product Designer |
 | **Durasi** | 6 Minggu (Riset & Desain) |
 | **Tim** | 1 Designer, 1 PM, 2 Engineer, 2 Stakeholder |
 | **Platform** | iOS & Android |

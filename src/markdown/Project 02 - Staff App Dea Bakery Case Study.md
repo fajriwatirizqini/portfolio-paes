@@ -6,7 +6,7 @@ Aplikasi mobile dari perusahaan yang menaruh slip gaji, presensi, dan benefit se
 
 | | |
 |---|---|
-| **Peran** | UI/UX Designer |
+| **Peran** | Product Designer |
 | **Durasi** | Berjalan |
 | **Tim** | 1 Designer, 1 PM, 2 Developer, 2 Stakeholder |
 | **Platform** | iOS & Android |
